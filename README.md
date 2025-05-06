@@ -6,9 +6,9 @@
 
 household-account-book/
 │
-├── config/         ← DBの接続など、アプリ全体で使う共通設定
-├── controllers/    ← ユーザー操作に応じた処理（入力、DB処理など）
-├── public/         ← ブラウザがアクセスする唯一の場所（index.phpなど）
+├── config/         ← DB接続など、全体で使う共通設定を定義
+├── controllers/    ← ユーザー操作に応じた処理（入力、DB連携など）
+├── public/         ← ブラウザがアクセスする唯一のディレクトリ（index.phpなど）
 └── views/          ← ユーザーに表示するHTMLなどの画面要素
 
 ### 各フォルダの役割

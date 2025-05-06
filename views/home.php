@@ -5,6 +5,15 @@
     <title>家計簿アプリ</title>
 </head>
 <body>
-    <h1><?= htmlspecialchars($message) ?></h1>
+    <pre>
+<?php
+    // コードをテキストとして表示させる
+    echo htmlspecialchars('<?"Hello, World!"?>');
+?>
+    </pre>
+    <h1><?= htmlspecialchars($message1) ?></h1>
+    <h1><?= htmlspecialchars($message2) ?></h1>
+    <h1><?= htmlspecialchars($message3) ?></h1>
+    <h1><?= htmlspecialchars($message4) ?></h1>
 </body>
 </html>

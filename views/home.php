@@ -6,10 +6,10 @@
 </head>
 <body>
     <pre>
-<?php
-    // コードをテキストとして表示させる
-    echo htmlspecialchars('<?"Hello, World!"?>');
-?>
+        <?php
+            // コードをテキストとして表示させる
+            echo htmlspecialchars('<?"Hello, World!"?>');
+        ?>
     </pre>
     <h1><?= htmlspecialchars($message1) ?></h1>
     <h1><?= htmlspecialchars($message2) ?></h1>

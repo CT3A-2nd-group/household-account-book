@@ -3,12 +3,12 @@ class HomeController {
     public function index() {
         global $pdo;
 
-        $message1 = "家計簿アプリへようこそ！";
+        $message1 = "家計簿へようこそ！";
         // タイムゾーンを日本の標準時間（JST）に設定
         date_default_timezone_set('Asia/Tokyo');
 
         // PHPの現在時刻を取得
-        $message2 = "日時（JST）：" . date('Y-m-d H:i:s');
+        $message2 = "時（JST）：" . date('Y-m-d H:i:s');
         //　home.phpの読み込み（ファイルがない場合警告メッセージ）
         
         try {

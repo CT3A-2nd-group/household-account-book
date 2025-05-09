@@ -3,7 +3,7 @@ class HomeController {
     public function index() {
         global $pdo;
 
-        $message1 = "家計簿へようこそ！";
+        $message1 = "家計簿アプリ（仮）へようこそ！";
         // タイムゾーンを日本の標準時間（JST）に設定
         date_default_timezone_set('Asia/Tokyo');
 

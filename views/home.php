@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-
+    <title>家計簿アプリ（仮）へようこそ！！
 </head>
 <body>
     <header>

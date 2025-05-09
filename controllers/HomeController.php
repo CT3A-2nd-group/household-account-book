@@ -17,7 +17,7 @@ class HomeController {
             $message3 = "DB接続成功：現在の日時は " . $row[0];
             $message4 = "MariaDBはデフォルトでUTCを使うので、DBの時間だと日本時間とずれるので注意を";
         } catch (PDOException $e) {
-            $message3 = "DB接続失敗：" . $e->getMessage();
+            $message3 = "DB：" . $e->getMessage();
         }
 
         include __DIR__ . '/../views/home.php';

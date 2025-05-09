@@ -2,9 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>家計簿</title>
+    <title>家計簿アプリ</title>
 </head>
 <body>
+    <header>
+        <h1>家計簿アプリ</h1>
+    </header>
     <pre>
         <?php
             // コードをテキストとして表示させる

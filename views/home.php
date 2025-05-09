@@ -2,14 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>家計簿</title>
+    <title>家計簿アプリ</title>
 </head>
 <body>
+    <header>
+        <h1>家計簿アプリ</h1>
+    </header>
     <pre>
-<?php
-    // コードをテキストとして表示させる
-    echo htmlspecialchars('<?"Hello, World!"?>');
-?>
+        <?php
+            // コードをテキストとして表示させる
+            echo htmlspecialchars('<?"Hello, World!"?>');
+        ?>
     </pre>
     <h1><?= htmlspecialchars($message1) ?></h1>
     <h1><?= htmlspecialchars($message2) ?></h1>

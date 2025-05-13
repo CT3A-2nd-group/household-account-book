@@ -19,6 +19,7 @@ $now = date('Y-m-d H:i:s');
     <h1><?= htmlspecialchars($message3) ?></h1>
     <h1><?= htmlspecialchars($message4) ?></h1>
     <h1><h1 id="clock"></h1>
+    <p><a href="graphtest.php">テスト</p>
 
   <script>
     // PHPから初期時刻を受け取る

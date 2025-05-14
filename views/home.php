@@ -1,22 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>家計簿アプリ（仮）へようこそ！！
+    <title>ホーム</title>
 </head>
 <body>
-    <header>
-        <h1>家計簿アプリ</h1>
-    </header>
-    <pre>
-        <?php
-            // コードをテキストとして表示させる
-            echo htmlspecialchars('<?"Hello, World!"?>');
-        ?>
-    </pre>
-    <h1><?= htmlspecialchars($message1) ?></h1>
-    <h1><?= htmlspecialchars($message2) ?></h1>
-    <h1><?= htmlspecialchars($message3) ?></h1>
-    <h1><?= htmlspecialchars($message4) ?></h1>
+    <h1>ようこそ、<?= htmlspecialchars($username) ?> さん！</h1>
+
+    <?php if (!empty($isAdmin)): ?>
+        <p>あなたは管理者です。</p>
+    <?php else: ?>
+        <p>あなたは一般ユーザーです。</p>
+    <?php endif; ?>
+
+    <p><a href="/logout">ログアウト</a></p>
 </body>
 </html>

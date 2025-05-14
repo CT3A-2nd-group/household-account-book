@@ -1,12 +1,47 @@
 <?php
-//　まず初めに読み込まれるファイルがこのファイル
+// タイムゾーン設定
 date_default_timezone_set('Asia/Tokyo');
 
-// 別ファイルに書かれた処理の実行　同じファイルを一度だけ読み込む（ファイルがない場合、実行が停止）
-require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../controllers/HomeController.php';
+// URLのパス部分を取得
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-//　インスタンスの生成
-$controller = new HomeController();
-//　生成したインスタンスのindexメソッドの呼び出し
-$controller->index();
+// 各ルートごとの処理
+switch ($path) {
+    case '/':
+    case '/home':
+        require_once __DIR__ . '/../controllers/HomeController.php';
+        $controller = new HomeController();
+        $controller->index();
+        break;
+
+    case '/register':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once __DIR__ . '/../controllers/RegisterController.php';
+            $controller = new RegisterController();
+            $controller->register();
+        } else {
+            require_once __DIR__ . '/../views/register.php';
+        }
+        break;
+
+    case '/login':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once __DIR__ . '/../controllers/LoginController.php';
+            $controller = new LoginController();
+            $controller->login();
+        } else {
+            require_once __DIR__ . '/../views/login.php';
+        }
+        break;
+
+    case '/logout':
+        require_once __DIR__ . '/../controllers/LogoutController.php';
+        $controller = new LogoutController();
+        $controller->logout();
+        break;
+
+    default:
+        http_response_code(404);
+        echo 'ページが見つかりません。';
+        break;
+}

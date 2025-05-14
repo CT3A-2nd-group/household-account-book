@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>ホーム</title>
-</head>
-<body>
-    <h1>ようこそ、<?= htmlspecialchars($username) ?> さん！</h1>
+<?php
+$title = 'ホーム';
+include __DIR__ . '/layouts/header.php';
+?>
 
-    <?php if (!empty($isAdmin)): ?>
-        <p>あなたは管理者です。</p>
-    <?php else: ?>
-        <p>あなたは一般ユーザーです。</p>
-    <?php endif; ?>
+<p>ようこそ、<?= htmlspecialchars($username) ?> さん！</p>
 
-    <p><a href="/logout">ログアウト</a></p>
-</body>
-</html>
+<?php if (!empty($isAdmin)): ?>
+    <p>あなたは<strong>管理者</strong>です。</p>
+<?php else: ?>
+    <p>あなたは一般ユーザーです。</p>
+<?php endif; ?>
+
+<p><a href="/logout">ログアウト</a></p>
+
+<?php include __DIR__ . '/layouts/footer.php'; ?>

@@ -1,5 +1,5 @@
 <?php
-// タイムゾーン設定
+// タイムゾーンの設定
 date_default_timezone_set('Asia/Tokyo');
 
 // URLのパス部分を取得

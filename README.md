@@ -38,3 +38,5 @@ require_once や include_once で読み込むことで、
 | controllers/ | 入力処理・ビジネスロジック             |
 | views/       | HTML など出力部分（ユーザー向け）      |
 | public/      | ブラウザから直接アクセスされるファイル |
+
+// test

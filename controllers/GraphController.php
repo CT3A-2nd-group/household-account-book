@@ -1,20 +1,27 @@
 <?php
-    //DBのデータをJSONに変換
-    $pdo = new PD0('mysql:host=localhost;dbname=testdb','user','pass');
-    //SQLを記述する
-    $stmt = $pdo->query("");
+class GraphController {
+    public function graph() {
+        session_start();
+        include __DIR__ . '/../config/database.php';
 
-    //あとで変数名をカエル
-    $months = [];
-    $sales = [];
+        $stmt = $pdo->query("SELECT input_date, amount FROM incomes");
 
-    while($row = $stmt->fetch(PD0::FETCH_ASSOC)){
-        $months[] = $row['month'];
-        $sales[] = $row['total_sales'];
+        $months = [];
+        $sales = [];
+
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $months[] = $row['input_date'];
+            $sales[] = (float)$row['amount']; // ← 数値化も忘れず
+        }
+
+        $data = [
+            'labels' => $months,
+            'data' => $sales
+        ];
+
+        // ヘッダーでJSONであることを明示
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
-
-    $data = ['labels' => $months,'data' => $sales];
-
-    header('Content-Type: application/json');
-    echo json_encode($data);
+}
 ?>

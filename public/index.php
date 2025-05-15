@@ -40,6 +40,12 @@ switch ($path) {
         $controller->logout();
         break;
 
+    case '/graph':
+        require_once __DIR__.'/../controllers/GraphController.php';
+        $controller = new GraphController();
+        $controller->graph();
+        break;
+        
     default:
         http_response_code(404);
         echo 'ページが見つかりません。';

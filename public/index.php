@@ -45,7 +45,13 @@ switch ($path) {
         $controller = new GraphController();
         $controller->incomeGraph();
         break;
-       
+    
+    case '/expendituresGraph':
+        require_once __DIR__.'/../controllers/GraphController.php';
+        $controller = new GraphController();
+        $controller->expendituresGraph();
+        break;
+
     case '/graph-view':
         require_once __DIR__ . '/../views/graph.php';
         break;

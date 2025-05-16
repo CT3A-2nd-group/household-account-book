@@ -45,7 +45,11 @@ switch ($path) {
         $controller = new GraphController();
         $controller->graph();
         break;
-        
+       
+    case '/graph-view':
+        require_once __DIR__ . '/../views/graph.php';
+        break;
+
     default:
         http_response_code(404);
         echo 'ページが見つかりません。';

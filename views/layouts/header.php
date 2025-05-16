@@ -41,7 +41,7 @@
             text-decoration: none;
         }
         main {
-            max-width: 600px;
+            max-width: 750px;
             margin: 0 auto;
             background: white;
             padding: 2rem;

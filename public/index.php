@@ -39,6 +39,32 @@ switch ($path) {
         $controller = new LogoutController();
         $controller->logout();
         break;
+    
+    case '/income/create':
+        require_once __DIR__ . '/../controllers/IncomeController.php';
+        $controller = new IncomeController();
+        // 関数名は変更予定
+        //　POSTはデータを変更する　
+        //　GETはデータを変更しない
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->b1();  // 収入登録処理
+        } else {
+            $controller->a1(); // 入力画面表示
+        }
+        break;
+
+    case '/expenditure/create':
+        require_once __DIR__ . '/../controllers/ExpenditureController.php';
+        $controller = new ExpenditureController();
+        // 関数名は変更予定
+        //　POSTはデータを変更する　
+        //　GETはデータを変更しない
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->bbb();  // 支出登録処理
+        } else {
+            $controller->aaa(); // 入力画面表示
+        }
+        break;
 
     default:
         http_response_code(404);

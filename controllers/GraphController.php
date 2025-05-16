@@ -1,25 +1,42 @@
 <?php
     class GraphController {
-        public function graph() {
+        public function incomeGraph() {
             session_start();
             include __DIR__ . '/../config/database.php';
 
-            $stmt = $pdo->query("SELECT input_date, amount FROM incomes");
+            $stmt = $pdo->query(
+                "SELECT DATE_FORMAT(input_date, '%Y-%m') AS month, SUM(amount) AS total
+                FROM incomes
+                GROUP BY month
+                ORDER BY month;"
+            );
 
             $months = [];
             $sales = [];
 
-            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $months[] = $row['input_date'];
-                $sales[] = (float)$row['amount']; // ← 数値化も忘れず
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $months[] = $row['month'];
+                $sales[] = (float)$row['total']; // 数値に変換
             }
+
+            // 最大月合計 + 20000
+            $maxStmt = $pdo->query(
+                "SELECT MAX(month_total) AS max_total
+                FROM (
+                    SELECT SUM(amount) AS month_total
+                    FROM incomes
+                    GROUP BY DATE_FORMAT(input_date, '%Y-%m')
+                ) AS monthly_totals"
+            );
+            $maxRow = $maxStmt->fetch(PDO::FETCH_ASSOC);
+            $maxValue = isset($maxRow['max_total']) ? (float)$maxRow['max_total'] + 30000 : 0;
 
             $data = [
                 'labels' => $months,
-                'data' => $sales
+                'data' => $sales,
+                'max' => $maxValue
             ];
 
-            // ヘッダーでJSONであることを明示
             header('Content-Type: application/json');
             echo json_encode($data);
         }

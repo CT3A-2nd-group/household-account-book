@@ -40,10 +40,10 @@ switch ($path) {
         $controller->logout();
         break;
 
-    case '/graph':
+    case '/incomeGraph':
         require_once __DIR__.'/../controllers/GraphController.php';
         $controller = new GraphController();
-        $controller->graph();
+        $controller->incomeGraph();
         break;
        
     case '/graph-view':

@@ -1,6 +1,6 @@
 <?php
-$title = '収入グラフ';
-include __DIR__ . '/layouts/header.php'; // 必要に応じて変更
+    $title = '収入グラフ';
+    include __DIR__ . '/layouts/header.php'; // 必要に応じて変更
 ?>
 
 <h1>収入の折れ線グラフ</h1>
@@ -13,50 +13,54 @@ include __DIR__ . '/layouts/header.php'; // 必要に応じて変更
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+    //収入グラフの表示処理
     fetch('/incomeGraph')
-    .then(response => response.json())
+    .then(response => response.json()) //JSONデータをJavaScriptオブジェクトに変換 
     .then(json => {
         const ctx = document.getElementById('myLineChart').getContext('2d');
         new Chart(ctx, {
-        type: 'line',
+        type: 'line', //グラフの種類を設定
         data: {
-            labels: json.labels,
+            labels: json.labels, //X軸のラベル【例：2025-05】
             datasets: [{
-            label: '収入額',
-            data: json.data,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.1
+                label: '収入額', //X軸の凡例に表示されるラベル
+                data: json.data, //収入データ
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2, //線の太さ
+                fill: true, //線の下を塗りつぶすかどうか
+                tension: 0.1 //線の滑らかさ
             }]
         },
         options: {
-            responsive: true,
+            responsive: true, // 画面サイズに応じて自動調整
             scales: {
-            y: {
-                beginAtZero: true,
-                max: json.max,
-                min:0,
-                ticks:{
-                    callback: value => value + '円'
+                //Y軸(縦軸)の設定
+                y: {
+                    beginAtZero: true, // 0から始める
+                    max: json.max,
+                    min:0,
+                    ticks:{
+                        callback: value => value + '円' // 数字に「円」を付けて表示
+                    },
+                    title: {
+                        display: true, // タイトル表示ON
+                        text: '金額（円）'
+                    }
                 },
-                title: {
-                display: true,
-                text: '金額（円）'
+                //X軸(横軸)の設定
+                x: {
+                    title: {
+                    display: true, // タイトル表示ON
+                    text: '日付'
+                    }
                 }
-            },
-            x: {
-                title: {
-                display: true,
-                text: '日付'
-                }
-            }
             }
         }
         });
     })
-
+    
+    //支出グラフの表示処理
     fetch('/expendituresGraph')
     .then(response => response.json())
     .then(json => {

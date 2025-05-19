@@ -81,7 +81,7 @@
         <nav>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="/home">ホーム</a>
-                <a href="/logout">ログアウト</a>
+                <a href="/graph-view">グラフ</a>
                 <a href="/logout">ログアウト</a>
                 <a href="/logout">ログアウト</a>
                 <a href="/logout">ログアウト</a>

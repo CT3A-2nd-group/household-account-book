@@ -1,0 +1,15 @@
+.graph-controls {
+    display: flex;
+    justify-content: space-between; /* 左右に分ける */
+    align-items: center;            /* 高さを中央にそろえる */
+    margin-bottom: 5px;
+    gap: 1rem;                      /* 少し余白 */
+    flex-wrap: wrap;                /* 画面幅が狭いときに折り返し */
+}
+
+.left-control,
+.right-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

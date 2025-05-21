@@ -1,0 +1,111 @@
+<?php
+    class GraphController {
+        //収入データをJSONに変換
+        public function incomeGraph() {
+            session_start();
+            include __DIR__ . '/../config/database.php';
+
+            $stmt = $pdo->query(
+                "SELECT DATE_FORMAT(input_date, '%Y') AS year, DATE_FORMAT(input_date, '%m') AS month, SUM(amount) AS total
+                FROM incomes
+                GROUP BY year, month
+                ORDER BY year, month;"
+            );
+
+            $allMonths = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+            $rawData = [];
+            $maxTotal = 0;
+
+            // 一旦すべてのデータを配列に格納
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $year = $row['year'];
+                $month = $row['month'];
+                $amount = (float)$row['total'];
+
+                $rawData[$year][$month] = $amount;
+
+                if ($amount > $maxTotal) {
+                    $maxTotal = $amount;
+                }
+            }
+
+            // 欠けている月を null で補完
+            $dataByYear = [];
+            foreach ($rawData as $year => $months) {
+                $dataByYear[$year] = [
+                    'labels' => $allMonths,
+                    'data' => []
+                ];
+
+                foreach ($allMonths as $month) {
+                    $dataByYear[$year]['data'][] = $months[$month] ?? null;
+                }
+            }
+
+            // グラフの最大値（200000 以上なら +30000）
+            $maxValue = ($maxTotal > 200000) ? $maxTotal + 30000 : 200000;
+
+            $response = [
+                'years' => $dataByYear,
+                'max' => $maxValue
+            ];
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
+
+        public function expendituresGraph() {
+            session_start();
+            include __DIR__ . '/../config/database.php';
+
+            $stmt = $pdo->query(
+                "SELECT DATE_FORMAT(input_date, '%Y') AS year, DATE_FORMAT(input_date, '%m') AS month, SUM(amount) AS total
+                FROM expenditures
+                GROUP BY year, month
+                ORDER BY year, month;"
+            );
+
+            $allMonths = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+            $rawData = [];
+            $maxTotal = 0;
+
+            // 一旦すべてのデータを配列に格納
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $year = $row['year'];
+                $month = $row['month'];
+                $amount = (float)$row['total'];
+
+                $rawData[$year][$month] = $amount;
+
+                if ($amount > $maxTotal) {
+                    $maxTotal = $amount;
+                }
+            }
+
+            // 欠けている月を null で補完
+            $dataByYear = [];
+            foreach ($rawData as $year => $months) {
+                $dataByYear[$year] = [
+                    'labels' => $allMonths,
+                    'data' => []
+                ];
+
+                foreach ($allMonths as $month) {
+                    $dataByYear[$year]['data'][] = $months[$month] ?? null;
+                }
+            }
+
+            // グラフの最大値（200000 以上なら +30000）
+            $maxValue = ($maxTotal > 200000) ? $maxTotal + 30000 : 200000;
+
+            $response = [
+                'years' => $dataByYear,
+                'max' => $maxValue
+            ];
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
+
+    }
+?>

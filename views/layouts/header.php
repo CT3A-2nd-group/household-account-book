@@ -41,7 +41,7 @@
             text-decoration: none;
         }
         main {
-            max-width: 600px;
+            max-width: 750px;
             margin: 0 auto;
             background: white;
             padding: 2rem;
@@ -81,11 +81,9 @@
         <nav>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="/home">ホーム</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
+                <a href="/graph-view">グラフ</a>
+                <a href="/expenditure/create">支出登録</a>
+                <a href="/income/create">収入登録</a>
                 <a href="/logout">ログアウト</a>
             <?php else: ?>
                 <a href="/login">ログイン</a>

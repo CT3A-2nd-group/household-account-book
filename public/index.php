@@ -47,9 +47,9 @@ switch ($path) {
         //　POSTはデータを変更する　
         //　GETはデータを変更しない
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->b1();  // 収入登録処理
+            $controller->Income_Registration();  // 収入登録処理
         } else {
-            $controller->a1(); // 入力画面表示
+            $controller->Income_Input_Indication(); // 入力画面表示
         }
         break;
 

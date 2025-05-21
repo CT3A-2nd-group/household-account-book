@@ -85,8 +85,8 @@
                 <a href="/logout">ログアウト</a>
                 <a href="/logout">ログアウト</a>
                 <a href="/logout">ログアウト</a>
+                <a href="/income/create">収入登録</a>
                 <a href="/logout">ログアウト</a>
-                <a href="/expenditure/create">ログアウト</a>
             <?php else: ?>
                 <a href="/login">ログイン</a>
                 <a href="/register">新規登録</a>

@@ -21,4 +21,7 @@ include __DIR__ . '/layouts/header.php';
     アカウントをお持ちでない方は <a href="/register">新規登録</a>
 </div>
 
+<!--あとで消す-->
+<p><a href="/create-admin">管理者作成ページへ</a></p>
+
 <?php include __DIR__ . '/layouts/footer.php'; ?>

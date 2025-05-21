@@ -54,6 +54,13 @@ switch ($path) {
         }
         break;
 
+    case '/admin/category/delete':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        require_once __DIR__ . '/../controllers/AdminCategoryController.php';
+        $controller = new AdminCategoryController();
+        $controller->delete();
+    }
+    break;
 
     case '/income/create':
         require_once __DIR__ . '/../controllers/IncomeController.php';

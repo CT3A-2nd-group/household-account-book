@@ -29,7 +29,11 @@ class LoginController
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['is_admin'] = $user['is_admin'];
 
-        header('Location: /home');
+        if ((int)$user['is_admin'] === 1) {
+            header('Location: /admin/category/create');  // 管理者専用ページへ
+        } else {
+            header('Location: /home'); // 一般ユーザーはホームへ
+        }
         exit;
     }
 

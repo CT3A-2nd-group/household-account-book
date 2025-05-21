@@ -3,31 +3,35 @@ $title = '支出入力';
 include __DIR__ . '/layouts/header.php';
 ?>
 
-<?php if (isset($_GET['error'])): ?>
-    <p style="color: red;"><?= htmlspecialchars($_GET['error']) ?></p>
+<h2>支出を登録</h2>
+
+<?php if (isset($_SESSION['error'])): ?>
+    <p style="color: red;"><?= htmlspecialchars($_SESSION['error']) ?></p>
+    <?php unset($_SESSION['error']); ?>
 <?php endif; ?>
 
 <form action="/expenditure/create" method="POST">
-    <label>日付
-        <input type="date" name="input_date" required>
-    </label>
+    <label>日付</label>
+    <input type="date" name="input_date" value="<?= date('Y-m-d') ?>" required><br>
 
-   <label>カテゴリ</label>
+    <label>カテゴリ</label>
     <select name="category_id" required>
-        <option value="" disabled selected>-- 選択してください --</option>
+        <option value="" disabled selected>-- カテゴリを選択 --</option>
         <?php foreach ($categories as $category): ?>
             <option value="<?= htmlspecialchars($category['id']) ?>">
                 <?= htmlspecialchars($category['name']) ?>
             </option>
         <?php endforeach; ?>
     </select>
-    
-    <label>金額
-        <input type="number" name="amount" step="1" min="1" required placeholder="金額を入力">
+
+    <label for="amount">
+        金額
+        <input type="number" name="amount" id="amount" placeholder="金額を入力" required>
     </label>
 
-    <label>メモ（任意）
-        <textarea name="description" placeholder="メモ（任意）"></textarea>
+    <label for="description">
+        メモ
+        <input type="text" name="description" id="description" placeholder="詳細">
     </label>
 
     <label>
@@ -37,7 +41,7 @@ include __DIR__ . '/layouts/header.php';
 
     <label>満足度
         <select name="star_rate">
-            <option value="">評価なし</option>
+            <option value="" disabled selected>-- 満足度評価 --</option>
             <option value="1">★</option>
             <option value="2">★★</option>
             <option value="3">★★★</option>
@@ -48,5 +52,6 @@ include __DIR__ . '/layouts/header.php';
 
     <button type="submit">登録</button>
 </form>
+
 
 <?php include __DIR__ . '/layouts/footer.php'; ?>

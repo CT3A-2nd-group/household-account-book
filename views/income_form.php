@@ -11,24 +11,31 @@ include __DIR__ . '/layouts/header.php';
 <?php endif; ?>
 
 <form action="/income/create" method="POST">
-    <label>日付設定</label>
-    <input type="date" id="input_date" name="input_date" required>
-    <label>カテゴリ</label>
-        <select name="category_id" required>
-            <option value="" disabled selected>カテゴリを選択してね</option>
-            <?php foreach ($categories as $category): ?>
-                <option value="<?=htmlspecialchars($category['id']) ?>">
-                    <?= htmlspecialchars($category['name']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <label for="amount">金額</label>
-        <input type="number" name="amount" id="amount" required>
+    <label>日付</label>
+    <input type="date" name="input_date" value="<?= date('Y-m-d') ?>" required><br>
 
-        <label for="description">補足(任意)</label>
-        <input type="text" name="description" id="description">
+    <label>カテゴリ</label>
+    <select name="category_id" required>
+        <option value="" disabled selected>-- カテゴリを選択 --</option>
+        <?php foreach ($categories as $category): ?>
+            <option value="<?= htmlspecialchars($category['id']) ?>">
+                <?= htmlspecialchars($category['name']) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <label for="amount">
+        金額
+        <input type="number" name="amount" id="amount" placeholder="金額を入力" required>
+    </label>
+
+    <label for="description">
+        メモ
+        <input type="text" name="description" id="description" placeholder="詳細">
+    </label>
 
     <button type="submit">登録</button>
 </form>
+
 
 <?php include __DIR__ . '/layouts/footer.php'; ?>

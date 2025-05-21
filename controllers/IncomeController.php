@@ -10,9 +10,11 @@ class IncomeController
             exit; // 処理終了
         }
         require_once __DIR__ . '/../config/database.php';
+
         $stmt = $pdo->prepare("SELECT id, name FROM categories WHERE type = 'income'"); // 収入カテゴリを選択
         $stmt->execute(); // SQLを実行
         $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
         require_once __DIR__ . '/../views/income_form.php'; // 収入入力フォームのHTMLを読み込み表示
     }
 
@@ -29,10 +31,11 @@ class IncomeController
         require_once __DIR__ . '/../config/database.php'; // DB接続用設定を読み込み$pdoを初期化
 
         $id = $_SESSION['user_id']; // ログインユーザーIDを取得
+        $input_date = $_POST['input_date']; // 日付設定
         $category = $_POST['category_id']; // フォームから送信された収入カテゴリー（存在しなければnull）
         $amount = $_POST['amount']; // 収入金額
         $description = $_POST['description'] ?? null; // メモなど説明
-        $input_date = $_POST['input_date']; // 日付設定
+
 
         // 入力チェック：金額が0以下ならエラー
         if (!is_numeric($amount) || $amount <= 0) {
@@ -49,7 +52,7 @@ class IncomeController
                 ':amount' => number_format((float)$amount, 2, '.', ''),
                 ':description' => $description
             ]);
-            header('Location: /income/create'); // 成功ページへリダイレクト
+            header('Location: /graph-view'); // 成功ページへリダイレクト
 
         } catch (PDOException $e) { // DBエラー発生時はここに飛ぶ
             die('データベースエラー: ' . htmlspecialchars($e->getMessage())); // エラーメッセージを安全に表示して終了

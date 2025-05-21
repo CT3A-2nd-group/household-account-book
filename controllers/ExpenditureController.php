@@ -1,8 +1,6 @@
 <?php
 class ExpenditureController
 {
-    //　header.phpのaタグの操作でGETリクエストが発生
-    //　そのGETリクエストに対してHTMLを表示させる処理（viewsを読み込む）
     //　入力画面表示
     public function aaa() {
     session_start();
@@ -80,11 +78,9 @@ class ExpenditureController
             ':star_rate' => $star_rate
         ]);
 
+        header('Location: /graph-view');
+        exit;
     }
-     
-        //header('Location: /home.ph');
-        //　次に飛びたいページを指定する（支出一覧 or 入出金一覧のページができたらそこに飛ぶ？）
-        //exit;
     }
 
     //　支出一覧表示（入出金一覧にしてその２つを同じファイルに作るならここに記述しなくていい）

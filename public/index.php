@@ -40,6 +40,20 @@ switch ($path) {
         $controller->logout();
         break;
 
+    case '/expenditure/create':
+        require_once __DIR__ . '/../controllers/ExpenditureController.php';
+        $controller = new ExpenditureController();
+        // 関数名は変更予定
+        //　POSTはデータを変更する　
+        //　GETはデータを変更しない
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->bbb();  // 支出登録処理
+        } else {
+            $controller->aaa(); // 入力画面表示
+        }
+        break;
+
+
     default:
         http_response_code(404);
         echo 'ページが見つかりません。';

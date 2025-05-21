@@ -39,7 +39,29 @@ switch ($path) {
         $controller = new LogoutController();
         $controller->logout();
         break;
-    
+
+    case '/admin/category/create':
+        require_once __DIR__ . '/../controllers/AdminCategoryController.php';
+        $controller = new AdminCategoryController();
+        $controller->create();
+        break;
+
+    case '/admin/category/store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once __DIR__ . '/../controllers/AdminCategoryController.php';
+            $controller = new AdminCategoryController();
+            $controller->store();
+        }
+        break;
+
+    case '/admin/category/delete':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        require_once __DIR__ . '/../controllers/AdminCategoryController.php';
+        $controller = new AdminCategoryController();
+        $controller->delete();
+    }
+    break;
+
     case '/income/create':
         require_once __DIR__ . '/../controllers/IncomeController.php';
         $controller = new IncomeController();
@@ -93,7 +115,7 @@ switch ($path) {
         require_once __DIR__ . '/../controllers/AdminController.php';
         $controller = new AdminController();
         $controller->store();
-    }
+    }        
     break;
 
     default:

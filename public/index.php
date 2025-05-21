@@ -55,7 +55,22 @@ switch ($path) {
     case '/graph-view':
         require_once __DIR__ . '/../views/graph.php';
         break;
+    
 
+    //あとで消す
+    case '/create-admin':
+        require_once __DIR__ . '/../views/create_admin.php';
+        break;
+
+    case '/store-admin':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        require_once __DIR__ . '/../controllers/AdminController.php';
+        $controller = new AdminController();
+        $controller->store();
+    }
+    break;
+    
+    
     default:
         http_response_code(404);
         echo 'ページが見つかりません。';

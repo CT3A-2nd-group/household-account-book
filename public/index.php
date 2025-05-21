@@ -95,8 +95,7 @@ switch ($path) {
         $controller->store();
     }
     break;
-    
-    
+
     default:
         http_response_code(404);
         echo 'ページが見つかりません。';

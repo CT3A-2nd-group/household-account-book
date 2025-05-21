@@ -44,11 +44,12 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
+    //グラフのインスタンス（収入、支出）を保持するオブジェクト
     let chartInstances = {
         income: null,
         expenditure: null
     };
-
+    //データ（収入、支出）を保持するオブジェクト
     let chartData = {
         income: null,
         expenditure: null
@@ -62,7 +63,7 @@
         "2028": "rgb(255, 206, 86)"
     };
 
-    // 年選択セレクト更新
+    // セレクトボックスに年を追加し、選択時のイベントを設定
     function populateYearSelect(years) {
         const select = document.getElementById('yearSelect');
         select.innerHTML = '<option value="all">すべて</option>';
@@ -72,6 +73,7 @@
             option.textContent = year;
             select.appendChild(option);
         });
+        // 年が変更されたらグラフを再描画
         select.onchange = () => {
             drawCharts(select.value);
         };
@@ -82,25 +84,29 @@
         ['income', 'expenditure'].forEach(type => {
             const ctx = document.getElementById(type + 'Chart').getContext('2d');
             const dataSet = chartData[type];
-            if (!dataSet) return;
+
+            // データがなければスキップ
+            if (!dataSet) return; 
 
             const labels = ['01','02','03','04','05','06','07','08','09','10','11','12'];
             let datasets = [];
 
             if (selectedYear === "all") {
+                // 全年分のデータをデータセットに追加
                 datasets = Object.entries(dataSet.years).map(([year, obj]) => {
                     const color = yearColors[year] || "rgb(200,200,200)";
                     return {
-                        label: `${year}年`,
-                        data: obj.data,
-                        borderColor: color,
+                        label: `${year}年`, //凡例に表示するラベル
+                        data: obj.data, 
+                        borderColor: color, //折れ線の色
                         backgroundColor: color.replace('rgb', 'rgba').replace(')', ', 0.1)'),
-                        borderWidth: 2,
-                        tension: 0.1,
-                        spanGaps: true
+                        borderWidth: 2, //線の太さ
+                        tension: 0.1, //線の滑らかさ
+                        spanGaps: true //データが無くても線をつなぐ
                     };
                 });
             } else {
+                //選択された年だけを表示
                 const obj = dataSet.years[selectedYear];
                 const color = yearColors[selectedYear] || "rgb(200,200,200)";
                 datasets = [{
@@ -114,30 +120,34 @@
                 }];
             }
 
+            // 既存のチャートがあれば破棄
             if (chartInstances[type]) {
                 chartInstances[type].destroy();
             }
 
+            // 新しくチャートを作成
             chartInstances[type] = new Chart(ctx, {
-                type: 'line',
+                type: 'line', //グラフの種類を設定
                 data: {
                     labels: labels,
                     datasets: datasets
                 },
                 options: {
-                    responsive: true,
+                    responsive: true, //画面サイズに応じて自動調整
                     scales: {
+                        //Y軸（縦軸）の設定
                         y: {
-                            beginAtZero: true,
+                            beginAtZero: true, //０から始める
                             max: dataSet.max,
                             ticks: {
-                                callback: value => value + '円'
+                                callback: value => value + '円'//数字に「円」を付けて表示
                             },
                             title: {
-                                display: true,
+                                display: true, //タイトル表示ON
                                 text: '金額（円）'
                             }
                         },
+                        //X軸（横軸）の設定
                         x: {
                             title: {
                                 display: true,
@@ -150,26 +160,28 @@
         });
     }
 
-    // グラフデータを取得
+    // グラフ用データ（収入・支出）を非同期で取得
     async function fetchChartData() {
+        // 収入・支出のデータを同時に取得
         try {
             const [incomeRes, expenditureRes] = await Promise.all([
                 fetch('/incomeGraph'),
                 fetch('/expendituresGraph')
             ]);
+            //JSONに変換
             const incomeData = await incomeRes.json();
             const expenditureData = await expenditureRes.json();
 
             chartData.income = incomeData;
             chartData.expenditure = expenditureData;
-
+            //すべての年をまとめて習得し、セレクトボックスに反映
             const allYears = Array.from(new Set([
                 ...Object.keys(incomeData.years),
                 ...Object.keys(expenditureData.years)
             ]));
 
-            populateYearSelect(allYears);
-            drawCharts("all");
+            populateYearSelect(allYears); //年選択を更新
+            drawCharts("all");//初期表示（すべての年に）
 
         } catch (error) {
             console.error("データ取得エラー:", error);
@@ -181,15 +193,15 @@
         fetchChartData();
         // Swiper初期化
         const swiper = new Swiper('.swiper', {
-            loop: false,
-            slidesPerView: 1,
-            spaceBetween: 30,
+            loop: false, //ループするかどうか
+            slidesPerView: 1, //1枚ずつ表示
+            spaceBetween: 30, //スライド間の余白
             navigation: {
                 nextEl: '#nextButton',
                 prevEl: '#prevButton'
             },
             pagination: {
-                el: '.swiper-pagination',
+                el: '.swiper-pagination', //ページネーション表示
             },
         });
 

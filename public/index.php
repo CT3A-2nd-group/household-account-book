@@ -39,6 +39,19 @@ switch ($path) {
         $controller = new LogoutController();
         $controller->logout();
         break;
+    
+    case '/income/create':
+        require_once __DIR__ . '/../controllers/IncomeController.php';
+        $controller = new IncomeController();
+        // 関数名は変更予定
+        //　POSTはデータを変更する　
+        //　GETはデータを変更しない
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->Income_Registration();  // 収入登録処理
+        } else {
+            $controller->Income_Input_Indication(); // 入力画面表示
+        }
+        break;
 
     case '/expenditure/create':
         require_once __DIR__ . '/../controllers/ExpenditureController.php';
@@ -53,6 +66,35 @@ switch ($path) {
         }
         break;
 
+    case '/incomeGraph':
+        require_once __DIR__.'/../controllers/GraphController.php';
+        $controller = new GraphController();
+        $controller->incomeGraph();
+        break;
+    
+    case '/expendituresGraph':
+        require_once __DIR__.'/../controllers/GraphController.php';
+        $controller = new GraphController();
+        $controller->expendituresGraph();
+        break;
+
+    case '/graph-view':
+        require_once __DIR__ . '/../views/graph.php';
+        break;
+    
+
+    //あとで消す
+    case '/create-admin':
+        require_once __DIR__ . '/../views/create_admin.php';
+        break;
+
+    case '/store-admin':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        require_once __DIR__ . '/../controllers/AdminController.php';
+        $controller = new AdminController();
+        $controller->store();
+    }
+    break;
 
     default:
         http_response_code(404);

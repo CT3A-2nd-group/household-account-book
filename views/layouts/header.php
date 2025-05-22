@@ -81,7 +81,8 @@
         <nav>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="/home">ホーム</a>
-                <a href="/graph-view">グラフ</a>
+                <a href="/graphLine-view">折れ線グラフ</a>
+                <a href="/graphCircle-view">円グラフ</a>
                 <a href="/expenditure/create">支出登録</a>
                 <a href="/income/create">収入登録</a>
                 <a href="/logout">ログアウト</a>

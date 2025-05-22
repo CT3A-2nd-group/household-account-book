@@ -149,6 +149,21 @@
             },
             options: {
                 responsive: true, //画面サイズに応じて自動調整
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(){
+                                return'';
+                            },
+                            label: function(context) {
+                                const month = context.dataIndex + 1;
+                                const label = context.dataset.label;
+                                const value = context.raw.toLocaleString();
+                                return [`${month}月`, `${label}: ${value}円`];
+                            }
+                        }
+                    }
+                },
                 scales: {
                     //Y軸（縦軸）の設定
                     y: {
@@ -231,6 +246,21 @@
                 },
                 options: {
                     responsive: true, //画面サイズに応じて自動調整
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                title: function(){
+                                    return'';
+                                },
+                                label: function(context) {
+                                    const month = context.dataIndex + 1;
+                                    const value = context.raw.toLocaleString();
+                                    return [`${month}月`,`${value}円`];
+                                }
+                            }
+                        }
+                    },
+
                     scales: {
                         //Y軸（縦軸）の設定
                         y: {

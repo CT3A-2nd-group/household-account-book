@@ -52,7 +52,7 @@ class IncomeController
                 ':amount' => number_format((float)$amount, 2, '.', ''),
                 ':description' => $description
             ]);
-            header('Location: /graph-view'); // 成功ページへリダイレクト
+            header('Location: /graphLine-view'); // 成功ページへリダイレクト
 
         } catch (PDOException $e) { // DBエラー発生時はここに飛ぶ
             die('データベースエラー: ' . htmlspecialchars($e->getMessage())); // エラーメッセージを安全に表示して終了

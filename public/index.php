@@ -100,10 +100,13 @@ switch ($path) {
         $controller->expendituresGraph();
         break;
 
-    case '/graph-view':
-        require_once __DIR__ . '/../views/graph.php';
+    case '/graphLine-view':
+        require_once __DIR__ . '/../views/graph_line.php';
         break;
     
+    case '/graphCircle-view':
+        require_once __DIR__ . '/../views/graph_circle.php';
+        break;
 
     //あとで消す
     case '/create-admin':

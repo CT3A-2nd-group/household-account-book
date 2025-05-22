@@ -3,94 +3,65 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title><?= isset($title) ? htmlspecialchars($title) : 'ページ' ?></title>
+    <title><?= isset($title) ? htmlspecialchars($title) : '家計簿アプリ' ?></title>
     <style>
         body {
-            font-family: sans-serif;
             margin: 0;
-            padding: 2rem;
-            background-color: #f9f9f9;
+            font-family: sans-serif;
+            background-color: #e0e4e4;
         }
+
         header {
-            background: #007bff;
+            background-color: #66b7ff;
             color: white;
-            padding: 1rem;
-            margin-bottom: 2rem;
+            padding: 1rem 2rem;
         }
+
         header h1 {
             margin: 0;
+            font-size: 2rem;
         }
-        .footer {
-            background-color: #f0f0f0; 
+
+        .navbar {
+            background-color: white;
+            border: 1px solid #66b7ff;
+            display: flex;
+            align-items: center;
             padding: 1rem;
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #333;
-            border-top: 1px solid #ccc;
         }
-        nav {
-            margin-top: 0.5rem;
-        }
-        nav a {
-            color: white;
-            margin-right: 1rem;
-            text-decoration: underline;
-        }
-        nav a:hover {
+
+        .navbar a {
+            margin-right: 2rem;
             text-decoration: none;
+            color: black;
+            font-weight: bold;
         }
+
+        .navbar .menu-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
         main {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        .error {
-            color: red;
-            margin-bottom: 1rem;
-        }
-        .link {
-            margin-top: 1rem;
-            text-align: center;
-        }
-        form {
-            width: 50%;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        form label,
-        form input,
-        form button {
-            display: block;
-            width: 50%;
-            margin-bottom: 1rem;
-            
-        }
+    padding: 2rem;
+    min-height: 80vh; /* 高さを確保 */
+    background-color:rgb(255, 220, 220);
+}
+
     </style>
 </head>
 <body>
-    <header>
-        <h1><?= isset($title) ? htmlspecialchars($title) : 'ページ' ?></h1>
-        <nav>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="/home">ホーム</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
-                <a href="/logout">ログアウト</a>
-            <?php else: ?>
-                <a href="/login">ログイン</a>
-                <a href="/register">新規登録</a>
-            <?php endif; ?>
-        </nav>
-    </header>
-    <main>
+
+<header>
+    <h1>家計簿アプリ</h1>
+</header>
+
+<div class="navbar">
+    <span class="menu-icon">☰</span>
+    <a href="/account">アカウント</a>
+    <a href="/budget">予算の設定</a>
+    <a href="/stats">収入・支出の統計</a>
+    <a href="/categories">カテゴリごとの支出管理</a>
+</div>
+
+<main>

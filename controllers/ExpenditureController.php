@@ -78,7 +78,7 @@ class ExpenditureController
             ':star_rate' => $star_rate
         ]);
 
-        header('Location: /graph-view');
+        header('Location: /graphLine-view');
         exit;
     }
     }

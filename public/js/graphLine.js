@@ -151,8 +151,8 @@ function defaultOptions(max) {
 async function fetchChartData() {
   try {
     const [incRes, expRes] = await Promise.all([
-      fetch("/graph/income-data"),
-      fetch("/graph/expend-data"),
+      fetch("/graph/inLine-data"),
+      fetch("/graph/exLine-data"),
     ]);
     chartData.income = await incRes.json();
     chartData.expenditure = await expRes.json();

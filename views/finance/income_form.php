@@ -1,8 +1,3 @@
-<?php
-$title = '収入入力';
-include __DIR__ . '/layouts/header.php';
-?>
-
 <h2>収入を登録</h2>
 
 <?php if (isset($_SESSION['error'])): ?>
@@ -36,6 +31,3 @@ include __DIR__ . '/layouts/header.php';
 
     <button type="submit">登録</button>
 </form>
-
-
-<?php include __DIR__ . '/layouts/footer.php'; ?>

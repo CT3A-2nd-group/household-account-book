@@ -100,6 +100,12 @@ switch ($path) {
         $controller->expendituresGraph();
         break;
 
+      case '/categoriesGraph':
+        require_once __DIR__.'/../controllers/GraphController.php';
+        $controller = new GraphController();
+        $controller->categoriesGraph();
+        break;
+
     case '/graphLine-view':
         require_once __DIR__ . '/../views/graph_line.php';
         break;

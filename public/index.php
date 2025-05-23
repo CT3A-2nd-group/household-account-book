@@ -32,10 +32,15 @@ $router->add('GET',  '/admin/category/create', fn() => (new AdminCategoryControl
 $router->add('POST', '/admin/category/store',  fn() => (new AdminCategoryController)->store());
 $router->add('POST', '/admin/category/delete', fn() => (new AdminCategoryController)->delete());
 
-/* Graph */
-$router->add('GET', '/graph/income-data', fn() => (new GraphController)->income());
-$router->add('GET', '/graph/expend-data', fn() => (new GraphController)->expenditure());
-$router->add('GET', '/graph/line',        fn() => (new GraphController)->view());;
+/* GraphLine */
+$router->add('GET', '/graph/inLine-data', fn() => (new GraphLineController)->incomeLine());
+$router->add('GET', '/graph/exLine-data', fn() => (new GraphLineController)->expenditureLine());
+$router->add('GET', '/graph/line',        fn() => (new GraphLineController)->view());;
+/* GraphCircle */
+$router->add('GET', '/graph/inCircle-data', fn() => (new GraphCircleController)->incomeCircle());
+$router->add('GET', '/graph/exCircle-data', fn() => (new GraphCircleController)->expenditureCircle());
+$router->add('GET', '/graph/circle',        fn() => (new GraphCircleController)->view());;
+
 
 /* ---------- 発射 ---------- */
 $router->dispatch(

@@ -8,8 +8,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/graphLine.js" defer></script>
 
-<h1>収入・支出グラフ</h1>
-
 <!-- 年選択とナビゲーションボタン -->
 <div class="graph-controls">
     <div class="left-control">

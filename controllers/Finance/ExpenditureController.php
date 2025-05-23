@@ -15,7 +15,7 @@ class ExpenditureController extends BaseController
         $this->render('finance/expenditure_form', array_merge(
             compact('categories'),
             ['title' => '支出登録']
-));
+        ));
     }
 
     /* 支出登録処理 */

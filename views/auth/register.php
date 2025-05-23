@@ -1,13 +1,8 @@
-<?php
-$title = 'ユーザー登録';
-include __DIR__ . '/layouts/header.php';
-?>
-
 <?php if (isset($_GET['error'])): ?>
     <div class="error"><?= htmlspecialchars($_GET['error']) ?></div>
 <?php endif; ?>
 
-<form action="/register" method="POST">
+<form action="/register" method="POST" class="main-form">
     <label for="username">ユーザー名</label>
     <input type="text" name="username" id="username" required maxlength="255">
 
@@ -20,5 +15,3 @@ include __DIR__ . '/layouts/header.php';
 <div class="link">
     すでにアカウントをお持ちの方は <a href="/login">ログイン</a>
 </div>
-
-<?php include __DIR__ . '/layouts/footer.php'; ?>

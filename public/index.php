@@ -1,128 +1,44 @@
 <?php
-// タイムゾーンの設定
+declare(strict_types=1);
+
+require_once __DIR__ . '/../core/Autoload.php'; // ← 自家製オートローダ
+require_once __DIR__ . '/../core/Router.php';   // ← 自家製ルータ
+require_once __DIR__ . '/../config/database.php';
+
 date_default_timezone_set('Asia/Tokyo');
 
-// URLのパス部分を取得
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$router = new Router();
 
-// 各ルートごとの処理
-switch ($path) {
-    case '/':
-    case '/home':
-        require_once __DIR__ . '/../controllers/HomeController.php';
-        $controller = new HomeController();
-        $controller->index();
-        break;
+/* ---------- ルート定義 ---------- */
+/* Home */
+$router->add('GET', '/',     fn() => (new HomeController)->index());
+$router->add('GET', '/home', fn() => (new HomeController)->index());
 
-    case '/register':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            require_once __DIR__ . '/../controllers/RegisterController.php';
-            $controller = new RegisterController();
-            $controller->register();
-        } else {
-            require_once __DIR__ . '/../views/register.php';
-        }
-        break;
+/* Auth */
+$router->add('GET',  '/login',    fn() => (new LoginController)->showForm());
+$router->add('POST', '/login',    fn() => (new LoginController)->login());
+$router->add('GET',  '/register', fn() => (new RegisterController)->showForm());
+$router->add('POST', '/register', fn() => (new RegisterController)->register());
+$router->add('GET',  '/logout',   fn() => (new LogoutController)->logout());
 
-    case '/login':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            require_once __DIR__ . '/../controllers/LoginController.php';
-            $controller = new LoginController();
-            $controller->login();
-        } else {
-            require_once __DIR__ . '/../views/login.php';
-        }
-        break;
+/* Finance */
+$router->add('GET',  '/income/create',      fn() => (new IncomeController)->showForm());
+$router->add('POST', '/income/create',      fn() => (new IncomeController)->store());
+$router->add('GET',  '/expenditure/create', fn() => (new ExpenditureController)->showForm());
+$router->add('POST', '/expenditure/create', fn() => (new ExpenditureController)->store());
 
-    case '/logout':
-        require_once __DIR__ . '/../controllers/LogoutController.php';
-        $controller = new LogoutController();
-        $controller->logout();
-        break;
+/* Admin */
+$router->add('GET',  '/admin/category/create', fn() => (new AdminCategoryController)->create());
+$router->add('POST', '/admin/category/store',  fn() => (new AdminCategoryController)->store());
+$router->add('POST', '/admin/category/delete', fn() => (new AdminCategoryController)->delete());
 
-    case '/admin/category/create':
-        require_once __DIR__ . '/../controllers/AdminCategoryController.php';
-        $controller = new AdminCategoryController();
-        $controller->create();
-        break;
+/* Graph */
+$router->add('GET', '/graph/income-data', fn() => (new GraphController)->income());
+$router->add('GET', '/graph/expend-data', fn() => (new GraphController)->expenditure());
+$router->add('GET', '/graph/line',        fn() => (new GraphController)->view());;
 
-    case '/admin/category/store':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            require_once __DIR__ . '/../controllers/AdminCategoryController.php';
-            $controller = new AdminCategoryController();
-            $controller->store();
-        }
-        break;
-
-    case '/admin/category/delete':
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        require_once __DIR__ . '/../controllers/AdminCategoryController.php';
-        $controller = new AdminCategoryController();
-        $controller->delete();
-    }
-    break;
-
-    case '/income/create':
-        require_once __DIR__ . '/../controllers/IncomeController.php';
-        $controller = new IncomeController();
-        // 関数名は変更予定
-        //　POSTはデータを変更する　
-        //　GETはデータを変更しない
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->Income_Registration();  // 収入登録処理
-        } else {
-            $controller->Income_Input_Indication(); // 入力画面表示
-        }
-        break;
-
-    case '/expenditure/create':
-        require_once __DIR__ . '/../controllers/ExpenditureController.php';
-        $controller = new ExpenditureController();
-        // 関数名は変更予定
-        //　POSTはデータを変更する　
-        //　GETはデータを変更しない
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->bbb();  // 支出登録処理
-        } else {
-            $controller->aaa(); // 入力画面表示
-        }
-        break;
-
-    case '/incomeGraph':
-        require_once __DIR__.'/../controllers/GraphController.php';
-        $controller = new GraphController();
-        $controller->incomeGraph();
-        break;
-    
-    case '/expendituresGraph':
-        require_once __DIR__.'/../controllers/GraphController.php';
-        $controller = new GraphController();
-        $controller->expendituresGraph();
-        break;
-
-    case '/graphLine-view':
-        require_once __DIR__ . '/../views/graph_line.php';
-        break;
-    
-    case '/graphCircle-view':
-        require_once __DIR__ . '/../views/graph_circle.php';
-        break;
-
-    //あとで消す
-    case '/create-admin':
-        require_once __DIR__ . '/../views/create_admin.php';
-        break;
-
-    case '/store-admin':
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        require_once __DIR__ . '/../controllers/AdminController.php';
-        $controller = new AdminController();
-        $controller->store();
-    }        
-    break;
-
-    default:
-        http_response_code(404);
-        echo 'ページが見つかりません。';
-        break;
-}
+/* ---------- 発射 ---------- */
+$router->dispatch(
+    $_SERVER['REQUEST_METHOD'],
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+);

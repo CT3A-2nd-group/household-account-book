@@ -1,33 +1,31 @@
 <?php
-class HomeController
+class HomeController extends BaseController
 {
-    public function index()
+    public function index(): void
     {
-        session_start();
-
-        // ログインしていない場合はログイン画面へ
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /login');
-            exit;
+            $this->redirect('/login');
         }
 
-        // 管理者かどうかの確認
-        $isAdmin = $_SESSION['is_admin'] ?? 0;
-        $username = $this->getUsername($_SESSION['user_id']);
+        $userId   = $_SESSION['user_id'];
+        $isAdmin  = $_SESSION['is_admin'] ?? 0;
+        $username = $this->getUsername($userId);
 
-        // ホーム画面を表示
-        require_once __DIR__ . '/../views/home.php';
+        // header / footer を自動付与して home ビューへ
+        $this->render('home', array_merge(
+            compact('username', 'isAdmin'),
+            ['title' => 'ホーム']
+));
     }
 
-    private function getUsername($userId)
+    private function getUsername(int $userId): string
     {
-        require __DIR__ . '/../config/database.php';
-
-        $stmt = $pdo->prepare('SELECT username FROM users WHERE id = :id');
-        $stmt->bindParam(':id', $userId);
-        $stmt->execute();
+        $stmt = $this->pdo->prepare(
+            'SELECT username FROM users WHERE id = :id LIMIT 1'
+        );
+        $stmt->execute([':id' => $userId]);
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row ? $row['username'] : 'ゲスト';
+        return $row['username'] ?? 'ゲスト';
     }
 }

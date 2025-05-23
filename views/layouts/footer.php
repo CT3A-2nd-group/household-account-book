@@ -1,5 +1,4 @@
 </main>
-</body>
 <footer class="footer">
     <p>&copy; <?= date('Y') ?> 家計簿アプリ. All rights reserved.</p>
     <nav>
@@ -8,10 +7,5 @@
         <a href="/contact">お問い合わせ</a>
     </nav>
 </footer>
+</body>
 </html>
-
-
-
-
-
-

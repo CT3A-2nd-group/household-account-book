@@ -1,7 +1,4 @@
-<?php
-$title = 'ホーム';
-include __DIR__ . '/layouts/header.php';
-?>
+<?php /* views/home.php : header/footer いらない */ ?>
 
 <p>ようこそ、<?= htmlspecialchars($username) ?> さん！</p>
 
@@ -12,5 +9,3 @@ include __DIR__ . '/layouts/header.php';
 <?php endif; ?>
 
 <p><a href="/logout">ログアウト</a></p>
-
-<?php include __DIR__ . '/layouts/footer.php'; ?>

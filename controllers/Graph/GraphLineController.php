@@ -18,45 +18,45 @@
             ));
         }
 
-private function aggregateByMonth(string $table): array
-    {
-        $stmt = $this->pdo->query("
-            SELECT DATE_FORMAT(input_date,'%Y') y,
-                   DATE_FORMAT(input_date,'%m') m,
-                   SUM(amount) total
-            FROM {$table}
-            GROUP BY y, m
-            ORDER BY y, m
-        ");
+        private function aggregateByMonth(string $table): array{
+            $stmt = $this->pdo->query("
+                SELECT DATE_FORMAT(input_date,'%Y') y,
+                    DATE_FORMAT(input_date,'%m') m,
+                    SUM(amount) total
+                FROM {$table}
+                GROUP BY y, m
+                ORDER BY y, m
+            ");
 
-        $allMonths = ['01','02','03','04','05','06','07','08','09','10','11','12'];
-        $raw   = [];
-        $max   = 0;
+            $allMonths = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+            $raw   = [];
+            $max   = 0;
 
-        while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $raw[$r['y']][$r['m']] = (float)$r['total'];
-            $max = max($max, (float)$r['total']);
-        }
+            while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $raw[$r['y']][$r['m']] = (float)$r['total'];
+                $max = max($max, (float)$r['total']);
+            }
 
-        $years = [];
-        foreach ($raw as $y => $months) {
-            $years[$y] = [
-                'labels' => $allMonths,
-                'data'   => array_map(fn($m) => $months[$m] ?? null, $allMonths)
+            $years = [];
+            foreach ($raw as $y => $months) {
+                $years[$y] = [
+                    'labels' => $allMonths,
+                    'data'   => array_map(fn($m) => $months[$m] ?? null, $allMonths)
+                ];
+            }
+
+            return [
+                'years' => $years,
+                'max'   => ($max > 200_000) ? $max + 30_000 : 200_000
             ];
         }
 
-        return [
-            'years' => $years,
-            'max'   => ($max > 200_000) ? $max + 30_000 : 200_000
-        ];
-    }
-
-    private function json(array $payload): never
-    {
-        header('Content-Type: application/json');
-        echo json_encode($payload, JSON_UNESCAPED_UNICODE);
-        exit;
-    }
+        private function json(array $payload): never
+        {
+            header('Content-Type: application/json');
+            echo json_encode($payload, JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+        
     }
 ?>

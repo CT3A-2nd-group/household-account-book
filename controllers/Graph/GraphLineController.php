@@ -1,19 +1,21 @@
 <?php
-    class GraphController extends BaseController {
+    class GraphLineController extends BaseController {
         //収入データをJSONに変換
-        public function income(): void {
+        public function incomeLine(): void {
             $data = $this->aggregateByMonth('incomes');
             $this->json($data);
         }
 
-        public function expenditure(): void {
+        public function expenditureLine(): void {
             $data = $this->aggregateByMonth('expenditures');
             $this->json($data);
         }
 
         public function view(): void {
             if (!isset($_SESSION['user_id'])) $this->redirect('/login');
-            $this->render('graph/line');
+            $this->render('graph/line', array_merge(
+                ['title' => '収入・支出グラフ']
+            ));
         }
 
 private function aggregateByMonth(string $table): array

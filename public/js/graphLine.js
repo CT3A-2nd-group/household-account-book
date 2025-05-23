@@ -27,20 +27,7 @@ function populateYearSelect(years) {
 }
 
 /* --------- グラフ共通 --------- */
-const monthLabels = [
-  "01",
-  "02",
-  "03",
-  "04",
-  "05",
-  "06",
-  "07",
-  "08",
-  "09",
-  "10",
-  "11",
-  "12",
-];
+const monthLabels = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
 
 function destroyIfExists(name) {
   if (chartInstances[name]) chartInstances[name].destroy();
@@ -91,15 +78,15 @@ function drawCharts(selectedYear = "all") {
     const datasets =
       selectedYear === "all"
         ? Object.entries(d.years).map(([y, obj]) =>
-            makeDataset(`${y}年`, obj.data, yearColors[y] || "rgb(200,200,200)")
-          )
+          makeDataset(`${y}年`, obj.data, yearColors[y] || "rgb(200,200,200)")
+        )
         : [
-            makeDataset(
-              `${selectedYear}年`,
-              d.years[selectedYear]?.data || [],
-              yearColors[selectedYear] || "rgb(200,200,200)"
-            ),
-          ];
+          makeDataset(
+            `${selectedYear}年`,
+            d.years[selectedYear]?.data || [],
+            yearColors[selectedYear] || "rgb(200,200,200)"
+          ),
+        ];
 
     destroyIfExists(type);
     chartInstances[type] = new Chart(document.getElementById(type + "Chart"), {
@@ -152,8 +139,8 @@ function defaultOptions(max) {
 async function fetchChartData() {
   try {
     const [incRes, expRes] = await Promise.all([
-      fetch("/graph/income-data"),
-      fetch("/graph/expend-data"),
+      fetch("/graph/inLine-data"),
+      fetch("/graph/exLine-data"),
     ]);
     chartData.income = await incRes.json();
     chartData.expenditure = await expRes.json();

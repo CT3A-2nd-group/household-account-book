@@ -1,3 +1,5 @@
+<?php /* views/admin/category_form.php */ ?>
+
 <h2>カテゴリ追加</h2>
 
 <form action="/admin/category/store" method="POST">
@@ -25,7 +27,8 @@
 <?php foreach ($expenditureCategories as $cat): ?>
     <li>
         <?= htmlspecialchars($cat['name']) ?>
-        <form action="/admin/category/delete" method="POST" style="display:inline" onsubmit="return confirm('本当に削除しますか？');">
+        <form action="/admin/category/delete" method="POST" 
+              onsubmit="return confirm('本当に削除しますか？');">
             <input type="hidden" name="id" value="<?= $cat['id'] ?>">
             <button type="submit">削除</button>
         </form>
@@ -38,13 +41,13 @@
 <?php foreach ($incomeCategories as $cat): ?>
     <li>
         <?= htmlspecialchars($cat['name']) ?>
-        <form action="/admin/category/delete" method="POST" style="display:inline" onsubmit="return confirm('本当に削除しますか？');">
+        <form action="/admin/category/delete" method="POST" 
+              onsubmit="return confirm('本当に削除しますか？');">
             <input type="hidden" name="id" value="<?= $cat['id'] ?>">
             <button type="submit">削除</button>
         </form>
     </li>
 <?php endforeach; ?>
 </ul>
-
 
 <p><a href="/logout">ログアウトしてログインページへ</a></p>

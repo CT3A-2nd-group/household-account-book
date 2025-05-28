@@ -1,17 +1,205 @@
-<?php if (isset($_GET['error'])): ?>
-    <div class="error"><?= htmlspecialchars($_GET['error']) ?></div>
-<?php endif; ?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録 - 家計簿アプリ</title>
+    
+    <!-- 共通CSS -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <!-- 登録専用CSS -->
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+    <!-- ログイン前のシンプルなレイアウト -->
+    <div class="simple-layout">
+        <main class="simple-main">
+            <div class="register-container">
+                <div class="register-card">
+                    <!-- 登録フォームヘッダー -->
+                    <div class="register-header">
+                        <div class="register-icon">✨</div>
+                        <h2 class="register-title">新規登録</h2>
+                        <p class="register-subtitle">アカウントを作成して始めましょう</p>
+                    </div>
+                    
+                    <!-- エラーメッセージ表示 -->
+                    <?php if (isset($_GET['error'])): ?>
+                        <div class="error-message"><?= htmlspecialchars($_GET['error']) ?></div>
+                    <?php endif; ?>
+                    
+                    <!-- 成功メッセージ表示 -->
+                    <?php if (isset($_GET['success'])): ?>
+                        <div class="success-message"><?= htmlspecialchars($_GET['success']) ?></div>
+                    <?php endif; ?>
+                    
+                    <!-- 登録フォーム -->
+                    <form class="register-form" action="/register" method="POST">
+                        <!-- ユーザー名入力 -->
+                        <div class="form-group">
+                            <label for="username" class="form-label">ユーザー名</label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                class="form-input" 
+                                placeholder="ユーザー名を入力してください"
+                                required
+                                autocomplete="username"
+                                value="<?= isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '' ?>"
+                            >
+                            <div class="input-hint">3文字以上で入力してください</div>
+                        </div>
 
-<form action="/register" method="POST" class="main-form">
-    <label for="username">ユーザー名</label>
-    <input type="text" name="username" id="username" required maxlength="255">
-
-    <label for="password">パスワード</label>
-    <input type="password" name="password" id="password" required minlength="4">
-
-    <button type="submit">登録</button>
-</form>
-
-<div class="link">
-    すでにアカウントをお持ちの方は <a href="/login">ログイン</a>
-</div>
+                        <!-- パスワード入力 -->
+                        <div class="form-group">
+                            <label for="password" class="form-label">パスワード</label>
+                            <div class="password-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    class="form-input" 
+                                    placeholder="パスワードを入力してください"
+                                    required
+                                    autocomplete="new-password"
+                                >
+                                <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                    <span class="toggle-icon show"></span>
+                                </button>
+                            </div>
+                            <div class="input-hint">4文字以上で英字を含めてください</div>
+                        </div>
+                        
+                        <!-- パスワード確認入力 -->
+                        <div class="form-group">
+                            <label for="password_confirm" class="form-label">パスワード確認</label>
+                            <div class="password-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="password_confirm" 
+                                    name="password_confirm" 
+                                    class="form-input" 
+                                    placeholder="パスワードを再入力してください"
+                                    required
+                                    autocomplete="new-password"
+                                >
+                                <button type="button" class="password-toggle" onclick="togglePassword('password_confirm')">
+                                    <span class="toggle-icon show"></span>
+                                </button>
+                            </div>
+                            <div class="input-hint">上記と同じパスワードを入力してください</div>
+                        </div>
+                        
+                        <!-- 利用規約同意 -->
+                        <div class="form-group">
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" name="terms" class="checkbox-input" required>
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-label">
+                                    <a href="/error" target="_blank" class="terms-link">利用規約</a>と
+                                    <a href="/error" target="_blank" class="terms-link">プライバシーポリシー</a>に同意します
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <!-- 登録ボタン -->
+                        <button type="submit" class="register-button">アカウントを作成</button>
+                        
+                        <!-- ログインリンク -->
+                        <div class="login-prompt">
+                            <p class="login-text">すでにアカウントをお持ちの方は <a href="/login" class="login-link">ログイン</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        // パスワード表示/非表示の切り替え
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleIcon = passwordInput.parentElement.querySelector('.toggle-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.className = 'toggle-icon hide';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.className = 'toggle-icon show';
+            }
+        }
+        
+        // パスワード一致チェック
+        function checkPasswordMatch() {
+            const password = document.getElementById('password').value;
+            const passwordConfirm = document.getElementById('password_confirm').value;
+            const confirmInput = document.getElementById('password_confirm');
+            
+            if (passwordConfirm && password !== passwordConfirm) {
+                confirmInput.setCustomValidity('パスワードが一致しません');
+                confirmInput.classList.add('error');
+            } else {
+                confirmInput.setCustomValidity('');
+                confirmInput.classList.remove('error');
+            }
+        }
+        
+        // リアルタイムバリデーション
+        document.getElementById('password_confirm').addEventListener('input', checkPasswordMatch);
+        document.getElementById('password').addEventListener('input', checkPasswordMatch);
+        
+        // フォーム送信時のバリデーション
+        document.querySelector('.register-form').addEventListener('submit', function(e) {
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const passwordConfirm = document.getElementById('password_confirm').value;
+            const terms = document.querySelector('input[name="terms"]').checked;
+            
+            // ユーザー名チェック
+            if (username.length < 3) {
+                e.preventDefault();
+                alert('ユーザー名は3文字以上で入力してください。');
+                document.getElementById('username').focus();
+                return;
+            }
+            
+            // メールアドレスチェック
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('有効なメールアドレスを入力してください。');
+                document.getElementById('email').focus();
+                return;
+            }
+            
+            // パスワードチェック
+            if (password.length < 8) {
+                e.preventDefault();
+                alert('パスワードは8文字以上で入力してください。');
+                document.getElementById('password').focus();
+                return;
+            }
+            
+            // パスワード一致チェック
+            if (password !== passwordConfirm) {
+                e.preventDefault();
+                alert('パスワードが一致しません。');
+                document.getElementById('password_confirm').focus();
+                return;
+            }
+            
+            // 利用規約同意チェック
+            if (!terms) {
+                e.preventDefault();
+                alert('利用規約とプライバシーポリシーに同意してください。');
+                return;
+            }
+        });
+    </script>
+</body>
+</html>

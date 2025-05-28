@@ -10,12 +10,16 @@ class HomeController extends BaseController
         $userId   = $_SESSION['user_id'];
         $isAdmin  = $_SESSION['is_admin'] ?? 0;
         $username = $this->getUsername($userId);
+        $extraCss  = '<link rel="stylesheet" href="/css/home.css">';
 
         // header / footer を自動付与して home ビューへ
         $this->render('home', array_merge(
             compact('username', 'isAdmin'),
-            ['title' => 'ホーム']
-));
+            [
+                'title'     => 'ホーム',
+                'extraCss'  => $extraCss
+            ]
+        ));
     }
 
     private function getUsername(int $userId): string

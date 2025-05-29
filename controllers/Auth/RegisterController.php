@@ -1,10 +1,13 @@
 <?php
 class RegisterController extends BaseController
 {
-    /* GET /register ─ 登録フォームを表示 */
     public function showForm(): void
     {
-        $this->render('auth/register', ['title' => 'ユーザー登録']);
+        $extraCss = '<link rel="stylesheet" href="/css/register.css">';
+        $this->render('auth/register', [
+            'title' => 'ユーザー登録',
+            'extraCss' => $extraCss
+        ]);
     }
 
     /* POST /register ─ 実際の登録処理 */

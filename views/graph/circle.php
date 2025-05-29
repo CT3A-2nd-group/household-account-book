@@ -1,14 +1,3 @@
-<!-- CSS読み込み -->
-<link rel="stylesheet" href="/css/graph.css">
-<!-- 外部ライブラリの読み込み -->
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- Swiper.js -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script src="/js/graphCircle.js" defer></script>
-
 <select id="yearSelect"></select>
 <select id="monthSelect"></select>
 

@@ -14,13 +14,31 @@
             $this->json($data);
         }
 
-        // グラフページの表示処理（ユーザーがログインしていなければログインページへリダイレクト）
+         // グラフページの表示処理（ユーザーがログインしていなければログインページへリダイレクト）
         public function view(): void {
-            if (!isset($_SESSION['user_id'])) $this->redirect('/login');
-            $this->render('graph/circle', array_merge(
-                ['title' => 'カテゴリー別円グラフ']
-            ));
+            if (!isset($_SESSION['user_id'])) {
+                $this->redirect('/login');
+            }
+
+            $extraCss = implode("\n", [
+                '<link rel="stylesheet" href="/css/graph.css">',
+                '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />'
+            ]);
+
+            $extraJs = implode("\n", [
+                '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>',
+                '<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>',
+                '<script src="/js/graphCircle.js" defer></script>'
+            ]);
+
+
+            $this->render('graph/circle', [
+                'title'    => '収入・支出グラフ',
+                'extraCss' => $extraCss,
+                'extraJs'  => $extraJs
+            ]);
         }
+        
 
         // 指定されたテーブル（収入または支出）から月別集計データを作成
        private function aggregateByMonth(string $table): array {

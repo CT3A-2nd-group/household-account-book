@@ -167,7 +167,6 @@ function drawPieChart(type, data, year, month) {
       plugins: {
         title: {
           display: true,
-          text: type === "income" ? "収入カテゴリ別" : "支出カテゴリ別",
         }
       }
     }

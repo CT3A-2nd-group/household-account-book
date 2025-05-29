@@ -29,14 +29,14 @@
     <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <h2>収支グラフ</h2>
+                <h2 class="h2Line">収支グラフ</h2>
                 <div class="chart-container">
                     <canvas id="combinedChart" width="1000" height="400"></canvas>
                 </div>
             </div>
 
             <div class="swiper-slide">
-                <h2>収入グラフ</h2>
+                <h2 class="h2Line">収入グラフ</h2>
                 <div class="chart-container">
                     <canvas id="incomeChart" width="1000" height="400"></canvas>
                 </div>

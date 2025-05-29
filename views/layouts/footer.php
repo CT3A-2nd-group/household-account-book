@@ -97,13 +97,13 @@
                     <h3 class="section-title">クイックアクション</h3>
                 </div>
                 <div class="quick-actions">
-                    <a href="/expenditure/create" class="quick-action-btn expense-btn">
-                        <span class="quick-action-icon quick-action-expense-icon"></span>
-                        <span class="action-text">支出登録</span>
-                    </a>
                     <a href="/income/create" class="quick-action-btn income-btn">
                         <span class="quick-action-icon quick-action-income-icon"></span>
                         <span class="action-text">収入登録</span>
+                    </a>
+                    <a href="/expenditure/create" class="quick-action-btn expense-btn">
+                        <span class="quick-action-icon quick-action-expense-icon"></span>
+                        <span class="action-text">支出登録</span>
                     </a>
                 </div>
             </div>

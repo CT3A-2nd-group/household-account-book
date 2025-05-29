@@ -4,8 +4,13 @@ class LoginController extends BaseController
     /* ① GET /login で呼ぶ */
     public function showForm(): void
     {
-        // $title は layouts/header.php で使われる
-        $this->render('auth/login', ['title' => 'ログイン']);
+        $extraCss = '<link rel="stylesheet" href="/css/login.css">';
+
+        // $title, $extraCss をビューに渡す
+        $this->render('auth/login', [
+            'title' => 'ログイン',
+            'extraCss' => $extraCss
+        ]);
     }
 
     /* ② POST /login で呼ぶ（認証） */

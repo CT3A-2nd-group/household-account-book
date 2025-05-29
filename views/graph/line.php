@@ -1,15 +1,5 @@
 <!-- グラフページのメインコンテンツ -->
 <div class="graph-page">
-    <!-- CSS読み込み -->
-<link rel="stylesheet" href="/css/graph.css">
-<!-- 外部ライブラリの読み込み -->
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- Swiper.js -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="/js/graphLine.js" defer></script>
-
     <!-- 年選択とナビゲーションボタン -->
     <div class="graph-controls">
         <div class="left-control">

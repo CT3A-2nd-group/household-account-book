@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <title><?= $title ?? 'ページ' ?></title>
 
-    <!-- 共通 CSS -->
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/layout.css">
+    <?php if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+        <!-- 管理者専用 CSS -->
+        <link rel="stylesheet" href="/css/admin-layout.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <?php else: ?>
+        <!-- 通常ユーザー用 CSS -->
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/layout.css">
+    <?php endif; ?>
 
     <!-- ページ固有 CSS を挿し込みたい場合はコントローラ側で
          $extraCss = '<link rel="stylesheet" href="/css/graph.css">'; のように渡す -->
@@ -15,7 +21,37 @@
 </head>
 <body>
 
-<?php if (isset($_SESSION['user_id'])): ?>
+<?php if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+    <!-- 管理者専用レイアウト -->
+    <div class="admin-layout">
+        <!-- 管理者専用ヘッダー -->
+        <header class="admin-header">
+            <div class="header-container">
+                <div class="brand-section">
+                    <h1 class="admin-title">
+                        <span class="brand-icon">🛠️</span>
+                        <span class="brand-text">管理者画面</span>
+                        <span class="admin-badge">Admin</span>
+                    </h1>
+                    <p class="admin-subtitle">システム管理・設定</p>
+                </div>
+                <nav class="admin-navigation">
+                    <a href="/admin/category" class="admin-nav-link <?= (strpos($_SERVER['REQUEST_URI'], '/admin/category') === 0) ? 'active' : '' ?>">
+                        <i class="fas fa-tags"></i>
+                        カテゴリ管理
+                    </a>
+                    <a href="/logout" class="admin-nav-link logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        ログアウト
+                    </a>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- 管理者用メインコンテンツ開始 -->
+        <main class="admin-main">
+
+<?php elseif (isset($_SESSION['user_id'])): ?>
     <?php
     // ランダムキャッチフレーズ
     $catchphrases = [

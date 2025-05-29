@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,6 +11,8 @@
     <!-- ページ固有 CSS を挿し込みたい場合はコントローラ側で
          $extraCss = '<link rel="stylesheet" href="/css/graph.css">'; のように渡す -->
     <?= $extraCss ?? '' ?>
+    <?= $extraJs ?? ''?>
+
 </head>
 <body>
 
@@ -51,7 +52,7 @@
             <nav class="main-navigation">
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="/home" class="nav-link active">
+                        <a href="/home" class="nav-link <?= (isset($currentPage) && $currentPage === 'home') ? 'active' : '' ?>">
                             <span class="nav-icon home-icon"></span>
                             <span class="nav-text">ホーム</span>
                         </a>
@@ -87,15 +88,15 @@
                         </button>
                         <ul class="section-items" id="section-register">
                             <li class="nav-item">
-                                <a href="/expenditure/create" class="nav-link">
-                                    <span class="nav-icon expense-icon"></span>
-                                    <span class="nav-text">支出登録</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="/income/create" class="nav-link">
                                     <span class="nav-icon income-icon"></span>
                                     <span class="nav-text">収入登録</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/expenditure/create" class="nav-link">
+                                    <span class="nav-icon expense-icon"></span>
+                                    <span class="nav-text">支出登録</span>
                                 </a>
                             </li>
                         </ul>
@@ -129,9 +130,9 @@
                             <span class="btn-icon">🔔</span>
                             <span class="notification-dot"></span>
                         </button>
-                        <button class="header-btn profile-btn">
+                        <a href="/auth/setting" class="header-btn profile-btn" title="アカウント設定">
                             <span class="btn-icon">👤</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

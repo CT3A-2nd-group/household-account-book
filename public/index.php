@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/../core/Autoload.php'; // ← 自家製オートローダ
 require_once __DIR__ . '/../core/Router.php';   // ← 自家製ルータ
 require_once __DIR__ . '/../config/database.php';
@@ -20,6 +24,12 @@ $router->add('POST', '/login',    fn() => (new LoginController)->login());
 $router->add('GET',  '/register', fn() => (new RegisterController)->showForm());
 $router->add('POST', '/register', fn() => (new RegisterController)->register());
 $router->add('GET',  '/logout',   fn() => (new LogoutController)->logout());
+
+/* Setting */
+$router->add('GET',  '/auth/setting',           fn() => (new SettingController)->index());
+$router->add('POST', '/auth/update-username',   fn() => (new SettingController)->updateUsername());
+$router->add('POST', '/auth/change-password',   fn() => (new SettingController)->changePassword());
+$router->add('POST', '/auth/delete-account',    fn() => (new SettingController)->deleteAccount());
 
 /* Finance */
 $router->add('GET',  '/income/create',      fn() => (new IncomeController)->showForm());

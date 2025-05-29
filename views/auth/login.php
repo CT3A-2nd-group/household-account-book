@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログイン - 家計簿アプリ</title>
-    
-    <!-- 共通CSS -->
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <!-- ログイン専用CSS -->
-    <link rel="stylesheet" href="/css/login.css">
-</head>
-<body>
     <!-- ログイン前のシンプルなレイアウト -->
     <div class="simple-layout">
         <main class="simple-main">

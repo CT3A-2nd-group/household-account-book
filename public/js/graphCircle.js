@@ -1,3 +1,5 @@
+let swiper; // Swiper用グローバル変数
+
 const pieCharts = {
   income: null,
   expenditure: null,
@@ -24,9 +26,28 @@ window.addEventListener("DOMContentLoaded", async () => {
   });
 
   drawCharts(incomeData, expenditureData);
+
+  // Swiper 初期化
+  swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    loop: false,
+  });
+  
+
+  // ボタンによるスライド切り替え
+  document.getElementById("prevButton").addEventListener("click", () => {
+    swiper.slideTo(0); // 収入
+    drawCharts(incomeData, expenditureData);
+  });
+  document.getElementById("nextButton").addEventListener("click", () => {
+    swiper.slideTo(1); // 支出
+    drawCharts(incomeData, expenditureData);
+  });
 });
 
-// 年と月の一覧を抽出
+// 年月の一覧を抽出
 function extractAvailableYearsAndMonths(dataArray) {
   const yearSet = new Set();
   const monthSet = new Set();
@@ -46,7 +67,7 @@ function extractAvailableYearsAndMonths(dataArray) {
   };
 }
 
-// セレクトボックスを初期化
+// セレクトボックス初期化
 function setupYearMonthSelectors(years, months) {
   const yearSelect = document.getElementById("yearSelect");
   const monthSelect = document.getElementById("monthSelect");
@@ -68,11 +89,11 @@ function setupYearMonthSelectors(years, months) {
     monthSelect.appendChild(option);
   });
 
-  yearSelect.value = years[0];
+  yearSelect.value = years[years.length - 1];
   monthSelect.value = months[0];
 }
 
-// 年に応じた月に絞って月セレクトを更新
+// 年に応じた月に絞って更新
 function updateMonthOptions(dataArray) {
   const year = document.getElementById("yearSelect").value;
   const monthSelect = document.getElementById("monthSelect");
@@ -102,7 +123,7 @@ function updateMonthOptions(dataArray) {
   }
 }
 
-// グラフ描画
+// グラフ描画処理
 function drawCharts(incomeData, expenditureData) {
   const year = document.getElementById("yearSelect").value;
   const month = document.getElementById("monthSelect").value;
@@ -110,7 +131,7 @@ function drawCharts(incomeData, expenditureData) {
   drawPieChart("expenditure", expenditureData, year, month);
 }
 
-// グラフ描画（前回と同じ）
+// 円グラフを描画
 function drawPieChart(type, data, year, month) {
   const ctx = document.getElementById(
     type === "income" ? "incomePieChart" : "expenditurePieChart"
@@ -146,14 +167,13 @@ function drawPieChart(type, data, year, month) {
       plugins: {
         title: {
           display: true,
-          text: type === "income" ? "収入カテゴリ別" : "支出カテゴリ別",
         }
       }
     }
   });
 }
 
-// カラー生成
+// 色を生成
 function generateColors(count) {
   const colors = ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40"];
   const result = [];
@@ -162,3 +182,5 @@ function generateColors(count) {
   }
   return result;
 }
+
+console.log(swiper);

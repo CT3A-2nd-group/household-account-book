@@ -347,6 +347,7 @@
 
 /* メインコンテンツのスタイル */
 .content-header {
+  width: 950px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-bottom: none;
   padding: 2rem;

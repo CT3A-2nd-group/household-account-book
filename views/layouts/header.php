@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -52,7 +51,7 @@
             <nav class="main-navigation">
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="/home" class="nav-link active">
+                        <a href="/home" class="nav-link <?= (isset($currentPage) && $currentPage === 'home') ? 'active' : '' ?>">
                             <span class="nav-icon home-icon"></span>
                             <span class="nav-text">ホーム</span>
                         </a>
@@ -130,9 +129,9 @@
                             <span class="btn-icon">🔔</span>
                             <span class="notification-dot"></span>
                         </button>
-                        <button class="header-btn profile-btn">
+                        <a href="/auth/setting" class="header-btn profile-btn" title="アカウント設定">
                             <span class="btn-icon">👤</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

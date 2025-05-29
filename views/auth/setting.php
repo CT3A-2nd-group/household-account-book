@@ -26,12 +26,13 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="username" class="form-label">ユーザー名</label>
-                            <input type="text" id="username" name="username" class="form-input"
-                                value="<?= htmlspecialchars($user['username'] ?? '') ?>" required>
+                            <input type="text" id="username" name="username" class="form-input" required>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <button type="submit" class="btn btn-primary">ユーザー名を更新</button>
+                    <div class="form-actions">
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-primary">ユーザー名を更新</button>
+                        </div>
                     </div>
                 </form>
             </div>

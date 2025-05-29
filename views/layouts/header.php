@@ -12,7 +12,8 @@
     <!-- ページ固有 CSS を挿し込みたい場合はコントローラ側で
          $extraCss = '<link rel="stylesheet" href="/css/graph.css">'; のように渡す -->
     <?= $extraCss ?? '' ?>
-    <?= $extraJs ?? '' ?>
+    <?= $extraJs ?? ''?>
+
 </head>
 <body>
 

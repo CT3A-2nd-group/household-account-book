@@ -1,4 +1,25 @@
-<?php if (isset($_SESSION['user_id'])): ?>
+<?php if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+        </main>
+    </div>
+    <!-- 管理者用JavaScript -->
+    <script src="/js/admin-layout.js"></script>
+    <script>
+    // 管理者用メニュー制御
+    document.addEventListener('DOMContentLoaded', function() {
+        // アクティブなナビゲーションアイテムをハイライト
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.admin-nav-link');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (currentPath === href || (href !== '/admin' && currentPath.startsWith(href))) {
+                link.classList.add('active');
+            }
+        });
+    });
+    </script>
+
+<?php elseif (isset($_SESSION['user_id'])): ?>
             </div>
         </main>
         
@@ -113,37 +134,39 @@
         <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     </div>
     
-<?php else: ?>
-    </main>
-    </div>
-<?php endif; ?>
-
-<!-- 共通JavaScript -->
-<script src="/js/common.js"></script>
-<script>
-// モバイルメニュー制御
-function toggleMobileMenu() {
-    const sidebar = document.getElementById('leftSidebar');
-    const overlay = document.getElementById('mobileOverlay');
-    
-    sidebar.classList.toggle('mobile-open');
-    overlay.classList.toggle('active');
-}
-
-function closeMobileMenu() {
-    const sidebar = document.getElementById('leftSidebar');
-    const overlay = document.getElementById('mobileOverlay');
-    
-    sidebar.classList.remove('mobile-open');
-    overlay.classList.remove('active');
-}
-
-// ESCキーでメニューを閉じる
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeMobileMenu();
+    <!-- ユーザー用JavaScript -->
+    <script src="/js/common.js"></script>
+    <script>
+    // モバイルメニュー制御
+    function toggleMobileMenu() {
+        const sidebar = document.getElementById('leftSidebar');
+        const overlay = document.getElementById('mobileOverlay');
+        
+        sidebar.classList.toggle('mobile-open');
+        overlay.classList.toggle('active');
     }
-});
-</script>
+
+    function closeMobileMenu() {
+        const sidebar = document.getElementById('leftSidebar');
+        const overlay = document.getElementById('mobileOverlay');
+        
+        sidebar.classList.remove('mobile-open');
+        overlay.classList.remove('active');
+    }
+
+    // ESCキーでメニューを閉じる
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+    </script>
+
+<?php else: ?>
+        </main>
+    </div>
+    <!-- 未ログインユーザー用JavaScript -->
+    <script src="/js/simple.js"></script>
+<?php endif; ?>
 </body>
 </html>

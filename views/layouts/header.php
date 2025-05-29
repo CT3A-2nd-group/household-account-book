@@ -87,15 +87,15 @@
                         </button>
                         <ul class="section-items" id="section-register">
                             <li class="nav-item">
-                                <a href="/expenditure/create" class="nav-link">
-                                    <span class="nav-icon expense-icon"></span>
-                                    <span class="nav-text">支出登録</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="/income/create" class="nav-link">
                                     <span class="nav-icon income-icon"></span>
                                     <span class="nav-text">収入登録</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/expenditure/create" class="nav-link">
+                                    <span class="nav-icon expense-icon"></span>
+                                    <span class="nav-text">支出登録</span>
                                 </a>
                             </li>
                         </ul>

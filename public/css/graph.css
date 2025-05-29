@@ -89,6 +89,13 @@
   overflow: hidden;
   box-sizing: border-box;
 }
+.mySwiper{
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 
 .swiper-slide {
   padding: 2rem;

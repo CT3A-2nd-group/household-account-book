@@ -4,16 +4,24 @@ class AdminCategoryController extends BaseController
     /** カテゴリ管理画面 */
     public function create(): void
     {
+        $extraCss = '<link rel="stylesheet" href="/css/admin.css">';
+
         if (!$this->isAdmin()) $this->redirect('/login');
 
         // 支出・収入カテゴリを一気に取得
         $expenditureCategories = $this->fetchCategories('expenditure');
         $incomeCategories      = $this->fetchCategories('income');
 
-        $this->render('admin/category_form', compact(
-            'expenditureCategories',
-            'incomeCategories'
-        ));
+        // 管理者フラグをセッションに設定（デバッグ用）
+        $_SESSION['is_admin'] = 1;
+
+        // ビューに渡す（compactに配列追加）
+        $this->render('admin/category_form', [
+            'expenditureCategories' => $expenditureCategories,
+            'incomeCategories'      => $incomeCategories,
+            'title'                 => 'カテゴリ管理',
+            'extraCss'              => $extraCss,
+        ]);
     }
 
     /** カテゴリ追加 */

@@ -1,9 +1,4 @@
 <div class="settings-container">
-    <div class="settings-header">
-        <h1 class="settings-title">アカウント設定</h1>
-        <p class="settings-subtitle">プロフィール情報やセキュリティ設定を管理できます</p>
-    </div>
-
     <div class="settings-content">
         <!-- 成功/エラー メッセージ -->
         <?php if (!empty($success)): ?>
@@ -22,36 +17,17 @@
             </div>
 
             <div class="settings-card">
-                <form class="settings-form" method="POST" action="/auth/update-profile">
+                <form class="settings-form" method="POST" action="/auth/update-username">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="first_name" class="form-label">姓</label>
-                            <input type="text" id="first_name" name="first_name" class="form-input"
-                                   value="<?= htmlspecialchars($user['first_name'] ?? '') ?>" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="last_name" class="form-label">名</label>
-                            <input type="text" id="last_name" name="last_name" class="form-input"
-                                   value="<?= htmlspecialchars($user['last_name'] ?? '') ?>" required>
+                            <label for="username" class="form-label">ユーザー名</label>
+                            <input type="text" id="username" name="username" class="form-input" required>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="email" class="form-label">メールアドレス</label>
-                        <input type="email" id="email" name="email" class="form-input"
-                               value="<?= htmlspecialchars($user['email'] ?? '') ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone" class="form-label">電話番号</label>
-                        <input type="tel" id="phone" name="phone" class="form-input"
-                               value="<?= htmlspecialchars($user['phone'] ?? '') ?>" placeholder="090-1234-5678">
-                    </div>
-
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">
-                            <span class="btn-icon">💾</span>変更を保存
-                        </button>
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-primary">ユーザー名を更新</button>
+                        </div>
                     </div>
                 </form>
             </div>

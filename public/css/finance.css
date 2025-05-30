@@ -1,0 +1,291 @@
+/* 基本レイアウト */
+.finance-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(26, 115, 232, 0.15);
+    padding: 24px;
+    margin: 20px 0;
+    border: 1px solid #e0e9ff;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0066cc;
+    margin-bottom: 24px;
+}
+
+/* エラーメッセージ */
+.error-message {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+/* タブナビゲーション */
+.tab-navigation {
+    display: flex;
+    border-bottom: 2px solid #e0e9ff;
+    margin-bottom: 24px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #5c7cfa;
+    border-bottom: 3px solid transparent;
+    margin-right: 16px;
+    transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+    color: #1a73e8;
+}
+
+.tab-button.active {
+    color: #0066cc;
+    border-bottom-color: #0066cc;
+}
+
+/* Swiper */
+.finance-swiper {
+    height: auto;
+}
+
+/* フォーム */
+.finance-form {
+    margin-bottom: 16px;
+}
+
+/* テーブル */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 2px solid #1a73e8;
+}
+
+.finance-table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    border: 1px solid #c7d8ff;
+}
+
+.finance-table thead {
+    background-color: #e8f0fe;
+}
+
+.finance-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0066cc;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid #c7d8ff;
+    border-bottom: 2px solid #1a73e8;
+}
+
+.finance-table tbody tr {
+    border-bottom: 1px solid #c7d8ff;
+    transition: background-color 0.2s ease;
+}
+
+.finance-table tbody tr:hover {
+    background-color: #f0f7ff;
+}
+
+.finance-table td {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #c7d8ff;
+}
+
+.finance-table .amount {
+    font-weight: 600;
+    color: #0066cc;
+}
+
+.finance-table .memo {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.finance-table .star-rating {
+    color: #4285f4;
+}
+
+.finance-table .no-data {
+    padding: 32px 16px;
+    text-align: center;
+    color: #5f6368;
+    white-space: normal;
+}
+
+/* バッジ */
+.badge {
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.badge-waste {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+.badge-no-waste {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+}
+
+/* チェックボックス */
+.checkbox-cell {
+    text-align: center;
+}
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+}
+
+.delete-checkbox {
+    height: 20px;
+    width: 20px;
+    color: #1a73e8;
+    border-radius: 4px;
+    border: 2px solid #1a73e8;
+    cursor: pointer;
+}
+
+.delete-checkbox:checked {
+    background-color: #1a73e8;
+    border-color: #1a73e8;
+}
+
+/* フォームアクション */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.delete-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    color: white;
+    background-color: #1a73e8;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 5px rgba(26, 115, 232, 0.3);
+}
+
+.delete-button:hover {
+    background-color: #0d62c9;
+}
+
+.delete-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.4);
+}
+
+.delete-icon {
+    width: 5px;
+    height: 5px;
+    margin-right: 8px;
+    margin-left: -4px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .finance-container {
+        padding: 16px;
+        margin: 10px 0;
+    }
+    
+    .page-title {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+    
+    .tab-button {
+        padding: 8px 14px;
+        font-size: 13px;
+        margin-right: 8px;
+    }
+    
+    .finance-table th,
+    .finance-table td {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .finance-table .memo {
+        max-width: 150px;
+    }
+    
+    .delete-button {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .delete-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .finance-table th,
+    .finance-table td {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+    
+    .finance-table .memo {
+        max-width: 100px;
+    }
+    
+    .tab-navigation {
+        margin-bottom: 16px;
+    }
+}
+
+/* 削除アイコンのサイズを小さく調整 */
+.delete-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    margin-left: -2px;
+}
+
+/* レスポンシブ対応時のアイコンサイズも調整 */
+@media (max-width: 768px) {
+    .delete-icon {
+        width: 14px;
+        height: 14px;
+        margin-right: 5px;
+    }
+}

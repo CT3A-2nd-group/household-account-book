@@ -121,7 +121,7 @@
 }
 
 .swiper-slide {
-  padding: 2rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

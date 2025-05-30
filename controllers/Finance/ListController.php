@@ -1,9 +1,16 @@
 <?php
     class ListController extends BaseController{
+        public function __construct() {
+            parent::__construct();
+        }
+        public function Listview() {
+            $expenditures = $this->ExpenditureList($_SESSION['user_id']);
+            $incomes = $this->IncomeList($_SESSION['user_id']);
+            $this->render('finance/List_form', ['expenditures' => $expenditures,'incomes' => $incomes]);
+        }
         public function IncomeList($user_id){
-            include __DIR__ . '/../config/database.php';
 
-            $stmt = $pdo->prepare("
+            $stmt = $this->pdo->prepare("
                 SELECT i.id, i.input_date, c.name AS category_name, i.amount, i.description
                 FROM incomes i
                 JOIN categories c ON i.category_id = c.id
@@ -21,10 +28,8 @@
             return $incomes;
         }
         public function ExpenditureList($user_id){
-            session_start();
-            include __DIR__ . '/../config/database.php';
 
-            $stmt = $pdo->prepare("
+            $stmt = $this->pdo->prepare("
                 SELECT e.id, e.input_date, c.name AS category_name, e.amount, e.star_rate, e.is_waste, e.description
                 FROM expenditures e
                 JOIN categories c ON e.category_id = c.id
@@ -40,30 +45,31 @@
             return $expenditures;
         }
 
-        public function DeleteList(){
-
-            session_start();
-            include __DIR__ . '/../config/database.php';
-
-
-            if(isset($_POST['delete_ids']) && is_array($_POST['delete_ids'])){
+        public function DeleteList() {
+            if (
+                isset($_POST['delete_ids'], $_POST['target_type']) &&
+                is_array($_POST['delete_ids']) &&
+                in_array($_POST['target_type'], ['income', 'expenditure'], true)
+            ) {
                 $delete_ids = $_POST['delete_ids'];
+                $target_type = $_POST['target_type'];
+                $table = $target_type === 'income' ? 'incomes' : 'expenditures';
 
-                $placeholders = rtrim(str_repeat('?,', count($delete_ids)),',');
-                $sql = "DELETE FROM expenditures WHERE id IN ($placeholders) AND user_id = ?";
+                $placeholders = rtrim(str_repeat('?,', count($delete_ids)), ',');
+                $sql = "DELETE FROM {$table} WHERE id IN ($placeholders) AND user_id = ?";
 
-                $stmt = $pdo->prepare($sql);
+                $stmt = $this->pdo->prepare($sql);
                 $stmt->execute([...$delete_ids, $_SESSION['user_id']]);
 
-                $_SESSION['success'] = '選択した支出を削除しました。';
-            } 
-            else{
+                $_SESSION['success'] = '選択した' . ($target_type === 'income' ? '収入' : '支出') . 'を削除しました。';
+            } else {
                 $_SESSION['error'] = '削除対象が選択されていません。';
             }
 
-            header('Location: /List-view');
+            $this->redirect('/List/view');
             exit;
         }
+
     }
 
     

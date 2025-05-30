@@ -26,8 +26,8 @@ $router->add('GET',  '/income/create',      fn() => (new IncomeController)->show
 $router->add('POST', '/income/create',      fn() => (new IncomeController)->store());
 $router->add('GET',  '/expenditure/create', fn() => (new ExpenditureController)->showForm());
 $router->add('POST', '/expenditure/create', fn() => (new ExpenditureController)->store());
-$router->add('GET', '/List_view', fn() => (new ListController)->ListDelete());
-$router->add('POST', '/ListDelete', fn() => (new ListController)->ListDelete());
+$router->add('GET', '/List/view', fn() => (new ListController)->Listview());
+$router->add('POST', '/List/Delete', fn() => (new ListController)->DeleteList());
 
 /* Admin */
 $router->add('GET',  '/admin/category/create', fn() => (new AdminCategoryController)->create());

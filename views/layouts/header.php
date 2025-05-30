@@ -22,6 +22,7 @@
             <a href="/graph/circle">円グラフ</a>
             <a href="/expenditure/create">支出登録</a>
             <a href="/income/create">収入登録</a>
+            <a href="/List/view">収支一覧</a>
             <a href="/logout">ログアウト</a>
         <?php else: ?>
             <a href="/login">ログイン</a>

@@ -6,7 +6,7 @@
             <select id="yearSelect"></select>
 	    <select id="monthSelect"></select>
         </div>
-
+        <!-- Swiperをスライドさせるボタン -->
         <div class="right-control">
             <button id="prevButton">収入カテゴリ</button>
             <button id="nextButton">支出カテゴリ</button>

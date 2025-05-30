@@ -6,6 +6,8 @@
     padding: 24px;
     margin: 20px 0;
     border: 1px solid #e0e9ff;
+    max-width: 800px;
+    width: 100%;
 }
 
 .page-title {
@@ -70,13 +72,17 @@
     margin-bottom: 16px;
     border-radius: 8px;
     border: 2px solid #1a73e8;
+    overflow-x: auto;
+    width: 100%;
 }
 
 .finance-table {
     width: 100%;
+    min-width: 800px;
     background: white;
     border-collapse: collapse;
     border: 1px solid #c7d8ff;
+    table-layout: fixed;
 }
 
 .finance-table thead {
@@ -112,11 +118,14 @@
 }
 
 .finance-table .amount {
+    text-align: right;
+    white-space: nowrap;
     font-weight: 600;
     color: #0066cc;
 }
 
 .finance-table .memo {
+    white-space: nowrap;
     max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -124,7 +133,8 @@
 }
 
 .finance-table .star-rating {
-    color: #4285f4;
+    white-space: nowrap;
+    color: #42a4f4;
 }
 
 .finance-table .no-data {

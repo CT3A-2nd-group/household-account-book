@@ -4,9 +4,17 @@
             parent::__construct();
         }
         public function Listview() {
+            $extraCss = '<link rel="stylesheet" href="/css/finance.css">';
+            $extraJs = "https://unpkg.com/swiper/swiper-bundle.min.css";
             $expenditures = $this->ExpenditureList($_SESSION['user_id']);
             $incomes = $this->IncomeList($_SESSION['user_id']);
-            $this->render('finance/List_form', ['expenditures' => $expenditures,'incomes' => $incomes]);
+            $this->render('finance/List_form', [
+                'expenditures' => $expenditures,
+                'incomes' => $incomes,
+                'title' => 'カテゴリ管理',
+                'extraCss' => $extraCss,
+                'extraJs'  => $extraJs
+            ]);
         }
         public function IncomeList($user_id){
 

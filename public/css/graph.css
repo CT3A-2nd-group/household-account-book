@@ -79,7 +79,8 @@
 
 /* ナビゲーションボタン */
 #prevButton,
-#nextButton {
+#nextButton,
+#thirdButton {
   padding: 0.5rem 1.5rem;
   border: 2px solid #10b981;
   border-radius: 0.5rem;
@@ -92,7 +93,8 @@
 }
 
 #prevButton:hover,
-#nextButton:hover {
+#nextButton:hover,
+#thirdButton:hover {
   background: #10b981;
   color: white;
   transform: translateY(-1px);
@@ -100,7 +102,8 @@
 }
 
 #prevButton:active,
-#nextButton:active {
+#nextButton:active,
+#thirdButton:active {
   transform: translateY(0);
 }
 
@@ -449,7 +452,8 @@ canvas {
   }
 
   #prevButton,
-  #nextButton {
+  #nextButton,
+  #thirdButton {
     flex: 1;
     max-width: 120px;
   }
@@ -485,7 +489,8 @@ canvas {
   }
 
   #prevButton,
-  #nextButton {
+  #nextButton,
+  #thirdButton {
     padding: 0.375rem 1rem;
     font-size: 0.75rem;
   }
@@ -584,7 +589,8 @@ canvas {
 
 /* Swiper ナビゲーションボタンのカスタマイズ */
 .swiper-button-next,
-.swiper-button-prev {
+.swiper-button-prev,
+.swiper-button-third {
   color: #10b981 !important;
   background: white;
   width: 40px !important;
@@ -595,13 +601,15 @@ canvas {
 }
 
 .swiper-button-next:hover,
-.swiper-button-prev:hover {
+.swiper-button-prev:hover,
+.swiper-button-third:hover {
   background: #10b981;
   color: white !important;
 }
 
 .swiper-button-next::after,
-.swiper-button-prev::after {
+.swiper-button-prev::after,
+.swiper-button-third::after {
   font-size: 16px !important;
   font-weight: bold;
 }

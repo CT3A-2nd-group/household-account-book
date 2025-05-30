@@ -10,8 +10,9 @@
         </div>
 
         <div class="right-control">
-            <button id="prevButton">前へ</button>
-            <button id="nextButton">次へ</button>
+            <button id="prevButton">収支</button>
+            <button id="nextButton">収入</button>
+            <button id="thirdButton">支出</button>
         </div>
     </div>
 

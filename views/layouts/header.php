@@ -78,8 +78,8 @@
                 <div class="header-divider"></div>
             </div>
 
-            <!-- ナビゲーションメニュー -->
-            <nav class="main-navigation">
+            <!-- ホームボタン固定 -->
+            <div class="sidebar-fixed-home">
                 <ul class="nav-menu">
                     <li class="nav-item">
                         <a href="/home" class="nav-link <?= (isset($currentPage) && $currentPage === 'home') ? 'active' : '' ?>">
@@ -87,69 +87,75 @@
                             <span class="nav-text">ホーム</span>
                         </a>
                     </li>
-
-                    <!-- グラフセクション（アコーディオン） -->
-                    <li class="nav-section">
-                        <button class="section-toggle" onclick="toggleSection('graph')" aria-expanded="true">
-                            <span class="section-title">グラフ</span>
-                            <span class="toggle-icon">▼</span>
-                        </button>
-                        <ul class="section-items" id="section-graph">
-                            <li class="nav-item">
-                                <a href="/graph/line" class="nav-link">
-                                    <span class="nav-icon chart-line-icon"></span>
-                                    <span class="nav-text">折れ線グラフ</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/graph/circle" class="nav-link">
-                                    <span class="nav-icon chart-circle-icon"></span>
-                                    <span class="nav-text">円グラフ</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                   <!-- 登録セクション（アコーディオン） -->
-                    <li class="nav-section">
-                        <button class="section-toggle" onclick="toggleSection('register')" aria-expanded="true">
-                            <span class="section-title">登録</span>
-                            <span class="toggle-icon">▼</span>
-                        </button>
-                        <ul class="section-items" id="section-register">
-                            <li class="nav-item">
-                                <a href="/income/create" class="nav-link">
-                                    <span class="nav-icon income-icon"></span>
-                                    <span class="nav-text">収入登録</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/expenditure/create" class="nav-link">
-                                    <span class="nav-icon expense-icon"></span>
-                                    <span class="nav-text">支出登録</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- 一覧セクション（アコーディオン） -->
-                    <li class="nav-section">
-                        <button class="section-toggle" onclick="toggleSection('list')" aria-expanded="true">
-                            <span class="section-title">一覧</span>
-                            <span class="toggle-icon">▼</span>
-                        </button>
-                        <ul class="section-items" id="section-list">
-                            <li class="nav-item">
-                                <a href="/List/view" class="nav-link">
-                                    <span class="nav-icon income-icon"></span>
-                                    <span class="nav-text">収支一覧</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
                 </ul>
-            </nav>
+            </div>
+
+            <!-- スクロール可能なナビゲーションエリア -->
+            <div class="scrollable-navigation">
+                <nav class="main-navigation">
+                    <ul class="nav-menu">
+                        <!-- グラフセクション -->
+                        <li class="nav-section">
+                            <button class="section-toggle" onclick="toggleSection('graph')" aria-expanded="true">
+                                <span class="section-title">グラフ</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <ul class="section-items" id="section-graph">
+                                <li class="nav-item">
+                                    <a href="/graph/line" class="nav-link">
+                                        <span class="nav-icon chart-line-icon"></span>
+                                        <span class="nav-text">折れ線グラフ</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/graph/circle" class="nav-link">
+                                        <span class="nav-icon chart-circle-icon"></span>
+                                        <span class="nav-text">円グラフ</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 登録セクション -->
+                        <li class="nav-section">
+                            <button class="section-toggle" onclick="toggleSection('register')" aria-expanded="true">
+                                <span class="section-title">登録</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <ul class="section-items" id="section-register">
+                                <li class="nav-item">
+                                    <a href="/income/create" class="nav-link">
+                                        <span class="nav-icon income-icon"></span>
+                                        <span class="nav-text">収入登録</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/expenditure/create" class="nav-link">
+                                        <span class="nav-icon expense-icon"></span>
+                                        <span class="nav-text">支出登録</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 一覧セクション -->
+                        <li class="nav-section">
+                            <button class="section-toggle" onclick="toggleSection('list')" aria-expanded="true">
+                                <span class="section-title">一覧</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <ul class="section-items" id="section-list">
+                                <li class="nav-item">
+                                    <a href="/List/view" class="nav-link">
+                                        <span class="nav-icon income-icon"></span>
+                                        <span class="nav-text">収支一覧</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
 
             <!-- ログアウト部分 -->
             <div class="sidebar-footer">

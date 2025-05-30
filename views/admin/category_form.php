@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <label for="type" class="form-label">種別</label>
                         <select id="type" name="type" class="form-input" required>
-                            <option value="">種別を選択</option>
+                            <option value=""disabled selected>種別を選択</option>
                             <option value="income">収入</option>
                             <option value="expenditure">支出</option>
                         </select>

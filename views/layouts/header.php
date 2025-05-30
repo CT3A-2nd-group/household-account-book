@@ -82,7 +82,7 @@
             <div class="sidebar-fixed-home">
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="/home" class="nav-link <?= (isset($currentPage) && $currentPage === 'home') ? 'active' : '' ?>">
+                        <a href="/home" class="home-link <?= (isset($currentPage) && $currentPage === 'home') ? 'active' : '' ?>">
                             <span class="nav-icon home-icon"></span>
                             <span class="nav-text">ホーム</span>
                         </a>

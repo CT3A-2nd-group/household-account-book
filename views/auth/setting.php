@@ -1,9 +1,4 @@
 <div class="settings-container">
-    <div class="settings-header">
-        <h1 class="settings-title">アカウント設定</h1>
-        <p class="settings-subtitle">プロフィール情報やセキュリティ設定を管理できます</p>
-    </div>
-
     <div class="settings-content">
         <!-- 成功/エラー メッセージ -->
         <?php if (!empty($success)): ?>

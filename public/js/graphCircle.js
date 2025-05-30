@@ -34,6 +34,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     pagination: {
       el: ".swiper-pagination",
     },
+    on: {
+      slideChange: updateButtonState, // スライドが変わったらボタン状態を更新
+    },
     loop: false,
   });
   
@@ -47,6 +50,16 @@ window.addEventListener("DOMContentLoaded", async () => {
     swiper.slideTo(1); // 支出カテゴリ
     drawCharts(incomeData, expenditureData);
   });
+  // ボタンの状態を更新する関数
+function updateButtonState() {
+  const currentIndex = swiper.activeIndex;
+  //現在のスライドによってどちらかのボタンを無効化
+  prevButton.disabled = currentIndex === 0;
+  nextButton.disabled = currentIndex === swiper.slides.length - 1;
+}
+  // 初期状態でもボタン状態を更新
+  updateButtonState();
+
 });
 
 // 年月の一覧を抽出

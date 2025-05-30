@@ -21,11 +21,11 @@ if (isset($_SESSION['error'])) {
 
     <!-- タブナビゲーション -->
     <div class="tab-navigation">
-        <button id="expenditureTab" class="tab-button active">
-            支出一覧
-        </button>
         <button id="incomeTab" class="tab-button">
             収入一覧
+        </button>
+        <button id="expenditureTab" class="tab-button active">
+            支出一覧
         </button>
     </div>
 

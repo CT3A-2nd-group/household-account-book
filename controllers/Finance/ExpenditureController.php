@@ -46,20 +46,29 @@ class ExpenditureController extends BaseController
         }
         // ──────────────────────────────────────
 
-        $stmt = $this->pdo->prepare("
-            INSERT INTO expenditures
-            (user_id, category_id, input_date, amount, description, is_waste, star_rate)
-            VALUES (:u, :c, :d, :a, :desc, :w, :s)
-        ");
-        $stmt->execute([
-            ':u'    => $user_id,
-            ':c'    => $category_id,
-            ':d'    => $input_date,
-            ':a'    => $amount,
-            ':desc' => $description,
-            ':w'    => $is_waste,
-            ':s'    => $star_rate,
-        ]);
+        try{
+            $stmt = $this->pdo->prepare("
+                INSERT INTO expenditures
+                (user_id, category_id, input_date, amount, description, is_waste, star_rate)
+                VALUES (:u, :c, :d, :a, :desc, :w, :s)
+            ");
+            $stmt->execute([
+                ':u'    => $user_id,
+                ':c'    => $category_id,
+                ':d'    => $input_date,
+                ':a'    => $amount,
+                ':desc' => $description,
+                ':w'    => $is_waste,
+                ':s'    => $star_rate,
+            ]);
+            
+        }catch(PDOException $e) {
+            error_log('DB接続エラー: ' . $e->getMessage());
+            $_SESSION['error'] = '支出の登録に失敗しました。';
+            header('Location: /expenditure/form.php?error=' . urlencode('DB接続エラー'));
+            exit;
+                
+        }
 
         $this->redirect('/graph/line');
     }

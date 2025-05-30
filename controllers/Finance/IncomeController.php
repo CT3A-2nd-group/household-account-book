@@ -14,7 +14,7 @@ class IncomeController extends BaseController
         $this->render('finance/income_form', array_merge(
             compact('categories'),
             ['title' => '収入登録']
-));
+        ));
     }
 
     /* 収入登録処理 */

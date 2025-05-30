@@ -21,7 +21,6 @@
 
 </head>
 <body>
-
 <?php if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
     <!-- 管理者専用レイアウト -->
     <div class="admin-layout">

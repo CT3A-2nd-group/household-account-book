@@ -1,11 +1,13 @@
 /* 基本レイアウト */
 .finance-container {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(26, 115, 232, 0.15);
-    padding: 24px;
-    margin: 20px 0;
-    border: 1px solid #e0e9ff;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(26, 115, 232, 0.15);
+  padding: 24px;
+  margin: 20px auto; /* ← 中央寄せ */
+  border: 1px solid #e0e9ff;
+  max-width: 800px; /* ← 最大幅を制限 */
+  width: 100%; /* ← 画面幅には合わせる */
 }
 
 .page-title {

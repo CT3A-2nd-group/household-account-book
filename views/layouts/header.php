@@ -48,6 +48,7 @@
 
 <?php elseif (isset($_SESSION['user_id'])): ?>
     <?php
+    // ランダムキャッチフレーズ
     $catchphrases = [
         '財務管理をスマートに',
         '毎日の支出をもっと見える化',
@@ -59,18 +60,25 @@
     ];
     $randomSubtitle = $catchphrases[array_rand($catchphrases)];
     ?>
+    <!-- ログイン後の3カラムレイアウト -->
     <div class="app-layout">
+        <!-- モバイルメニューボタン -->
         <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
         </button>
+
+        <!-- 左サイドバー（ナビゲーション） -->
         <aside class="left-sidebar" id="leftSidebar">
+            <!-- ロゴ・タイトル部分 -->
             <div class="sidebar-header">
                 <h1 class="app-title">家計簿アプリ</h1>
                 <p class="app-subtitle">Finance Manager</p>
                 <div class="header-divider"></div>
             </div>
+
+            <!-- ナビゲーションメニュー -->
             <nav class="main-navigation">
                 <ul class="nav-menu">
                     <li class="nav-item">
@@ -79,6 +87,8 @@
                             <span class="nav-text">ホーム</span>
                         </a>
                     </li>
+
+                    <!-- グラフセクション（アコーディオン） -->
                     <li class="nav-section">
                         <button class="section-toggle" onclick="toggleSection('graph')" aria-expanded="true">
                             <span class="section-title">グラフ</span>
@@ -99,6 +109,8 @@
                             </li>
                         </ul>
                     </li>
+
+                   <!-- 登録セクション（アコーディオン） -->
                     <li class="nav-section">
                         <button class="section-toggle" onclick="toggleSection('register')" aria-expanded="true">
                             <span class="section-title">登録</span>
@@ -119,6 +131,8 @@
                             </li>
                         </ul>
                     </li>
+
+                    <!-- 一覧セクション（アコーディオン） -->
                     <li class="nav-section">
                         <button class="section-toggle" onclick="toggleSection('list')" aria-expanded="true">
                             <span class="section-title">一覧</span>
@@ -127,14 +141,17 @@
                         <ul class="section-items" id="section-list">
                             <li class="nav-item">
                                 <a href="/List/view" class="nav-link">
-                                    <span class="nav-icon"></span>
+                                    <span class="nav-icon income-icon"></span>
                                     <span class="nav-text">収支一覧</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
+
                 </ul>
             </nav>
+
+            <!-- ログアウト部分 -->
             <div class="sidebar-footer">
                 <a href="/logout" class="logout-link">
                     <span class="nav-icon logout-icon"></span>
@@ -142,6 +159,8 @@
                 </a>
             </div>
         </aside>
+
+        <!-- メインコンテンツエリア -->
         <main class="main-content">
             <div class="content-header">
                 <div class="page-header-content">
@@ -165,8 +184,10 @@
                 </div>
             </div>
             <div class="content-body">
+                <!-- ここに各ページのコンテンツが差し込まれます -->
 
 <?php else: ?>
+    <!-- ログイン前のシンプルなレイアウト -->
     <div class="simple-layout">
         <header class="simple-header">
             <div class="header-container">
@@ -183,4 +204,6 @@
             </div>
         </header>
         <main class="simple-main">
+            <!-- ここに各ページのコンテンツが差し込まれます -->
+
 <?php endif; ?>

@@ -89,7 +89,7 @@ function setupYearMonthSelectors(years, months) {
     monthSelect.appendChild(option);
   });
 
-  yearSelect.value = years[years.length - 1];
+  yearSelect.value = years[0];
   monthSelect.value = months[0];
 }
 

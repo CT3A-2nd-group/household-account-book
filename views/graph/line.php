@@ -33,7 +33,7 @@
             </div>
 
             <div class="swiper-slide">
-                <h2>支出グラフ</h2>
+                <h2 class="h2Line">支出グラフ</h2>
                 <div class="chart-container">
                     <canvas id="expenditureChart" width="1000" height="400"></canvas>
                 </div>

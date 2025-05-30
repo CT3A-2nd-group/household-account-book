@@ -1,21 +1,23 @@
 let swiper; // Swiper用グローバル変数
 
+//円グラフインスタンス
 const pieCharts = {
   income: null,
   expenditure: null,
 };
 
 window.addEventListener("DOMContentLoaded", async () => {
+  //income,expendituresのデータ取得
   const incomeRes = await fetch("/graph/inCircle-data");
   const expenditureRes = await fetch("/graph/exCircle-data");
 
   const incomeData = await incomeRes.json();
   const expenditureData = await expenditureRes.json();
-
+  //セレクトで扱う年月の取得
   const { years, months } = extractAvailableYearsAndMonths([incomeData, expenditureData]);
 
   setupYearMonthSelectors(years, months);
-
+  //select内の年月が変更されたときに再描画
   document.getElementById("yearSelect").addEventListener("change", () => {
     updateMonthOptions([incomeData, expenditureData]);
     drawCharts(incomeData, expenditureData);
@@ -24,7 +26,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("monthSelect").addEventListener("change", () => {
     drawCharts(incomeData, expenditureData);
   });
-
+  //初期描画
   drawCharts(incomeData, expenditureData);
 
   // Swiper 初期化
@@ -38,11 +40,11 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   // ボタンによるスライド切り替え
   document.getElementById("prevButton").addEventListener("click", () => {
-    swiper.slideTo(0); // 収入
+    swiper.slideTo(0); // 収入カテゴリ
     drawCharts(incomeData, expenditureData);
   });
   document.getElementById("nextButton").addEventListener("click", () => {
-    swiper.slideTo(1); // 支出
+    swiper.slideTo(1); // 支出カテゴリ
     drawCharts(incomeData, expenditureData);
   });
 });
@@ -71,24 +73,24 @@ function extractAvailableYearsAndMonths(dataArray) {
 function setupYearMonthSelectors(years, months) {
   const yearSelect = document.getElementById("yearSelect");
   const monthSelect = document.getElementById("monthSelect");
-
+  //まずクリア
   yearSelect.innerHTML = "";
   monthSelect.innerHTML = "";
-
+  //年の追加
   years.forEach(y => {
     const option = document.createElement("option");
     option.value = y;
-    option.textContent = y;
+    option.textContent = `${parseInt(y)}年`;
     yearSelect.appendChild(option);
   });
-
+  //月の追加
   months.forEach(m => {
     const option = document.createElement("option");
     option.value = m;
     option.textContent = `${parseInt(m)}月`;
     monthSelect.appendChild(option);
   });
-
+  //初期値セット(0だったら一番遅い年月　year.length-1にすると最新の年はもってこれる　DBから現在の年月持ってきたほうがよさげだが)
   yearSelect.value = years[0];
   monthSelect.value = months[0];
 }
@@ -109,7 +111,7 @@ function updateMonthOptions(dataArray) {
   });
 
   const months = Array.from(monthSet).sort();
-
+  //月セレクトの更新
   monthSelect.innerHTML = "";
   months.forEach(m => {
     const option = document.createElement("option");
@@ -117,7 +119,7 @@ function updateMonthOptions(dataArray) {
     option.textContent = `${parseInt(m)}月`;
     monthSelect.appendChild(option);
   });
-
+  //変更後に現在の月がなかったら初期値に
   if (!months.includes(monthSelect.value)) {
     monthSelect.value = months[0];
   }
@@ -150,7 +152,7 @@ function drawPieChart(type, data, year, month) {
       }
     }
   }
-
+  //再描画のためにグラフを削除
   if (pieCharts[type]) pieCharts[type].destroy();
 
   pieCharts[type] = new Chart(ctx, {

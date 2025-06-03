@@ -38,6 +38,8 @@ $router->add('GET',  '/expenditure/create', fn() => (new ExpenditureController)-
 $router->add('POST', '/expenditure/create', fn() => (new ExpenditureController)->store());
 $router->add('GET', '/List/view', fn() => (new ListController)->Listview());
 $router->add('POST', '/List/Delete', fn() => (new ListController)->DeleteList());
+$router->add('POST', '/List/Update', fn() => (new ListController)->UpdateList());
+
 
 /* Admin */
 $router->add('GET',  '/admin/category/create', fn() => (new AdminCategoryController)->create());

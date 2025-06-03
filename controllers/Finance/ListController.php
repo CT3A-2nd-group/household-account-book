@@ -77,6 +77,42 @@
             $this->redirect('/List/view');
             exit;
         }
+        public function UpdateList(): void
+        {
+            $userId = $_SESSION['user_id'] ?? null;
+            if (!$userId) {
+                $this->redirect('/login');
+            }
+
+            $items = $_POST['items'] ?? [];
+
+            foreach ($items as $id => $data) {
+                $amount = $data['amount'] ?? null;
+                $desc = $data['description'] ?? null;
+
+                // 判定: 収入 or 支出
+                $table = $this->isIncome($id, $userId) ? 'incomes' : 'expenditures';
+
+                $stmt = $this->pdo->prepare("UPDATE {$table} SET amount = :amount, description = :desc WHERE id = :id AND user_id = :user_id");
+                $stmt->execute([
+                    ':amount' => $amount,
+                    ':desc' => $desc,
+                    ':id' => $id,
+                    ':user_id' => $userId,
+                ]);
+            }
+
+            $this->redirect('/List/view');
+        }
+
+        private function isIncome(int $id, int $userId): bool
+        {
+            // 簡易的に incomes テーブルに存在すれば収入と判断
+            $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM incomes WHERE id = :id AND user_id = :user_id");
+            $stmt->execute([':id' => $id, ':user_id' => $userId]);
+            return (bool)$stmt->fetchColumn();
+        }
+
 
     }
 

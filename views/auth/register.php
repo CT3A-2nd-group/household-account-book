@@ -154,15 +154,6 @@
                 return;
             }
             
-            // メールアドレスチェック
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                e.preventDefault();
-                alert('有効なメールアドレスを入力してください。');
-                document.getElementById('email').focus();
-                return;
-            }
-            
             // パスワードチェック
             if (password.length < 8) {
                 e.preventDefault();

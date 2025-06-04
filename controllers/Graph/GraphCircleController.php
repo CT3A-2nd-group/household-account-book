@@ -21,14 +21,14 @@ class GraphCircleController extends BaseController {
         }
 
         $extraCss = implode("\n", [
-            '<link rel="stylesheet" href="/css/graph.css">',
+            '<link rel="stylesheet" href="/css/Graph/graph.css">',
             '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />'
         ]);
 
         $extraJs = implode("\n", [
             '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>',
             '<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>',
-            '<script src="/js/graphCircle.js" defer></script>'
+            '<script src="/js/Graph/graphCircle.js" defer></script>'
         ]);
 
         $this->render('graph/circle', [

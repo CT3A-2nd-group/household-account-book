@@ -3,7 +3,7 @@ class RegisterController extends BaseController
 {
     public function showForm(): void
     {
-        $extraCss = '<link rel="stylesheet" href="/css/register.css">';
+        $extraCss = '<link rel="stylesheet" href="/css/Auth/register.css">';
         $this->render('auth/register', [
             'title' => 'ユーザー登録',
             'extraCss' => $extraCss

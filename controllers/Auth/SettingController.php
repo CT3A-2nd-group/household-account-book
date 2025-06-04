@@ -9,7 +9,7 @@ class SettingController extends BaseController
 
         $user = $this->getUserData($_SESSION['user_id']);
 
-        $extraCss = '<link rel="stylesheet" href="/css/settings.css">';
+        $extraCss = '<link rel="stylesheet" href="/css/Auth/settings.css">';
 
         $this->render('auth/setting', [
             'title' => 'アカウント設定',

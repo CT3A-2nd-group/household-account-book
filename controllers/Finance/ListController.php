@@ -4,7 +4,7 @@
             parent::__construct();
         }
         public function Listview() {
-            $extraCss = '<link rel="stylesheet" href="/css/finance.css">';
+            $extraCss = '<link rel="stylesheet" href="/css/Auth/finance.css">';
             $extraJs = "https://unpkg.com/swiper/swiper-bundle.min.css";
             $expenditures = $this->ExpenditureList($_SESSION['user_id']);
             $incomes = $this->IncomeList($_SESSION['user_id']);

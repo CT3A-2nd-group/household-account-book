@@ -4,7 +4,8 @@ class AdminCategoryController extends BaseController
     /** カテゴリ管理画面 */
     public function create(): void
     {
-        $extraCss = '<link rel="stylesheet" href="/css/admin.css">';
+        $extraCss = '<link rel="stylesheet" href="/css/Admin/admin.css">';
+        $extraJs = '<script src="/js/admin.js" defer></script>';
 
         if (!$this->isAdmin()) $this->redirect('/login');
 
@@ -21,6 +22,7 @@ class AdminCategoryController extends BaseController
             'incomeCategories'      => $incomeCategories,
             'title'                 => 'カテゴリ管理',
             'extraCss'              => $extraCss,
+            'extraJs'              => $extraJs
         ]);
     }
 

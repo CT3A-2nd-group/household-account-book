@@ -1,7 +1,3 @@
-<?php /* views/admin/category_form.php */ ?>
-<?php require_once __DIR__ . '/../layouts/header.php'; ?>
-
-
 <div class="admin-container">
     <div class="admin-card">
         <!-- カードヘッダー -->
@@ -147,5 +143,3 @@
         </div>
     </div>
 </div>
-
-<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

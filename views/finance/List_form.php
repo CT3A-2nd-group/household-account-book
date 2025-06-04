@@ -14,7 +14,7 @@ if (isset($_SESSION['error'])) {
 ?>
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/css/finance.css">
+<link rel="stylesheet" href="/css/Finance/finance.css">
 
 <div class="finance-container">
     <h2 class="page-title">収支一覧</h2>

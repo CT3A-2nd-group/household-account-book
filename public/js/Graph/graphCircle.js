@@ -14,7 +14,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   const incomeData = await incomeRes.json();
   const expenditureData = await expenditureRes.json();
   //セレクトで扱う年月の取得
-  const { years, months } = extractAvailableYearsAndMonths([incomeData, expenditureData]);
+  const { years, months } = extractAvailableYearsAndMonths([
+    incomeData,
+    expenditureData,
+  ]);
 
   setupYearMonthSelectors(years, months);
   //select内の年月が変更されたときに再描画
@@ -39,7 +42,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     },
     loop: false,
   });
-  
 
   // ボタンによるスライド切り替え
   document.getElementById("prevButton").addEventListener("click", () => {
@@ -51,15 +53,14 @@ window.addEventListener("DOMContentLoaded", async () => {
     drawCharts(incomeData, expenditureData);
   });
   // ボタンの状態を更新する関数
-function updateButtonState() {
-  const currentIndex = swiper.activeIndex;
-  //現在のスライドによってどちらかのボタンを無効化
-  prevButton.disabled = currentIndex === 0;
-  nextButton.disabled = currentIndex === swiper.slides.length - 1;
-}
+  function updateButtonState() {
+    const currentIndex = swiper.activeIndex;
+    //現在のスライドによってどちらかのボタンを無効化
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex === swiper.slides.length - 1;
+  }
   // 初期状態でもボタン状態を更新
   updateButtonState();
-
 });
 
 // 年月の一覧を抽出
@@ -71,7 +72,7 @@ function extractAvailableYearsAndMonths(dataArray) {
     for (const category in data) {
       for (const year in data[category]) {
         yearSet.add(year);
-        data[category][year].labels.forEach(month => monthSet.add(month));
+        data[category][year].labels.forEach((month) => monthSet.add(month));
       }
     }
   });
@@ -90,14 +91,14 @@ function setupYearMonthSelectors(years, months) {
   yearSelect.innerHTML = "";
   monthSelect.innerHTML = "";
   //年の追加
-  years.forEach(y => {
+  years.forEach((y) => {
     const option = document.createElement("option");
     option.value = y;
     option.textContent = `${parseInt(y)}年`;
     yearSelect.appendChild(option);
   });
   //月の追加
-  months.forEach(m => {
+  months.forEach((m) => {
     const option = document.createElement("option");
     option.value = m;
     option.textContent = `${parseInt(m)}月`;
@@ -118,7 +119,7 @@ function updateMonthOptions(dataArray) {
   dataArray.forEach((data) => {
     for (const category in data) {
       if (data[category][year]) {
-        data[category][year].labels.forEach(month => monthSet.add(month));
+        data[category][year].labels.forEach((month) => monthSet.add(month));
       }
     }
   });
@@ -126,7 +127,7 @@ function updateMonthOptions(dataArray) {
   const months = Array.from(monthSet).sort();
   //月セレクトの更新
   monthSelect.innerHTML = "";
-  months.forEach(m => {
+  months.forEach((m) => {
     const option = document.createElement("option");
     option.value = m;
     option.textContent = `${parseInt(m)}月`;
@@ -172,25 +173,34 @@ function drawPieChart(type, data, year, month) {
     type: "pie",
     data: {
       labels: labels,
-      datasets: [{
-        data: dataset,
-        backgroundColor: generateColors(labels.length),
-      }]
+      datasets: [
+        {
+          data: dataset,
+          backgroundColor: generateColors(labels.length),
+        },
+      ],
     },
     options: {
       responsive: true,
       plugins: {
         title: {
           display: true,
-        }
-      }
-    }
+        },
+      },
+    },
   });
 }
 
 // 色を生成
 function generateColors(count) {
-  const colors = ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40"];
+  const colors = [
+    "#FF6384",
+    "#36A2EB",
+    "#FFCE56",
+    "#4BC0C0",
+    "#9966FF",
+    "#FF9F40",
+  ];
   const result = [];
   for (let i = 0; i < count; i++) {
     result.push(colors[i % colors.length]);

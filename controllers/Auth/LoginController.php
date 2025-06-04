@@ -4,7 +4,7 @@ class LoginController extends BaseController
     /* ① GET /login で呼ぶ */
     public function showForm(): void
     {
-        $extraCss = '<link rel="stylesheet" href="/css/login.css">';
+        $extraCss = '<link rel="stylesheet" href="/css/Auth/login.css">';
 
         // $title, $extraCss をビューに渡す
         $this->render('auth/login', [

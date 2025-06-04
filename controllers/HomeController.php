@@ -17,7 +17,7 @@ class HomeController extends BaseController
             compact('username', 'isAdmin'),
             [
                 'title'     => 'ホーム',
-                'extraCss'  => $extraCss
+                'extraCss'  => $extraCss,
             ]
         ));
     }

@@ -12,10 +12,3 @@
         </div>
     </section>
 </div>
-
-<script src="/js/progressbar.js" defer></script>
-<!-- ProgressBar.js を CDN で読み込み -->
-<script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
-
-<!-- 円を描画する場所 -->
-<div id="circle-container" style="width:200px; height:200px;"></div>

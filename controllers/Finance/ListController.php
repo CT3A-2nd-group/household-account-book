@@ -11,7 +11,7 @@
             $this->render('finance/List_form', [
                 'expenditures' => $expenditures,
                 'incomes' => $incomes,
-                'title' => 'カテゴリ管理',
+                'title' => '一覧',
                 'extraCss' => $extraCss,
                 'extraJs'  => $extraJs
             ]);

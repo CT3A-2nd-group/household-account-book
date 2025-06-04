@@ -11,3 +11,5 @@
             <?php endif; ?>
         </div>
     </section>
+</div>
+<a href="/finance/save-form">貯金額登録</a>

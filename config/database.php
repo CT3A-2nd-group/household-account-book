@@ -11,6 +11,7 @@ try {
     $pdo = new PDO($dsn, $user, $pass);
     // エラーが発生した時に例外処理をするよう設定
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $pdo;
 } catch (PDOException $e) {
     // 接続に失敗した時のエラーメッセージを表示
     die('データベース接続失敗: ' . $e->getMessage());

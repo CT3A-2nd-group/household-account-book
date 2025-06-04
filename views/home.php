@@ -11,4 +11,3 @@
             <?php endif; ?>
         </div>
     </section>
-</div>

@@ -4,14 +4,22 @@
             parent::__construct();
         }
         public function Listview() {
-            $extraCss = '<link rel="stylesheet" href="/css/finance.css">';
-            $extraJs = "https://unpkg.com/swiper/swiper-bundle.min.css";
             $expenditures = $this->ExpenditureList($_SESSION['user_id']);
             $incomes = $this->IncomeList($_SESSION['user_id']);
+
+            $extraCss = implode("\n", [
+                '<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />',
+                '<link rel="stylesheet" href="/css/finance.css">'
+            ]);
+
+            $extraJs = implode("\n", [
+                '<script src="/js/list.js" defer></script>'//まだ中身はない
+            ]);
+
             $this->render('finance/List_form', [
                 'expenditures' => $expenditures,
                 'incomes' => $incomes,
-                'title' => 'カテゴリ管理',
+                'title' => '収支一覧表',
                 'extraCss' => $extraCss,
                 'extraJs'  => $extraJs
             ]);

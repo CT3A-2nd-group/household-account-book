@@ -1,11 +1,5 @@
 <?php
 $title = '収支一覧';
-
-// ログインチェック
-if (!isset($_SESSION['user_id'])) {
-    header('Location: /login');
-    exit;
-}
 // エラーがあれば表示
 if (isset($_SESSION['error'])) {
     echo '<div class="error-message">' . htmlspecialchars($_SESSION['error']) . '</div>';
@@ -13,8 +7,6 @@ if (isset($_SESSION['error'])) {
 }
 ?>
 
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-<link rel="stylesheet" href="/css/Finance/finance.css">
 
 <div class="finance-container">
     <h2 class="page-title">収支一覧</h2>
@@ -145,7 +137,6 @@ if (isset($_SESSION['error'])) {
     </div>
 </div>
 
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
     // Swiperの初期化
     const swiper = new Swiper('.finance-swiper', {

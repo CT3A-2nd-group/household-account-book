@@ -3,9 +3,7 @@ class SettingController extends BaseController
 {
     public function index(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $user = $this->getUserData($_SESSION['user_id']);
 
@@ -20,9 +18,7 @@ class SettingController extends BaseController
 
     public function updateUsername(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $newUsername = trim($_POST['username'] ?? '');
         if ($newUsername === '') {
@@ -52,9 +48,7 @@ class SettingController extends BaseController
 
     public function changePassword(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $current = $_POST['current_password'] ?? '';
         $new = $_POST['new_password'] ?? '';
@@ -83,9 +77,7 @@ class SettingController extends BaseController
 
     public function deleteAccount(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $stmt = $this->pdo->prepare('DELETE FROM users WHERE id = :id');
         $stmt->execute([':id' => $_SESSION['user_id']]);

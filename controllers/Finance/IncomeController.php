@@ -4,7 +4,7 @@ class IncomeController extends BaseController
     /* 収入入力フォーム表示 */
     public function showForm(): void
     {
-        if (!isset($_SESSION['user_id'])) $this->redirect('/login');
+        $this->requireLogin();
 
         $stmt = $this->pdo->query(
             "SELECT id, name FROM categories WHERE type = 'income'"
@@ -20,7 +20,7 @@ class IncomeController extends BaseController
     /* 収入登録処理 */
     public function store(): void
     {
-        if (!isset($_SESSION['user_id'])) $this->redirect('/login');
+        $this->requireLogin();
 
         $user_id    = $_SESSION['user_id'];
         $input_date = $_POST['input_date']  ?? '';

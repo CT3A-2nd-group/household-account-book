@@ -3,9 +3,7 @@ class HomeController extends BaseController
 {
     public function index(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $userId   = $_SESSION['user_id'];
         $isAdmin  = $_SESSION['is_admin'] ?? 0;

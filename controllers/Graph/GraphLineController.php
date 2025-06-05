@@ -16,9 +16,7 @@
 
         // グラフページの表示処理（ユーザーがログインしていなければログインページへリダイレクト）
         public function view(): void {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $extraCss = implode("\n", [
             '<link rel="stylesheet" href="/css/Graph/graph.css">',
@@ -41,10 +39,7 @@
 
         // 指定されたテーブル（収入または支出）から月別集計データを作成
         private function aggregateByMonth(string $table): array {
-            if (!isset($_SESSION['user_id'])) {
-                http_response_code(403);
-                exit('ログインしていません');
-            }
+            $this->requireLogin(true);
 
             $userId = $_SESSION['user_id'];
 

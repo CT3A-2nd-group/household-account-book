@@ -1,17 +1,15 @@
 <?php
 class SaveController extends BaseController{
-    public function showForm(): void 
+    public function showForm(): void
     {
+        $this->requireLogin();
         require_once __DIR__ . '/../../views/finance/save_savings.php';
     }
     
     public function save(): void
     {
-        $userId = $_SESSION['user_id'] ?? null;
-        if (!$userId) {
-            header('Location: /login');
-            exit;
-        }
+        $this->requireLogin();
+        $userId = $_SESSION['user_id'];
 
         $year = intval($_POST['year']);
         $month = intval($_POST['month']);

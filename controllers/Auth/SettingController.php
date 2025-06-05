@@ -106,7 +106,7 @@ class SettingController extends BaseController
         $user = $this->getUserData($_SESSION['user_id']);
         $data = [
             'title' => 'アカウント設定',
-            'extraCss' => '<link rel="stylesheet" href="/css/settings.css">',
+            'extraCss' => '<link rel="stylesheet" href="/css/Auth/settings.css">',
             'user' => $user
         ];
         if ($success) $data['success'] = $success;

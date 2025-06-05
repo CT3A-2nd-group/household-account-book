@@ -139,13 +139,13 @@ function defaultOptions(max) {
 function updateGraphsForSlide(index, year) {
   switch (index) {
     case 0:
-      drawCombinedChart(year);
+      drawCharts(year);
       break;
     case 1:
       drawCharts(year);
       break;
     case 2:
-      drawCharts(year); // ここで drawSavingsChart(year) など個別関数にしてもOK
+      drawCombinedChart(year);
       break;
   }
 }

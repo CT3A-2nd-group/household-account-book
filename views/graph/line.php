@@ -10,22 +10,15 @@
         </div>
 
         <div class="right-control">
-            <button id="prevButton">収支</button>
-            <button id="nextButton">収入</button>
-            <button id="thirdButton">支出</button>
+            <button id="prevButton">収入</button>
+            <button id="nextButton">支出</button>
+            <button id="thirdButton">収支</button>
         </div>
     </div>
 
     <!-- Swiperカルーセル -->
     <div class="swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <h2 class="h2Line">収支グラフ</h2>
-                <div class="chart-container">
-                    <canvas id="combinedChart" width="1000" height="400"></canvas>
-                </div>
-            </div>
-
             <div class="swiper-slide">
                 <h2 class="h2Line">収入グラフ</h2>
                 <div class="chart-container">
@@ -39,6 +32,14 @@
                     <canvas id="expenditureChart" width="1000" height="400"></canvas>
                 </div>
             </div>
+
+            <div class="swiper-slide">
+                <h2 class="h2Line">収支グラフ</h2>
+                <div class="chart-container">
+                    <canvas id="combinedChart" width="1000" height="400"></canvas>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

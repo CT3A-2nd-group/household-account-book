@@ -28,10 +28,12 @@ class SettingController extends BaseController
 
         // 重複チェック
         $stmt = $this->pdo->prepare('SELECT COUNT(*) FROM users WHERE username = :username AND id != :id');
+
         $stmt->execute([
             ':username' => $newUsername,
             ':id' => $_SESSION['user_id']
         ]);
+        
         if ($stmt->fetchColumn() > 0) {
             $this->indexWithMessage(null, 'このユーザー名は既に使われています');
             return;

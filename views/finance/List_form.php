@@ -38,8 +38,21 @@ if (isset($_SESSION['error'])) {
                         <table class="finance-table">
                             <thead>
                                 <tr>
-                                    <th>日付</th>
-                                    <th>カテゴリ</th>
+                                    <th>
+                                        日付<br>
+                                        <input type="month" name="filter_income_month" value="<?= htmlspecialchars($selectedMonth) ?>" onchange="this.form.submit()">
+                                    </th>
+                                    <th>
+                                        カテゴリ<br>
+                                        <select name="filter_income_category" onchange="this.form.submit()">
+                                            <option value="">すべて</option>
+                                            <?php foreach ($incomeCategories as $cat): ?>
+                                                <option value="<?= $cat['id'] ?>" <?= ($selectedIncomeCat == $cat['id']) ? 'selected' : '' ?>>
+                                                    <?= htmlspecialchars($cat['name']) ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </th>
                                     <th>金額(円)</th>
                                     <th>メモ</th>
                                     <th>削除</th>

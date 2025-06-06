@@ -189,6 +189,7 @@
   margin-top: 20px;
 }
 
+.save-button,
 .delete-button {
   display: inline-flex;
   align-items: center;
@@ -204,10 +205,12 @@
   box-shadow: 0 2px 5px rgba(26, 115, 232, 0.3);
 }
 
+.save-button:hover,
 .delete-button:hover {
   background-color: #0d62c9;
 }
 
+.save-button:focus,
 .delete-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.4);

@@ -40,6 +40,8 @@ $router->add('GET', '/List/view', fn() => (new ListController)->Listview());
 $router->add('POST', '/List/Delete', fn() => (new ListController)->DeleteList());
 $router->add('POST', '/finance/save', fn() => (new SaveController)->save());
 $router->add('GET', '/finance/save-form', fn() => (new SaveController)->showForm());
+$router->add('GET', '/SaveList/view', fn() => (new SaveListController)->SavingsListview());
+
 
 
 

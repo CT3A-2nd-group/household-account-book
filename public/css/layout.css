@@ -216,6 +216,18 @@
   color: #10b981;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>');
 }
+.save-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+
+  background-color: #dcfce7;              /* 緑背景（元と同じ） */
+  background-image: url('/image/saveList.png'); /* ← ここだけ外部画像に差し替え */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;               /* アイコン全体を収める */
+  border-radius: 4px; 
+}
 .logout-icon {
   color: #ef4444; /* 赤 */
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7"/></svg>');

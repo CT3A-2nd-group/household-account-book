@@ -85,11 +85,31 @@ class HomeController extends BaseController
 
         //自由資金の算出＋$freeMoneyにその金額を
         $freeMoney = [];
+
         foreach ($months as $ym) {
             $income = $incomes[$ym] ?? 0;
             $expenditure = $expenditures[$ym] ?? 0;
             $saving = $savings[$ym] ?? 0;
-            $freeMoney[$ym] = $income - $expenditure - $saving;
+            $amount = $income - $expenditure - $saving;
+            $freeMoney[$ym] = $amount;
+
+            $year = substr($ym, 0, 4);
+            $month = substr($ym, 5, 2);
+
+            
+        $saveFreeMoney = 
+        "INSERT INTO monthly_finances (user_id, year, month, free_money)
+            VALUES($user_id , :year , :month ,:free_money)
+            ON DUPLICATE KEY UPDATE free_money = :free_money
+        ";
+    
+        $stmt = $pdo->prepare($saveFreeMoney);
+        $stmt->execute([
+            ':user_id' => $user_id,
+            ':year'       => $year,
+            ':month'      => $month,
+            ':free_money' => $amount,
+        ]);
         }
         return $freeMoney;
     }   

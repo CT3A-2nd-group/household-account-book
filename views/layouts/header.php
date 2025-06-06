@@ -151,6 +151,12 @@
                                         <span class="nav-text">収支一覧</span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/SaveList/view" class="nav-link">
+                                        <span class="nav-icon save-icon"></span>
+                                        <span class="nav-text">貯金額一覧</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

@@ -10,9 +10,12 @@ class HomeController extends BaseController
         $username = $this->getUsername($userId);
         $extraCss  = '<link rel="stylesheet" href="/css/home.css">';
 
+        //ここで自由に使えるお金を計算
+        $freeMoney = $this->calcFreeMoney($this->pdo, $userId);
+
         // header / footer を自動付与して home ビューへ
         $this->render('home', array_merge(
-            compact('username', 'isAdmin'),
+            compact('username', 'isAdmin', 'freeMoney'),
             [
                 'title'     => 'ホーム',
                 'extraCss'  => $extraCss,
@@ -30,4 +33,64 @@ class HomeController extends BaseController
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row['username'] ?? 'ゲスト';
     }
+
+    //自由資金算出のための計算（それぞれYY-MM : amount　の形でデータベースから情報を回収）
+    function calcFreeMoney(PDO $pdo, int $user_id): array {
+        //収入データ
+        $sql = "SELECT DATE_FORMAT(input_date, '%Y-%m') AS ym, 
+                ROUND(SUM(amount)) AS total_income
+                FROM incomes 
+                WHERE user_id = :user_id 
+                GROUP BY ym";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':user_id' => $user_id]);
+        $incomes = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $incomes[$row['ym']] = (float)$row['total_income'];
+        }
+
+        //支出データ
+        $sql = "SELECT DATE_FORMAT(input_date, '%Y-%m') AS ym, 
+                ROUND(SUM(amount)) AS total_expenditure
+                FROM expenditures 
+                WHERE user_id = :user_id 
+                GROUP BY ym";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':user_id' => $user_id]);
+        $expenditures = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $expenditures[$row['ym']] = (float)$row['total_expenditure'];
+        }
+
+        //貯金データ
+        $sql = "SELECT CONCAT(LPAD(year, 4, '0'), '-', LPAD(month, 2, '0')) AS ym,
+                ROUND(SUM(saved_this_month)) AS total_saving
+                FROM monthly_finances
+                WHERE user_id = :user_id
+                GROUP BY ym";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':user_id' => $user_id]);
+        $savings = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $savings[$row['ym']] = (float)$row['total_saving'];
+        }
+
+        //収入、支出、貯金のうち一つでもあれば$monthに入れる（情報がある月だけ）
+        $months = array_unique(array_merge(
+            array_keys($incomes),
+            array_keys($expenditures),
+            array_keys($savings)
+        ));
+        sort($months);
+
+        //自由資金の算出＋$freeMoneyにその金額を
+        $freeMoney = [];
+        foreach ($months as $ym) {
+            $income = $incomes[$ym] ?? 0;
+            $expenditure = $expenditures[$ym] ?? 0;
+            $saving = $savings[$ym] ?? 0;
+            $freeMoney[$ym] = $income - $expenditure - $saving;
+        }
+        return $freeMoney;
+    }   
 }

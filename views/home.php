@@ -6,7 +6,6 @@
             <h2 class="greeting-text">ようこそ、<?= htmlspecialchars($username) ?> さん！</h2>
         </div>
     </section>
-
             <!-- 財務サマリー -->
     <section class="finance-summary">
         <div class="summary-cards">
@@ -52,5 +51,4 @@
         <?php foreach ($freeMoney as $month => $amount): ?>
             <li><?= htmlspecialchars($month) ?> : ¥<?= number_format($amount, 0) ?></li>
         <?php endforeach; ?>
-    </ul>
-
+    </u

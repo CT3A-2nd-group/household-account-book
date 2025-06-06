@@ -12,10 +12,10 @@ class ExpenditureController extends BaseController
         );
         $categories = $stmt->fetchAll();
 
-        $this->render('finance/expenditure_form', array_merge(
-            compact('categories'),
-            ['title' => '支出登録']
-        ));
+        $this->render('finance/expenditure_form',  [
+                'categories' => $categories ,
+                'title' => '支出登録',
+            ]);
     }
 
     /* 支出登録処理 */

@@ -1,5 +1,3 @@
-
-
 <div class="finance-container">
 <h2 class="page-title"><span class="page-title-text">収入を登録</span></h2>
 

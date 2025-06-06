@@ -94,27 +94,7 @@
             <div class="scrollable-navigation">
                 <nav class="main-navigation">
                     <ul class="nav-menu">
-                        <!-- グラフセクション -->
-                        <li class="nav-section">
-                            <button class="section-toggle" onclick="toggleSection('graph')" aria-expanded="true">
-                                <span class="section-title">グラフ</span>
-                                <span class="toggle-icon">▼</span>
-                            </button>
-                            <ul class="section-items" id="section-graph">
-                                <li class="nav-item">
-                                    <a href="/graph/line" class="nav-link">
-                                        <span class="nav-icon chart-line-icon"></span>
-                                        <span class="nav-text">折れ線グラフ</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/graph/circle" class="nav-link">
-                                        <span class="nav-icon chart-circle-icon"></span>
-                                        <span class="nav-text">円グラフ</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
 
                         <!-- 登録セクション -->
                         <li class="nav-section">
@@ -155,6 +135,27 @@
                                     <a href="/SaveList/view" class="nav-link">
                                         <span class="nav-icon save-icon"></span>
                                         <span class="nav-text">貯金額一覧</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- グラフセクション -->
+                        <li class="nav-section">
+                            <button class="section-toggle" onclick="toggleSection('graph')" aria-expanded="true">
+                                <span class="section-title">グラフ</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <ul class="section-items" id="section-graph">
+                                <li class="nav-item">
+                                    <a href="/graph/line" class="nav-link">
+                                        <span class="nav-icon chart-line-icon"></span>
+                                        <span class="nav-text">折れ線グラフ</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/graph/circle" class="nav-link">
+                                        <span class="nav-icon chart-circle-icon"></span>
+                                        <span class="nav-text">円グラフ</span>
                                     </a>
                                 </li>
                             </ul>

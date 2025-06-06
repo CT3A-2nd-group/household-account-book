@@ -148,7 +148,8 @@
 /* ナビゲーション */
 .main-navigation {
   flex: 1;
-  padding: 1.5rem 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .nav-menu {
@@ -199,48 +200,36 @@
 .chart-line-icon {
   background-color: #ede9fe; /* 薄い紫 */
   color: #8b5cf6; /* 濃い紫 */
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-line-icon lucide-chart-line"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg>');
 }
 .chart-circle-icon {
   background-color: #fef9c3; /* 薄い黄色 */
   color: #facc15; /* 濃い黄色 */
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-pie-icon lucide-chart-pie"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>');
 }
 .expense-icon {
   background-color: #fee2e2; /* 赤系 */
   color: #ef4444;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus-icon lucide-minus"><path d="M5 12h14"/></svg>');
 }
 .income-icon {
   background-color: #dcfce7; /* 緑系 */
   color: #10b981;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>');
-}
-.save-icon {
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-
-  background-color: #dcfce7;              /* 緑背景（元と同じ） */
-  background-image: url('/image/saveList.png'); /* ← ここだけ外部画像に差し替え */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;               /* アイコン全体を収める */
-  border-radius: 4px; 
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>');
 }
 
 .list-icon {
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-
-  background-color: #dcfce7;              /* 緑背景（元と同じ） */
-  background-image: url('/image/list.png'); /* ← ここだけ外部画像に差し替え */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;               /* アイコン全体を収める */
-  border-radius: 4px; 
+  background-color: #d1f0f4; /* 薄いアクアブルー */
+  color: #10b981;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-icon lucide-list"><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M3 6h.01"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M8 6h13"/></svg>');
 }
+
+.save-icon {
+  background-color: #fef3c7; /* 明るめ金色風（よりリッチ感） */
+  color: #eab308;           /* 黄土色系のアクセント */
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-piggy-bank-icon lucide-piggy-bank"><path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z"/><path d="M16 10h.01"/><path d="M2 8v1a2 2 0 0 0 2 2h1"/></svg>');
+}
+
 
 .logout-icon {
   color: #ef4444; /* 赤 */
@@ -418,7 +407,10 @@
 }
 /* サイドバーフッター */
 .sidebar-fixed-home{
-  padding: 1rem;
+  padding-top: 1rem;
+
+  padding-left: 1rem;
+  padding-right: 1rem;
   border-top: 1px solid #334155;
 }
 .sidebar-footer {

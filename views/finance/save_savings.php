@@ -2,7 +2,7 @@
   <div class="savings-form">
     <div class="form-header">
       <div class="coin-icon">
-        <img src="/image/save.png" alt="貯金アイコン">
+        <img src="/images/save.png" alt="貯金アイコン">
       </div>
       <h2>今月の貯金額を登録</h2>
     </div>

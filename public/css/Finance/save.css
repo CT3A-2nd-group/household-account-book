@@ -33,7 +33,6 @@
 
 /* アイコン表示 */
 .coin-icon {
-  display: block;
   margin: 0 auto 20px;
   width: 60px;
   height: 60px;
@@ -44,6 +43,11 @@
   justify-content: center;
 }
 
+.coin-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
 /* フォームグループ */
 .form-group {
   margin-bottom: 20px;

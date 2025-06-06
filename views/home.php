@@ -11,3 +11,11 @@
             <?php endif; ?>
         </div>
     </section>
+    <!-- 仮置きの自由資金表示 -->
+    <h2>自由資金(表示)</h2>
+    <!-- 月：金額の表示 -->
+    <ul>
+        <?php foreach ($freeMoney as $month => $amount): ?>
+            <li><?= htmlspecialchars($month) ?> : ¥<?= number_format($amount, 0) ?></li>
+        <?php endforeach; ?>
+    </ul>

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/income.css">
+
 
 <div class="finance-container">
 <h2 class="page-title"><span class="page-title-text">収入を登録</span></h2>
@@ -67,4 +67,4 @@
 </form>
 </div>
 
-<script src="/js/income.js"></script>
+

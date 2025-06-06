@@ -6,20 +6,44 @@
             <h2 class="greeting-text">ようこそ、<?= htmlspecialchars($username) ?> さん！</h2>
         </div>
     </section>
-<<<<<<< HEAD
-</div>
+            <!-- 財務サマリー -->
+    <section class="finance-summary">
+        <div class="summary-cards">
 
-<button id="">目標登録</button>
-<a href="/finance/save-form" class="btn-savings">貯金額登録</a>
+            <!-- 今月の自由資金 -->
+            <div class="summary-card income-card">
+            <div class="card-header">
+                <h3 class="card-title">今月の自由資金</h3>
+                <span class="card-icon income-icon"></span>
+            </div>
+            <p class="card-amount" style="color: #10b981;">¥34,000</p>
+            <p class="card-change">前月比：+¥11,000</p>
+            </div>
 
+            <!-- 総自由資金 -->
+            <div class="summary-card balance-card">
+            <div class="card-header">
+                <h3 class="card-title">総自由資金</h3>
+                <span class="card-icon balance-icon"></span>
+            </div>
+            <p class="card-amount" style="color: #3b82f6;">¥450,000</p>
+            <p class="card-change">累計貯蓄額</p>
+            </div>
 
-<script src="/js/progressbar.js" defer></script>
-<!-- ProgressBar.js を CDN で読み込み -->
-<script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
+            <!-- 目標達成率 -->
+            <div class="summary-card" style="border-left-color: #a855f7;">
+            <div class="card-header">
+                <h3 class="card-title">目標達成率</h3>
+                <span class="card-icon" style="background-color: #f3e8ff;"></span>
+            </div>
+            <p class="card-amount" style="color: #a855f7;">50.0%</p>
+            <p class="card-change">現在の進捗</p>
+            </div>
 
-<!-- 円を描画する場所 -->
-<div id="circle-container" style="width:200px; height:200px;"></div>
-=======
+        </div>
+    </section>
+
+    <a href="/finance/save-form">貯金額登録</a>
     <!-- 仮置きの自由資金表示 -->
     <h2>自由資金(表示)</h2>
     <!-- 月：金額の表示 -->
@@ -27,5 +51,4 @@
         <?php foreach ($freeMoney as $month => $amount): ?>
             <li><?= htmlspecialchars($month) ?> : ¥<?= number_format($amount, 0) ?></li>
         <?php endforeach; ?>
-    </ul>
->>>>>>> 5d99400 (自由資金算出＋表示をホームでやってみた)
+    </u

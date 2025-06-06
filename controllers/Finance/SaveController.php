@@ -1,5 +1,8 @@
 <?php
 class SaveController extends BaseController{
+    public function __construct() {
+        parent::__construct();
+    }
     public function showForm(): void
     {
         $extraCss = '<link rel="stylesheet" href="/css/Finance/save.css">';
@@ -21,7 +24,7 @@ class SaveController extends BaseController{
 
 
         // ① 今月の収入合計を取得
-        $stmt = $pdo->prepare(
+        $stmt = $this->pdo->prepare(
 
             "SELECT SUM(amount) AS total_income
             FROM incomes
@@ -40,15 +43,15 @@ class SaveController extends BaseController{
         }
 
         // ③ 登録・更新処理
-        $stmt = $pdo->prepare("SELECT id FROM monthly_finances WHERE user_id = ? AND year = ? AND month = ?");
+        $stmt = $this->pdo->prepare("SELECT id FROM monthly_finances WHERE user_id = ? AND year = ? AND month = ?");
         $stmt->execute([$userId, $year, $month]);
         $existing = $stmt->fetch();
 
         if ($existing) {
-            $update = $pdo->prepare("UPDATE monthly_finances SET saved_this_month = ? WHERE user_id = ? AND year = ? AND month = ?");
+            $update = $this->pdo->prepare("UPDATE monthly_finances SET saved_this_month = ? WHERE user_id = ? AND year = ? AND month = ?");
             $update->execute([$saved, $userId, $year, $month]);
         } else {
-            $insert = $pdo->prepare("INSERT INTO monthly_finances (user_id, year, month, saved_this_month) VALUES (?, ?, ?, ?)");
+            $insert = $this->pdo->prepare("INSERT INTO monthly_finances (user_id, year, month, saved_this_month) VALUES (?, ?, ?, ?)");
             $insert->execute([$userId, $year, $month, $saved]);
         }
 

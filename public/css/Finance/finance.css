@@ -10,7 +10,7 @@
   width: 100%; /* ← 画面幅には合わせる */
 }
 
-.page-title {
+.h2page-title {
   font-size: 24px;
   font-weight: bold;
   color: #0066cc;

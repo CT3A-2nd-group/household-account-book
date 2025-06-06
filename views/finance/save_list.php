@@ -1,7 +1,7 @@
 
 
 <div class="finance-container">
-    <h2 class="page-title">貯金額一覧</h2>
+    <h2 class="h2page-title">貯金額一覧</h2>
 
     <div class="table-container">
         <table class="finance-table">

@@ -4,7 +4,6 @@
             $this->requireLogin(); // ログインチェックOK
 
             $extraCss = '<link rel="stylesheet" href="/css/Finance/finance.css">';
-            $extraJs  = ''; // 必要に応じて
 
             $stmt = $this->pdo->prepare("
                 SELECT year, month, saved_this_month
@@ -19,7 +18,6 @@
                 'savings'   => $savings,
                 'title'     => '貯金額一覧',
                 'extraCss'  => $extraCss,
-                'extraJs'   => $extraJs,
             ]);
         }
 

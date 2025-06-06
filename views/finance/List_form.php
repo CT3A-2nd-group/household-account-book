@@ -39,10 +39,14 @@ if (isset($_SESSION['error'])) {
                             <thead>
                                 <tr>
                                     <th>
-                                        日付<br>
-                                        <input type="month" name="filter_income_month" value="<?= htmlspecialchars($selectedMonth) ?>" onchange="this.form.submit()">
+                                        <form method="GET" action="/List/view">
+                                            日付<br>
+                                            <input type="hidden" name="target_type" value="income">
+                                            <input type="month" name="filter_income_month" value="<?= htmlspecialchars($selectedMonth) ?>" onchange="document.getElementById('income-filter-form').submit();">
+                                        </form>
                                     </th>
                                     <th>
+                                        <form method="GET" action="/List/view">
                                         カテゴリ<br>
                                         <select name="filter_income_category" onchange="this.form.submit()">
                                             <option value="">すべて</option>
@@ -52,6 +56,7 @@ if (isset($_SESSION['error'])) {
                                                 </option>
                                             <?php endforeach; ?>
                                         </select>
+                                        </form>
                                     </th>
                                     <th>金額(円)</th>
                                     <th>メモ</th>

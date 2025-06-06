@@ -10,7 +10,7 @@ class IncomeController extends BaseController
             "SELECT id, name FROM categories WHERE type = 'income'"
         );
         $categories = $stmt->fetchAll();
-        $extraCss = '<link rel="stylesheet" href="/css/Finance/finance.css">';
+        $extraCss = '<link rel="stylesheet" href="/css/Finance/income.css">';
         $extraJs = '<script src="/js/Finance/income.js"></script>';
         $this->render('finance/income_form', [
                 'title' => '収入登録',

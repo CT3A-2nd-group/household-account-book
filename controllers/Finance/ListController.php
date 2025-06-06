@@ -5,100 +5,60 @@
         }
         public function Listview() {
 
-            $incomeCategoryFilter = $_GET['filter_income_category'] ?? '';
-            $incomeMonthFilter = $_GET['filter_income_month'] ?? '';
+            $incomes = $this->IncomeList($userId);           // 全件
+            $expenditures = $this->ExpenditureList($userId); // 全件
 
-            $expenditureCategoryFilter = $_GET['filter_expenditure_category'] ?? '';
-            $expenditureMonthFilter = $_GET['filter_expenditure_month'] ?? '';
-
-            $incomes = $this->IncomeList($_SESSION['user_id'], $incomeCategoryFilter, $incomeMonthFilter);
-            $expenditures = $this->ExpenditureList($_SESSION['user_id'], $expenditureCategoryFilter, $expenditureMonthFilter);
-
+            // カテゴリ取得（収入・支出）
             $stmt = $this->pdo->query("SELECT id, name FROM categories WHERE type = 'income'");
             $incomeCategories = $stmt->fetchAll();
 
             $stmt = $this->pdo->query("SELECT id, name FROM categories WHERE type = 'expenditure'");
             $expenditureCategories = $stmt->fetchAll();
 
+            // --- 🧩 CSS・JS 読み込みを追加（graph.js風構成） ---
             $extraCss = implode("\n", [
                 '<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />',
                 '<link rel="stylesheet" href="/css/finance.css">'
             ]);
 
             $extraJs = implode("\n", [
-                '<script src="/js/list.js" defer></script>'//まだ中身はない
+                '<script src="/js/list.js" defer></script>' // list.js はフロント側でフィルター処理を行う
             ]);
 
             $this->render('finance/List_form', [
                 'title' => '収支一覧表',
                 'incomes' => $incomes,
-                'incomeCategories' => $incomeCategories,
                 'expenditures' => $expenditures,
-                'selectedIncomeCat' => $incomeCategoryFilter,
-                'selectedExpenditureCat' => $expenditureCategoryFilter,
-                'incomeMonthFilter' => $incomeMonthFilter,
-                'expenditureCategoryFilter' => $expenditureCategoryFilter,
-                'expenditureMonthFilter' => $expenditureMonthFilter,
+                'incomeCategories' => $incomeCategories,
+                'expenditureCategories' => $expenditureCategories,
                 'extraCss' => $extraCss,
-                'extraJs'  => $extraJs, 
+                'extraJs'  => $extraJs,
             ]);
         }
         public function IncomeList($user_id, $categoryFilter = '', $monthFilter = '')
         {
-            $query = "
-                SELECT i.id, i.input_date, c.name AS category_name, i.amount, i.description
-                FROM incomes i
-                JOIN categories c ON i.category_id = c.id
-                WHERE i.user_id = :user_id
-            ";
-
-            $params = [':user_id' => $user_id];
-
-            if ($categoryFilter !== '') {
-                $query .= " AND c.id = :category_id";
-                $params[':category_id'] = $categoryFilter;
-            }
-
-            if ($monthFilter !== '') {
-                $query .= " AND DATE_FORMAT(i.input_date, '%Y-%m') = :month";
-                $params[':month'] = $monthFilter;
-            }
-
-            $query .= " ORDER BY i.input_date DESC";
-
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute($params);
-
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $this->pdo->prepare("
+            SELECT i.id, i.input_date, c.name AS category_name, i.amount, i.description, i.category_id
+            FROM incomes i
+            JOIN categories c ON i.category_id = c.id
+            WHERE i.user_id = :user_id
+            ORDER BY i.input_date DESC
+        ");
+        $stmt->execute([':user_id' => $user_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         public function ExpenditureList($user_id, $categoryFilter = '', $monthFilter = '')
         {
-            $query = "
-                SELECT e.id, e.input_date, c.name AS category_name, e.amount, e.star_rate, e.is_waste, e.description
-                FROM expenditures e
-                JOIN categories c ON e.category_id = c.id
-                WHERE e.user_id = :user_id
-            ";
-
-            $params = [':user_id' => $user_id];
-
-            if ($categoryFilter !== '') {
-                $query .= " AND c.id = :category_id";
-                $params[':category_id'] = $categoryFilter;
-            }
-
-            if ($monthFilter !== '') {
-                $query .= " AND DATE_FORMAT(e.input_date, '%Y-%m') = :month";
-                $params[':month'] = $monthFilter;
-            }
-
-            $query .= " ORDER BY e.input_date DESC";
-
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute($params);
-
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $this->pdo->prepare("
+            SELECT e.id, e.input_date, c.name AS category_name, e.amount, e.star_rate, e.is_waste, e.description, e.category_id
+            FROM expenditures e
+            JOIN categories c ON e.category_id = c.id
+            WHERE e.user_id = :user_id
+            ORDER BY e.input_date DESC
+        ");
+        $stmt->execute([':user_id' => $user_id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
 

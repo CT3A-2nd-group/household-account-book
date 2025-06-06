@@ -147,7 +147,7 @@
                             <ul class="section-items" id="section-list">
                                 <li class="nav-item">
                                     <a href="/List/view" class="nav-link">
-                                        <span class="nav-icon income-icon"></span>
+                                        <span class="nav-icon list-icon"></span>
                                         <span class="nav-text">収支一覧</span>
                                     </a>
                                 </li>

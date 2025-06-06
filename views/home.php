@@ -11,6 +11,7 @@
             <?php endif; ?>
         </div>
     </section>
+<<<<<<< HEAD
 </div>
 
 <button id="">目標登録</button>
@@ -23,3 +24,13 @@
 
 <!-- 円を描画する場所 -->
 <div id="circle-container" style="width:200px; height:200px;"></div>
+=======
+    <!-- 仮置きの自由資金表示 -->
+    <h2>自由資金(表示)</h2>
+    <!-- 月：金額の表示 -->
+    <ul>
+        <?php foreach ($freeMoney as $month => $amount): ?>
+            <li><?= htmlspecialchars($month) ?> : ¥<?= number_format($amount, 0) ?></li>
+        <?php endforeach; ?>
+    </ul>
+>>>>>>> 5d99400 (自由資金算出＋表示をホームでやってみた)

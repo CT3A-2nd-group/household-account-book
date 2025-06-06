@@ -3,9 +3,7 @@ class SettingController extends BaseController
 {
     public function index(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $user = $this->getUserData($_SESSION['user_id']);
 
@@ -20,9 +18,7 @@ class SettingController extends BaseController
 
     public function updateUsername(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $newUsername = trim($_POST['username'] ?? '');
         if ($newUsername === '') {
@@ -32,10 +28,12 @@ class SettingController extends BaseController
 
         // 重複チェック
         $stmt = $this->pdo->prepare('SELECT COUNT(*) FROM users WHERE username = :username AND id != :id');
+
         $stmt->execute([
             ':username' => $newUsername,
             ':id' => $_SESSION['user_id']
         ]);
+        
         if ($stmt->fetchColumn() > 0) {
             $this->indexWithMessage(null, 'このユーザー名は既に使われています');
             return;
@@ -52,9 +50,7 @@ class SettingController extends BaseController
 
     public function changePassword(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $current = $_POST['current_password'] ?? '';
         $new = $_POST['new_password'] ?? '';
@@ -83,9 +79,7 @@ class SettingController extends BaseController
 
     public function deleteAccount(): void
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-        }
+        $this->requireLogin();
 
         $stmt = $this->pdo->prepare('DELETE FROM users WHERE id = :id');
         $stmt->execute([':id' => $_SESSION['user_id']]);
@@ -106,7 +100,7 @@ class SettingController extends BaseController
         $user = $this->getUserData($_SESSION['user_id']);
         $data = [
             'title' => 'アカウント設定',
-            'extraCss' => '<link rel="stylesheet" href="/css/settings.css">',
+            'extraCss' => '<link rel="stylesheet" href="/css/Auth/settings.css">',
             'user' => $user
         ];
         if ($success) $data['success'] = $success;

@@ -1,30 +1,33 @@
 <?php
 class SaveController extends BaseController{
-    public function showForm(): void 
+    public function showForm(): void
     {
-        require_once __DIR__ . '/../../views/finance/save_savings.php';
+        $extraCss = '<link rel="stylesheet" href="/css/Finance/save.css">';
+        $this->requireLogin();
+        $this->render('finance/save_savings', [
+            'title' => '貯金登録',
+            'extraCss' => $extraCss
+        ]);
     }
     
     public function save(): void
     {
-        $userId = $_SESSION['user_id'] ?? null;
-        if (!$userId) {
-            header('Location: /login');
-            exit;
-        }
+        $this->requireLogin();
+        $userId = $_SESSION['user_id'];
 
         $year = intval($_POST['year']);
         $month = intval($_POST['month']);
         $saved = floatval($_POST['saved']);
 
-        $pdo = require __DIR__ . '/../../config/database.php';
 
         // ① 今月の収入合計を取得
-        $stmt = $pdo->prepare("
-            SELECT SUM(amount) AS total_income
+        $stmt = $pdo->prepare(
+
+            "SELECT SUM(amount) AS total_income
             FROM incomes
-            WHERE user_id = ? AND YEAR(input_date) = ? AND MONTH(input_date) = ?
-        ");
+            WHERE user_id = ? AND YEAR(input_date) = ? AND MONTH(input_date) = ?"
+            
+        );
         $stmt->execute([$userId, $year, $month]);
         $result = $stmt->fetch();
         $totalIncome = floatval($result['total_income'] ?? 0);
@@ -53,4 +56,4 @@ class SaveController extends BaseController{
     }
 
 
-}
+};

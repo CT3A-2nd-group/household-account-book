@@ -1,0 +1,145 @@
+/* フォームコンテナのスタイル */
+.savings-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  min-height: calc(100vh - 200px); /* ヘッダーの高さを考慮 */
+}
+
+/* フォーム本体のスタイル */
+.savings-form {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+
+/* フォームヘッダー */
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* アイコン表示 */
+.coin-icon {
+  display: block;
+  margin: 0 auto 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #FFF8E1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* フォームグループ */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.form-group label img {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+}
+
+/* 入力フィールド */
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+  background-color: #fff;
+}
+
+/* 年月の入力フィールドを横並びに */
+.date-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* 送信ボタン */
+.submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* チェックマークアイコン */
+.check-icon {
+  margin-right: 8px;
+}
+
+/* エラーメッセージ */
+.error-message {
+  background-color: #FFEBEE;
+  color: #D32F2F;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+  border-left: 4px solid #F44336;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .savings-form {
+    padding: 20px;
+  }
+  
+  .form-header h2 {
+    font-size: 20px;
+  }
+}

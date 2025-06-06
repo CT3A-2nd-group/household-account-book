@@ -49,8 +49,8 @@
 
                     <div class="form-group">
                         <label for="new_password" class="form-label">新しいパスワード</label>
-                        <input type="password" id="new_password" name="new_password" class="form-input" minlength="8" required>
-                        <div class="form-help">8文字以上で入力してください</div>
+                        <input type="password" id="new_password" name="new_password" class="form-input" minlength="4" required>
+                        <div class="form-help">4文字以上で入力してください</div>
                     </div>
 
                     <div class="form-group">

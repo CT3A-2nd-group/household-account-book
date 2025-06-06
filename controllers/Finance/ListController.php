@@ -4,14 +4,19 @@
             parent::__construct();
         }
         public function Listview() {
-            $extraCss = '<link rel="stylesheet" href="/css/Auth/finance.css">';
-            $extraJs = "https://unpkg.com/swiper/swiper-bundle.min.css";
+            $this->requireLogin();
+            $extraCss = implode("\n", [
+                '<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />',
+                '<link rel="stylesheet" href="/css/Finance/finance.css">'
+            ]);
+
+            $extraJs = '<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>';
             $expenditures = $this->ExpenditureList($_SESSION['user_id']);
             $incomes = $this->IncomeList($_SESSION['user_id']);
             $this->render('finance/List_form', [
                 'expenditures' => $expenditures,
                 'incomes' => $incomes,
-                'title' => 'カテゴリ管理',
+                'title' => '一覧',
                 'extraCss' => $extraCss,
                 'extraJs'  => $extraJs
             ]);
@@ -54,6 +59,7 @@
         }
 
         public function DeleteList() {
+            $this->requireLogin();
             if (
                 isset($_POST['delete_ids'], $_POST['target_type']) &&
                 is_array($_POST['delete_ids']) &&

@@ -15,6 +15,21 @@ class BaseController
         }
     }
 
+    /**
+     * ログイン必須ページのためのチェック
+     * @param bool $api true の場合は 403 を返して終了する
+     */
+    protected function requireLogin(bool $api = false): void
+    {
+        if (!isset($_SESSION['user_id'])) {
+            if ($api) {
+                http_response_code(403);
+                exit('ログインしていません');
+            }
+            $this->redirect('/login');
+        }
+    }
+
     /** ビューの読み込み（layouts/header と footer を自動で付ける） */
     protected function render(string $viewPath, array $data = []): void
     {

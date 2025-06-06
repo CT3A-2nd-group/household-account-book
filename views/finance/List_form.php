@@ -1,15 +1,5 @@
-<?php
-$title = '収支一覧';
-// エラーがあれば表示
-if (isset($_SESSION['error'])) {
-    echo '<div class="error-message">' . htmlspecialchars($_SESSION['error']) . '</div>';
-    unset($_SESSION['error']);
-}
-?>
-
-
 <div class="finance-container">
-    <h2 class="page-title">収支一覧</h2>
+    <h2 class="h2page-title">収支一覧</h2>
 
     <!-- タブナビゲーション -->
     <div class="tab-navigation">

@@ -10,11 +10,13 @@ class IncomeController extends BaseController
             "SELECT id, name FROM categories WHERE type = 'income'"
         );
         $categories = $stmt->fetchAll();
-
-        $this->render('finance/income_form', array_merge(
-            compact('categories'),
-            ['title' => '収入登録']
-        ));
+        $extraCss = '<link rel="stylesheet" href="/css/Finance/finance.css">';
+        $extraJs = '<script src="/js/Finance/income.js"></script>';
+        $this->render('finance/income_form', [
+                'title' => '収入登録',
+                'extraCss' => $extraCss,
+                'extraJs'  => $extraJs
+            ]);
     }
 
     /* 収入登録処理 */

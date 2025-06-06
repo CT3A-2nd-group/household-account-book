@@ -33,10 +33,6 @@
                     <p class="admin-subtitle">システム管理・設定</p>
                 </div>
                 <nav class="admin-navigation">
-                    <a href="/admin/category" class="admin-nav-link <?= (strpos($_SERVER['REQUEST_URI'], '/admin/category') === 0) ? 'active' : '' ?>">
-                        <i class="fas fa-tags"></i>
-                        カテゴリ管理
-                    </a>
                     <a href="/logout" class="admin-nav-link logout">
                         <i class="fas fa-sign-out-alt"></i>
                         ログアウト

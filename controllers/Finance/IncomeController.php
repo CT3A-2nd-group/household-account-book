@@ -49,6 +49,6 @@ class IncomeController extends BaseController
             ':desc' => $description
         ]);
 
-        $this->redirect('/graph/line');
+        $this->redirect('/List/view');
     }
 }

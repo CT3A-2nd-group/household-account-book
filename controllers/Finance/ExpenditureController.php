@@ -70,6 +70,6 @@ class ExpenditureController extends BaseController
                 
         }
 
-        $this->redirect('/graph/line');
+        $this->redirect('/List/view');
     }
 }

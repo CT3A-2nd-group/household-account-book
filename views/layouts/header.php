@@ -156,6 +156,21 @@
                                 </li>
                             </ul>
                         </li>
+                        <!-- 分析セクション -->
+                        <li class="nav-section">
+                            <button class="section-toggle" onclick="toggleSection('analysis')" aria-expanded="true">
+                                <span class="section-title">分析</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <ul class="section-items" id="section-analysis">
+                                <li class="nav-item">
+                                    <a href="/analysis" class="nav-link">
+                                        <span class="nav-icon analysis-icon"></span>
+                                        <span class="nav-text">満足度分析</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>

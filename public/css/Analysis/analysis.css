@@ -1,0 +1,50 @@
+.analysis-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(26, 115, 232, 0.15);
+  padding: 24px;
+  margin: 20px auto;
+  border: 1px solid #e0e9ff;
+  max-width: 800px;
+  width: 100%;
+}
+
+.analysis-section {
+  margin-bottom: 32px;
+}
+
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  border: 1px solid #c7d8ff;
+}
+
+.analysis-table th {
+  background-color: #e8f0fe;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0066cc;
+  border: 1px solid #c7d8ff;
+}
+
+.analysis-table td {
+  padding: 10px 12px;
+  border: 1px solid #c7d8ff;
+}
+
+.analysis-table .amount {
+  font-weight: 600;
+  color: #0066cc;
+}
+
+.analysis-table .star-rating {
+  color: #f59e0b;
+}
+
+.analysis-table .no-data {
+  padding: 20px;
+  text-align: center;
+  color: #5f6368;
+}

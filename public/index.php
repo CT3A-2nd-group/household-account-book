@@ -42,10 +42,6 @@ $router->add('POST', '/finance/save', fn() => (new SaveController)->save());
 $router->add('GET', '/finance/save-form', fn() => (new SaveController)->showForm());
 $router->add('GET', '/SaveList/view', fn() => (new SaveListController)->SavingsListview());
 
-
-
-
-
 /* Admin */
 $router->add('GET',  '/admin/category/create', fn() => (new AdminCategoryController)->create());
 $router->add('POST', '/admin/category/store',  fn() => (new AdminCategoryController)->store());
@@ -60,6 +56,8 @@ $router->add('GET', '/graph/inCircle-data', fn() => (new GraphCircleController)-
 $router->add('GET', '/graph/exCircle-data', fn() => (new GraphCircleController)->expenditureCircle());
 $router->add('GET', '/graph/circle',        fn() => (new GraphCircleController)->view());;
 
+/* Analysis */
+$router->add('GET', '/analysis', fn() => (new AnalysisController)->view());
 
 /* ---------- 発射 ---------- */
 $router->dispatch(

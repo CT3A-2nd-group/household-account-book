@@ -31,7 +31,7 @@
 
 
         $this->render('graph/line', [
-            'title'    => '収入・支出グラフ',
+            'title'    => '折れ線グラフ',
             'extraCss' => $extraCss,
             'extraJs'  => $extraJs
         ]);

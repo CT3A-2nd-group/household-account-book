@@ -1,5 +1,3 @@
-
-
 <div class="finance-container">
     <h2 class="h2page-title">貯金額一覧</h2>
 

@@ -90,8 +90,7 @@
             <div class="scrollable-navigation">
                 <nav class="main-navigation">
                     <ul class="nav-menu">
-
-
+                        
                         <!-- 登録セクション -->
                         <li class="nav-section">
                             <button class="section-toggle" onclick="toggleSection('register')" aria-expanded="true">

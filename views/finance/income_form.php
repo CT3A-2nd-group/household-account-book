@@ -1,5 +1,5 @@
 <div class="finance-container">
-<h2 class="page-title"><span class="page-title-text">収入を登録</span></h2>
+<h2 class="finance-title"><span class="finance-title-text">収入を登録</span></h2>
 
 <?php if (isset($_SESSION['error'])): ?>
     <div class="error-message">

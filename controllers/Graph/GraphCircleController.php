@@ -30,7 +30,7 @@ class GraphCircleController extends BaseController {
         ]);
 
         $this->render('graph/circle', [
-            'title'    => '収入・支出グラフ',
+            'title'    => '円グラフ',
             'extraCss' => $extraCss,
             'extraJs'  => $extraJs
         ]);

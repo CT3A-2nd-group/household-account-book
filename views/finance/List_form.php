@@ -3,10 +3,10 @@
 
     <!-- タブナビゲーション -->
     <div class="tab-navigation">
-        <button id="incomeTab" class="tab-button">
+        <button id="incomeTab" class="tab-button active">
             収入一覧
         </button>
-        <button id="expenditureTab" class="tab-button active">
+        <button id="expenditureTab" class="tab-button">
             支出一覧
         </button>
     </div>

@@ -11,10 +11,16 @@ class ExpenditureController extends BaseController
             "SELECT id, name FROM categories WHERE type = 'expenditure'"
         );
         $categories = $stmt->fetchAll();
-
+        $extraCss = implode("\n", [
+            '<link rel="stylesheet" href="/css/Finance/finance.css">',
+            '<link rel="stylesheet" href="/css/Finance/expenditure.css">'
+        ]);
+        $extraJs = '<script src="/js/Finance/expenditure.js"></script>';
         $this->render('finance/expenditure_form',  [
                 'categories' => $categories ,
                 'title' => '支出登録',
+                'extraCss' => $extraCss,
+                'extraJs'  => $extraJs
             ]);
     }
 

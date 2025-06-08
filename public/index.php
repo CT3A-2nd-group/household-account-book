@@ -50,11 +50,11 @@ $router->add('POST', '/admin/category/delete', fn() => (new AdminCategoryControl
 /* GraphLine */
 $router->add('GET', '/graph/inLine-data', fn() => (new GraphLineController)->incomeLine());
 $router->add('GET', '/graph/exLine-data', fn() => (new GraphLineController)->expenditureLine());
-$router->add('GET', '/graph/line',        fn() => (new GraphLineController)->view());;
+$router->add('GET', '/graph/line',        fn() => (new GraphLineController)->view());
 /* GraphCircle */
 $router->add('GET', '/graph/inCircle-data', fn() => (new GraphCircleController)->incomeCircle());
 $router->add('GET', '/graph/exCircle-data', fn() => (new GraphCircleController)->expenditureCircle());
-$router->add('GET', '/graph/circle',        fn() => (new GraphCircleController)->view());;
+$router->add('GET', '/graph/circle',        fn() => (new GraphCircleController)->view());
 
 /* Analysis */
 $router->add('GET', '/analysis', fn() => (new AnalysisController)->view());

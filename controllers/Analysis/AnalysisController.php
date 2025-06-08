@@ -43,13 +43,14 @@ class AnalysisController extends BaseController
         $averages = $avgStmt->fetchAll(PDO::FETCH_ASSOC);
 
         $extraCss = '<link rel="stylesheet" href="/css/Analysis/analysis.css">';
-
+        $extraJs = '<script src="/js/pagination.js"></script>';
         $this->render('analysis/satisfaction', [
             'title'    => '満足度・無駄分析',
             'ranking'  => $ranking,
             'wastes'   => $wastes,
             'averages' => $averages,
             'extraCss' => $extraCss,
+            'extraJs'  => $extraJs
         ]);
     }
 }

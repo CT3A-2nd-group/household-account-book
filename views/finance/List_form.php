@@ -19,7 +19,7 @@
                     <input type="hidden" name="target_type" value="income">
                     
                     <div class="table-container">
-                        <table class="finance-table">
+                        <table class="finance-table paginated-table">
                             <thead>
                                 <tr>
                                     <th>日付</th>
@@ -68,7 +68,7 @@
                     <input type="hidden" name="target_type" value="expenditure">
                     
                     <div class="table-container">
-                        <table class="finance-table">
+                        <table class="finance-table paginated-table">
                             <thead>
                                 <tr>
                                     <th>日付</th>

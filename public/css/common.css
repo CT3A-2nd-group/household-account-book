@@ -107,3 +107,24 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }
+
+/* Pagination */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+.pagination-controls button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #1a73e8;
+  background: #fff;
+  color: #1a73e8;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

@@ -57,6 +57,4 @@ class SaveController extends BaseController{
 
         header('Location: /home');
     }
-
-
-};
+}

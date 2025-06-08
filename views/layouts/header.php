@@ -6,12 +6,13 @@
 
     <?php if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
         <!-- 管理者専用 CSS -->
-        <link rel="stylesheet" href="/css/admin-layout.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <?php else: ?>
         <!-- 通常ユーザー用 CSS -->
         <link rel="stylesheet" href="/css/common.css">
         <link rel="stylesheet" href="/css/layout.css">
+        <!-- ユーザー用JavaScript -->
+        <script src="/js/common.js"></script>
     <?php endif; ?>
 
     <?= $extraCss ?? '' ?>

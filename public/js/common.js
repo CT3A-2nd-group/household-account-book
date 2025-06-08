@@ -107,31 +107,6 @@ function restoreSectionStates() {
   }
 }
 
-// 全セクションを開く/閉じる（管理用関数）
-function toggleAllSections(expand = true) {
-  const sections = ["graph", "register"];
-
-  sections.forEach((sectionId) => {
-    const sectionElement = document.getElementById(`section-${sectionId}`);
-    const toggleButton = document.querySelector(
-      `[onclick="toggleSection('${sectionId}')"]`
-    );
-
-    if (sectionElement && toggleButton) {
-      const isCurrentlyExpanded =
-        toggleButton.getAttribute("aria-expanded") === "true";
-
-      if (expand && !isCurrentlyExpanded) {
-        expandSection(sectionElement, toggleButton);
-        saveSectionState(sectionId, true);
-      } else if (!expand && isCurrentlyExpanded) {
-        collapseSection(sectionElement, toggleButton);
-        saveSectionState(sectionId, false);
-      }
-    }
-  });
-}
-
 // キーボードアクセシビリティ対応
 document.addEventListener("keydown", (e) => {
   if (e.target.classList.contains("section-toggle")) {
@@ -145,4 +120,11 @@ document.addEventListener("keydown", (e) => {
 // ページ読み込み時に状態を復元
 document.addEventListener("DOMContentLoaded", () => {
   restoreSectionStates();
+});
+
+// ESCキーでメニューを閉じる
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeMobileMenu();
+  }
 });

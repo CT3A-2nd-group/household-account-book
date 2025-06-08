@@ -485,14 +485,12 @@
 }
 
 .page-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: white;
-  margin: 0 0 0.5rem 0;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
 }
 
 .title-icon {
@@ -508,6 +506,7 @@
 }
 
 .title-badge {
+  /* 既存のスタイル */
   background: linear-gradient(45deg, #fbbf24, #f59e0b);
   color: white;
   font-size: 0.75rem;
@@ -517,6 +516,14 @@
   text-shadow: none;
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
   animation: pulse 2s infinite;
+
+  /* 追加で高さを揃える調整 */
+  display: inline-flex;
+  align-items: center;
+  height: 1.5rem; /* 調整値：必要に応じて変えてOK */
+  margin-left: 0.5rem; /* タイトルと少し間隔を取る */
+  margin-bottom: 0.25rem;
+  vertical-align: middle;
 }
 
 @keyframes pulse {

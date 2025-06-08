@@ -89,5 +89,3 @@
     </div>
 </form>
 </div>
-
-<script src="/js/expenditure.js"></script>

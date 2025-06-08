@@ -1,8 +1,6 @@
 <?php if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
         </main>
     </div>
-    <!-- 管理者用JavaScript -->
-    <script src="/js/admin-layout.js"></script>
     <script>
     // 管理者用メニュー制御
     document.addEventListener('DOMContentLoaded', function() {
@@ -133,40 +131,9 @@
         <!-- モバイル用オーバーレイ -->
         <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     </div>
-    
-    <!-- ユーザー用JavaScript -->
-    <script src="/js/common.js"></script>
-    <script>
-    // モバイルメニュー制御
-    function toggleMobileMenu() {
-        const sidebar = document.getElementById('leftSidebar');
-        const overlay = document.getElementById('mobileOverlay');
-        
-        sidebar.classList.toggle('mobile-open');
-        overlay.classList.toggle('active');
-    }
-
-    function closeMobileMenu() {
-        const sidebar = document.getElementById('leftSidebar');
-        const overlay = document.getElementById('mobileOverlay');
-        
-        sidebar.classList.remove('mobile-open');
-        overlay.classList.remove('active');
-    }
-
-    // ESCキーでメニューを閉じる
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeMobileMenu();
-        }
-    });
-    </script>
-
 <?php else: ?>
         </main>
     </div>
-    <!-- 未ログインユーザー用JavaScript -->
-    <script src="/js/simple.js"></script>
 <?php endif; ?>
 </body>
 </html>

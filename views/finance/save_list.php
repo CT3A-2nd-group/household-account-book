@@ -2,7 +2,7 @@
     <h2 class="h2page-title">貯金額一覧</h2>
 
     <div class="table-container">
-        <table class="finance-table">
+        <table class="finance-table paginated-table">
             <thead>
                 <tr>
                     <th>年</th>

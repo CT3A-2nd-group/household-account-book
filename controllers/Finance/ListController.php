@@ -5,18 +5,22 @@
         }
         public function Listview() {
             $this->requireLogin();
+
+            $incomes = $this->IncomeList($_SESSION['user_id']);
+            $expenditures = $this->ExpenditureList($_SESSION['user_id']);
             $extraCss = implode("\n", [
                 '<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />',
                 '<link rel="stylesheet" href="/css/Finance/finance.css">'
             ]);
+            $extraJs = implode("\n", [
+                '<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>',
+                '<script src="/js/pagination.js"></script>'
+            ]);
 
-            $extraJs = '<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>';
-            $expenditures = $this->ExpenditureList($_SESSION['user_id']);
-            $incomes = $this->IncomeList($_SESSION['user_id']);
             $this->render('finance/List_form', [
-                'expenditures' => $expenditures,
-                'incomes' => $incomes,
                 'title' => '収支一覧',
+                'incomes' => $incomes,
+                'expenditures' => $expenditures,
                 'extraCss' => $extraCss,
                 'extraJs'  => $extraJs
             ]);

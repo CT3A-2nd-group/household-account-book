@@ -3,7 +3,7 @@
 
     <section class="analysis-section">
         <h3>満足度ランキング（上位5件）</h3>
-        <table class="analysis-table">
+            <table class="analysis-table paginated-table">
             <thead>
             <tr><th>日付</th><th>カテゴリ</th><th>金額(円)</th><th>満足度</th><th>メモ</th></tr>
             </thead>
@@ -28,7 +28,7 @@
 
     <section class="analysis-section">
         <h3>無駄な支出</h3>
-        <table class="analysis-table">
+         <table class="analysis-table paginated-table">
             <thead>
             <tr><th>日付</th><th>カテゴリ</th><th>金額(円)</th><th>満足度</th><th>メモ</th></tr>
             </thead>
@@ -53,7 +53,7 @@
 
     <section class="analysis-section">
         <h3>カテゴリ別平均満足度</h3>
-        <table class="analysis-table">
+        <table class="analysis-table paginated-table">
             <thead>
             <tr><th>カテゴリ</th><th>平均満足度</th></tr>
             </thead>

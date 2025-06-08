@@ -226,10 +226,15 @@
 
 .save-icon {
   background-color: #fef3c7; /* 明るめ金色風（よりリッチ感） */
-  color: #eab308;           /* 黄土色系のアクセント */
+  color: #eab308; /* 黄土色系のアクセント */
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-piggy-bank-icon lucide-piggy-bank"><path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z"/><path d="M16 10h.01"/><path d="M2 8v1a2 2 0 0 0 2 2h1"/></svg>');
 }
 
+.analysis-icon {
+  background-color: #ffe4e6; /* 薄いピンク */
+  color: #f472b6; /* 濃いめピンク */
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>');
+}
 
 .logout-icon {
   color: #ef4444; /* 赤 */
@@ -392,7 +397,7 @@
   letter-spacing: 0.05em;
   padding: 0 1rem;
 }
-.home-link{
+.home-link {
   display: flex;
   align-items: center;
   padding: 0.875rem 1rem;
@@ -406,7 +411,7 @@
   color: black;
 }
 /* サイドバーフッター */
-.sidebar-fixed-home{
+.sidebar-fixed-home {
   padding-top: 1rem;
 
   padding-left: 1rem;

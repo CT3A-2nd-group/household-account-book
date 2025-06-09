@@ -12,6 +12,8 @@ class HomeController extends BaseController
 
         //ここで自由に使えるお金を計算
         $freeMoney = $this->calcFreeMoney($this->pdo, $userId);
+        //自由資金合計を渡す
+        $totalFreeMoney = $this->allFreeMoney($this->pdo, $userId);
 
         // header / footer を自動付与して home ビューへ
         $this->render('home', array_merge(
@@ -19,6 +21,7 @@ class HomeController extends BaseController
             [
                 'title'     => 'ホーム',
                 'extraCss'  => $extraCss,
+                'totalFreeMoney'   => $totalFreeMoney,
             ]
         ));
     }
@@ -113,4 +116,15 @@ class HomeController extends BaseController
         }
         return $freeMoney;
     }   
+    //free_money合計を求めたい　あとは火曜日の自分がやってくれるさ
+    function allFreeMoney(PDO $pdo, int $user_id): float {
+        $sql = "SELECT SUM(free_money) as total_free_money
+                FROM monthly_finances 
+                WHERE user_id = :user_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':user_id' => $user_id]);
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (float)($row['total_free_money'] ?? 0);
+    }
 }

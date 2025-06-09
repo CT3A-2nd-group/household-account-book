@@ -32,13 +32,13 @@
                             <tbody>
                                 <?php foreach ($incomes as $inc): ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($inc['input_date']) ?></td>
-                                        <td><?= htmlspecialchars($inc['category_name']) ?></td>
+                                        <td><?= htmlspecialchars($inc['input_date'] ?? '') ?></td>
+                                        <td><?= htmlspecialchars($inc['category_name'] ?? '') ?></td>
                                         <td class="amount"><?= number_format($inc['amount']) ?></td>
-                                        <td class="memo"><?= htmlspecialchars($inc['description']) ?></td>
+                                        <td class="memo"><?= htmlspecialchars($inc['description'] ?? '') ?></td>
                                         <td class="checkbox-cell">
                                             <label class="checkbox-label">
-                                                <input type="checkbox" name="delete_ids[]" value="<?= htmlspecialchars($inc['id']) ?>" class="delete-checkbox">
+                                                <input type="checkbox" name="delete_ids[]" value="<?= htmlspecialchars($inc['id'] ?? '') ?>" class="delete-checkbox">
                                             </label>
                                         </td>
                                     </tr>
@@ -63,7 +63,7 @@
                 </form>
             </div>
             <!-- 支出一覧 -->
-             <div class="swiper-slide">
+            <div class="swiper-slide">
                 <form method="POST" action="/List/Delete" class="finance-form">
                     <input type="hidden" name="target_type" value="expenditure">
                     
@@ -83,8 +83,8 @@
                             <tbody>
                                 <?php foreach ($expenditures as $exp): ?>
                                     <tr>
-                                        <td><?= htmlspecialchars($exp['input_date']) ?></td>
-                                        <td><?= htmlspecialchars($exp['category_name']) ?></td>
+                                        <td><?= htmlspecialchars($exp['input_date'] ?? '') ?></td>
+                                        <td><?= htmlspecialchars($exp['category_name'] ?? '') ?></td>
                                         <td class="amount"><?= number_format($exp['amount']) ?></td>
                                         <td class="star-rating">
                                             <?= $exp['star_rate'] ? str_repeat('★', (int)$exp['star_rate']) . str_repeat('☆', 5 - (int)$exp['star_rate']) : '評価なし' ?>
@@ -96,10 +96,10 @@
                                                 <span class="badge badge-no-waste">いいえ</span>
                                             <?php endif; ?>
                                         </td>
-                                        <td class="memo"><?= htmlspecialchars($exp['description']) ?></td>
+                                        <td class="memo"><?= htmlspecialchars($exp['description'] ?? '') ?></td>
                                         <td class="checkbox-cell">
                                             <label class="checkbox-label">
-                                                <input type="checkbox" name="delete_ids[]" value="<?= htmlspecialchars($exp['id']) ?>" class="delete-checkbox">
+                                                <input type="checkbox" name="delete_ids[]" value="<?= htmlspecialchars($exp['id'] ?? '') ?>" class="delete-checkbox">
                                             </label>
                                         </td>
                                     </tr>

@@ -44,18 +44,33 @@
                 <form class="settings-form" method="POST" action="/auth/change-password">
                     <div class="form-group">
                         <label for="current_password" class="form-label">現在のパスワード</label>
-                        <input type="password" id="current_password" name="current_password" class="form-input" required>
+                                                <div class="password-input-wrapper">
+                            <input type="password" id="current_password" name="current_password" class="form-input" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('current_password')">
+                                <span class="toggle-icon show"></span>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="new_password" class="form-label">新しいパスワード</label>
-                        <input type="password" id="new_password" name="new_password" class="form-input" minlength="4" required>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="new_password" name="new_password" class="form-input" minlength="4" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('new_password')">
+                                <span class="toggle-icon show"></span>
+                            </button>
+                        </div>
                         <div class="form-help">4文字以上で入力してください</div>
                     </div>
 
                     <div class="form-group">
                         <label for="confirm_password" class="form-label">新しいパスワード（確認）</label>
-                        <input type="password" id="confirm_password" name="confirm_password" class="form-input" required>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="confirm_password" name="confirm_password" class="form-input" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('confirm_password')">
+                                <span class="toggle-icon show"></span>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="form-actions">
@@ -121,6 +136,19 @@
 
 <!-- パスワード一致チェック -->
 <script>
+function togglePassword(id) {
+    const input = document.getElementById(id);
+    const icon = input.parentElement.querySelector('.toggle-icon');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'toggle-icon hide';
+    } else {
+        input.type = 'password';
+        icon.className = 'toggle-icon show';
+    }
+}
+
+
 document.getElementById('confirm_password')?.addEventListener('input', function () {
     const newPassword = document.getElementById('new_password').value;
     if (this.value !== newPassword) {

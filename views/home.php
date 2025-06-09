@@ -26,7 +26,7 @@
                 <h3 class="card-title">総自由資金</h3>
                 <span class="card-icon balance-icon"></span>
             </div>
-            <p class="card-amount" style="color: #3b82f6;">¥450,000</p>
+            <p class="card-amount" style="color: #3b82f6;">¥<?= number_format($totalFreeMoney) ?></p>
             <p class="card-change">累計貯蓄額</p>
             </div>
 
@@ -51,4 +51,4 @@
         <?php foreach ($freeMoney as $month => $amount): ?>
             <li><?= htmlspecialchars($month) ?> : ¥<?= number_format($amount, 0) ?></li>
         <?php endforeach; ?>
-    </u
+    </ul>

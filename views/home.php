@@ -14,7 +14,7 @@
             <div class="summary-card income-card">
             <div class="card-header">
                 <h3 class="card-title">今月の自由資金</h3>
-                <span class="card-icon income-icon"></span>
+                <span class="card-icon thismonth-icon"></span>
             </div>
             <p class="card-amount" style="color: #10b981;">¥34,000</p>
             <p class="card-change">前月比：+¥11,000</p>

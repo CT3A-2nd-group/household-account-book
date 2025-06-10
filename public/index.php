@@ -41,6 +41,8 @@ $router->add('POST', '/List/Delete', fn() => (new ListController)->DeleteList())
 $router->add('POST', '/finance/save', fn() => (new SaveController)->save());
 $router->add('GET', '/finance/save-form', fn() => (new SaveController)->showForm());
 $router->add('GET', '/SaveList/view', fn() => (new SaveListController)->SavingsListview());
+$router->add('POST', '/finance/goal', fn() => (new GoalController)->createGoal());
+$router->add('GET', '/finance/goal-form', fn() => (new GoalController)->showForm());
 
 /* Admin */
 $router->add('GET',  '/admin/category/create', fn() => (new AdminCategoryController)->create());

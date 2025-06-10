@@ -1,464 +1,402 @@
+/* 収入登録フォーム専用スタイル */
+
 /* 基本レイアウト */
 .finance-container {
-  background: linear-gradient(
-    135deg,
-    #e3f2fd 0%,
-    #bbdefb 30%,
-    #90caf9 70%,
-    #64b5f6 100%
-  );
-  border-radius: 16px;
-  padding: 40px;
-  margin: 24px auto;
-  max-width: 650px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
+  max-width: 600px;
+  margin: 2rem auto;
+  box-shadow: 0 20px 40px rgba(13, 71, 161, 0.15);
+  padding: 2rem;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%, #90caf9 70%, #64b5f6 100%);
+  border-radius: 20px;
   position: relative;
-  /* アニメーション追加 */
-  animation: fadeSlideIn 0.6s ease-out forwards;
+  overflow: hidden;
 }
 
 .finance-container::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  z-index: -1;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
 }
 
-/* タイトルの両側の絵文字を削除 */
-.finance-title::before,
-.finance-title::after {
-  content: none;
-  display: none;
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
 }
 
 /* エラーメッセージ */
 .error-message {
-  background: linear-gradient(135deg, #ffebee, #ffcdd2, #ef9a9a);
-  border: 2px solid #ef5350;
-  color: #b71c1c;
-  padding: 20px 24px;
-  border-radius: 12px;
-  margin-bottom: 32px;
-  font-size: 15px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  text-align: center;
   font-weight: 500;
-  box-shadow: 0 6px 20px rgba(183, 28, 28, 0.15);
-  /* アニメーション追加 */
-  animation: shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  animation: slideIn 0.3s ease-out;
 }
 
-/* フォーム */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* フォームスタイル */
 .finance-form {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  /* アニメーション追加 */
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 0.3s forwards;
+  position: relative;
+  z-index: 1;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  /* アニメーション追加 */
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-.form-group:nth-child(1) {
-  animation-delay: 0.4s;
-}
-
-.form-group:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.form-group:nth-child(3) {
-  animation-delay: 0.6s;
-}
-
-.form-group:nth-child(4) {
-  animation-delay: 0.7s;
+  margin-bottom: 1.5rem;
 }
 
 .form-label {
-  font-size: 16px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #0d47a1, #1565c0, #1976d2, #2196f3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 4px;
-}
-
-.form-input {
-  padding: 20px 60px 20px 24px;
-  border: 3px solid transparent;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 500;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #bbdefb, #90caf9, #64b5f6, #42a5f5) border-box;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
-}
-
-.form-input:focus {
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #0d47a1, #1565c0, #1976d2, #2196f3) border-box;
-  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.3);
-  outline: none;
-  transform: translateY(-3px);
-}
-
-.form-input::placeholder {
-  color: #90a4ae;
-  font-weight: 400;
-}
-
-/* 金額入力フィールドの特別スタイル */
-.amount-input {
-  font-size: 20px;
+  display: block;
+  color: #0d47a1;
   font-weight: 600;
-  text-align: right;
-  padding-right: 70px;
-  color: #1565c0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* セレクトボックス */
+/* 入力フィールド共通スタイル */
+.form-input,
+.form-select,
+.date-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid rgba(13, 71, 161, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.form-input:focus,
+.form-select:focus,
+.date-input:focus {
+  outline: none;
+  border-color: #2196f3;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2), 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.form-input::placeholder,
+.date-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* 日付入力ラッパー */
+.date-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-input {
+  flex: 1;
+  padding-right: 3rem;
+}
+
+.calendar-button {
+  position: absolute;
+  right: 0.75rem;
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+}
+
+.calendar-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+.calendar-button svg {
+  color: white;
+  width: 18px;
+  height: 18px;
+}
+
+/* セレクトボックスラッパー */
 .select-wrapper {
   position: relative;
 }
 
 .select-wrapper::after {
-  content: "";
+  content: "▼";
   position: absolute;
+  right: 1rem;
   top: 50%;
-  right: 24px;
   transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid #1a73e8;
+  color: #1976d2;
   pointer-events: none;
+  font-size: 0.8rem;
 }
 
+/* セレクトボックスのデフォルト矢印を非表示にする */
 .form-select {
   appearance: none;
-  padding: 20px 60px 20px 24px;
-  border: 3px solid transparent;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 500;
-  width: 100%;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #bbdefb, #90caf9, #64b5f6, #42a5f5) border-box;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-.form-select:focus {
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #0d47a1, #1565c0, #1976d2, #2196f3) border-box;
-  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.3);
-  outline: none;
-  transform: translateY(-3px);
-}
-
-/* 入力フィールドのアイコン - 絵文字を非表示 */
-.input-icon {
+/* Firefox用の対応 */
+.form-select::-ms-expand {
   display: none;
 }
 
-/* 日付入力フィールドの特別スタイル */
-.date-input-wrapper {
+/* 入力アイコンラッパー */
+.input-with-icon {
   position: relative;
 }
 
-.date-input {
-  /* ネイティブのappearanceを保持してカレンダーピッカーを表示 */
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  appearance: none;
-  padding: 20px 24px;
-  border: 3px solid transparent;
-  border-radius: 12px;
-  font-size: 17px;
+/* 金額入力の特別スタイル */
+.amount-input {
+  background: linear-gradient(135deg, rgb(255, 255, 255), rgb(255, 255, 255));
+  border: 2px solid rgba(13, 71, 161, 0.2);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #0d47a1;
+  text-align: right;
+  padding-right: 2.5rem;
+  letter-spacing: 0.5px;
+}
+
+.amount-input:focus {
+  border-color: #2196f3;
+  background: linear-gradient(135deg, rgb(255, 255, 255), rgb(248, 251, 255));
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2), 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.amount-input::placeholder {
+  color: #90a4ae;
   font-weight: 500;
-  width: 100%;
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #bbdefb, #90caf9, #64b5f6, #42a5f5) border-box;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  text-align: left;
 }
 
-.date-input:focus {
-  background: linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #0d47a1, #1565c0, #1976d2, #2196f3) border-box;
-  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.3);
-  outline: none;
-  transform: translateY(-3px);
-}
-
-/* カレンダーピッカーアイコンのスタイル */
-.date-input::-webkit-calendar-picker-indicator {
-  opacity: 1;
+/* 金額フィールドに円マークを追加 */
+.input-with-icon.amount-wrapper::after,
+.input-with-icon:has(.amount-input)::after {
+  content: "¥";
   position: absolute;
-  right: 20px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231565c0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E")
-    no-repeat center;
-  background-size: 20px 20px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.date-input::-webkit-calendar-picker-indicator:hover {
-  background-color: rgba(26, 115, 232, 0.1);
-  transform: scale(1.1);
-}
-
-/* Firefox用の日付入力スタイル */
-.date-input::-moz-focus-inner {
-  border: 0;
-}
-
-/* カスタムカレンダーボタン */
-.calendar-button {
-  position: absolute;
-  right: 20px;
+  right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  z-index: 5;
-}
-
-.calendar-button:hover {
-  background-color: rgba(26, 115, 232, 0.1);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.calendar-button svg {
-  width: 20px;
-  height: 20px;
-  stroke: #1565c0;
+  color: #1976d2;
+  font-weight: bold;
+  font-size: 1.1rem;
+  pointer-events: none;
 }
 
 /* 送信ボタン */
 .form-actions {
-  margin-top: 24px;
-  display: flex;
-  justify-content: center;
-  /* アニメーション追加 */
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 0.8s forwards;
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .submit-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, #ff6b35, #f7931e, #ff8f00, #ff9800);
+  background: linear-gradient(135deg, #2196f3, #1976d2);
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
   position: relative;
   overflow: hidden;
   min-width: 160px;
-}
-
-.submit-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transition: left 0.6s ease;
+  justify-content: center;
 }
 
 .submit-button:hover {
-  background: linear-gradient(135deg, #e55a2b, #e6851a, #e67e00, #e68900);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
-}
-
-.submit-button:hover::before {
-  left: 100%;
+  box-shadow: 0 12px 35px rgba(33, 150, 243, 0.4);
 }
 
 .submit-button:active {
   transform: translateY(-1px);
 }
 
-/* リップル効果 */
-.submit-button:active::after {
+.submit-button::before {
   content: "";
   position: absolute;
-  top: var(--click-y);
-  left: var(--click-x);
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.6);
+  top: var(--click-y, 50%);
+  left: var(--click-x, 50%);
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  transform: scale(0);
-  animation: ripple 0.6s linear;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
 }
 
-@keyframes ripple {
-  to {
-    transform: scale(20);
-    opacity: 0;
-  }
+.submit-button:active::before {
+  width: 300px;
+  height: 300px;
 }
 
 .button-icon {
   width: 20px;
   height: 20px;
-  margin-right: 8px;
 }
 
-/* アニメーション定義 */
-@keyframes fadeSlideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes expandWidth {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 160px;
-  }
-}
-
-@keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-3px, 0, 0);
-  }
-  20%,
-  80% {
-    transform: translate3d(6px, 0, 0);
-  }
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-6px, 0, 0);
-  }
-  40%,
-  60% {
-    transform: translate3d(6px, 0, 0);
-  }
-}
-
-/* レスポンシブ対応 */
+/* レスポンシブデザイン */
 @media (max-width: 768px) {
   .finance-container {
-    padding: 28px;
-    margin: 16px;
-    max-width: none;
+    margin: 1rem;
+    padding: 1.5rem;
   }
 
   .form-input,
   .form-select,
   .date-input {
-    padding: 16px 50px 16px 20px;
-    font-size: 16px;
+    padding: 0.75rem;
+    font-size: 0.95rem;
   }
 
   .amount-input {
-    font-size: 18px;
-    padding-right: 60px;
+    font-size: 1.1rem;
   }
 
   .submit-button {
-    padding: 12px 24px;
-    font-size: 15px;
-    width: 100%;
-    min-width: auto;
-  }
-
-  .button-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 6px;
-  }
-
-  .date-input::-webkit-calendar-picker-indicator {
-    right: 16px;
-    width: 20px;
-    height: 20px;
-    background-size: 18px 18px;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
   }
 }
 
-/* アニメーションを無効にする設定（アクセシビリティ対応） */
+@media (max-width: 480px) {
+  .finance-container {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* アニメーション */
+.finance-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group {
+  animation: slideInLeft 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.form-group:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.form-group:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.form-group:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.form-group:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* フォーカス時のグロー効果 */
+.form-input:focus,
+.form-select:focus,
+.date-input:focus {
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2), 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  to {
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4), 0 4px 25px rgba(33, 150, 243, 0.2);
+  }
+}
+
+/* 金額入力時のエフェクト */
+.amount-input:focus {
+  animation: moneyGlow 1.5s infinite alternate;
+}
+
+@keyframes moneyGlow {
+  from {
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.3), 0 6px 25px rgba(33, 150, 243, 0.2);
+  }
+  to {
+    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.6), 0 8px 30px rgba(33, 150, 243, 0.4);
+  }
+}
+
+/* アクセシビリティ対応 */
 @media (prefers-reduced-motion: reduce) {
   .finance-container,
-  .error-message,
-  .finance-form,
   .form-group,
-  .form-actions {
-    animation: none;
-    opacity: 1;
-  }
-
   .form-input:focus,
   .form-select:focus,
+  .date-input:focus,
+  .amount-input:focus,
   .submit-button:hover {
+    animation: none;
     transform: none;
-  }
-
-  .submit-button::before,
-  .submit-button:active::after {
-    display: none;
+    transition: none;
   }
 }

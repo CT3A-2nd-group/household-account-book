@@ -16,8 +16,8 @@
                 <h3 class="card-title">今月の自由資金</h3>
                 <span class="card-icon income-icon"></span>
             </div>
-            <p class="card-amount" style="color: #10b981;">¥34,000</p>
-            <p class="card-change">前月比：+¥11,000</p>
+            <p class="card-amount" style="color: #10b981;">¥<?= number_format($freeMoney[$latestMonth] ?? 0) ?></p>
+            <p class="card-change">前月比：<?=number_format($freeMoney[$latestMonth] - $freeMoney[$prevMonth ?? 0]) ?></p>
             </div>
 
             <!-- 総自由資金 -->

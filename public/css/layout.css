@@ -485,16 +485,16 @@
 }
 
 .page-title {
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   letter-spacing: -0.5px;
   position: relative;
   z-index: 1;
 }
 
 .title-icon {
-  font-size: 2rem;
+  font-size: 38px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 

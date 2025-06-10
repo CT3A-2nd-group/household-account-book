@@ -16,9 +16,15 @@ class HomeController extends BaseController
         // 自由資金の合計を取得
         $totalFreeMoney = $this->allFreeMoney($this->pdo, $userId);
 
+        // 目標金額の取得
+        $goalMoney = $this->goalMoney($this->pdo, $userId);
+
+        //目標達成率の取得
+        $goalProgress = $goalMoney > 0 ? min(100, round(($totalFreeMoney / $goalMoney) * 100 , 1)) : 0;
+
         // ビューに渡す
         $this->render('home', array_merge(
-            compact('username', 'isAdmin', 'totalFreeMoney'),
+            compact('username', 'isAdmin', 'totalFreeMoney','goalMoney','goalProgress'),
             $calcResult,
             [
                 'title'    => 'ホーム',
@@ -139,5 +145,17 @@ class HomeController extends BaseController
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return (float)($row['total_free_money'] ?? 0);
+    }
+
+    function goalMoney(PDO $pdo, int $user_id): float
+    {
+        $sql = "SELECT target_amount 
+                FROM goals
+                WHERE user_id = :user_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':user_id' => $user_id]);
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (float)($row['target_amount'] ?? 0);
     }
 }

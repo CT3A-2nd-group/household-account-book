@@ -36,7 +36,7 @@
                 <h3 class="card-title">目標達成率</h3>
                 <span class="card-icon" style="background-color: #f3e8ff;"></span>
             </div>
-            <p class="card-amount" style="color: #a855f7;">50.0%</p>
+            <p class="card-amount" style="color: #a855f7;"> <?= $goalProgress ?>%</p>
             <p class="card-change">現在の進捗</p>
             </div>
 

@@ -9,6 +9,10 @@ class HomeController extends BaseController
         $isAdmin  = $_SESSION['is_admin'] ?? 0;
         $username = $this->getUsername($userId);
         $extraCss = '<link rel="stylesheet" href="/css/home.css">';
+        $extraJs = implode("\n", [
+            '<script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>',
+            '<script src="/js/Home/progressbar.js" defer></script>'
+        ]);
 
         // 自由資金関連データ取得（freeMoney, latestMonth, prevMonth を一括取得）
         $calcResult = $this->calcFreeMoney($this->pdo, $userId);
@@ -16,19 +20,22 @@ class HomeController extends BaseController
         // 自由資金の合計を取得
         $totalFreeMoney = $this->allFreeMoney($this->pdo, $userId);
 
-        // 目標金額の取得
-        $goalMoney = $this->goalMoney($this->pdo, $userId);
+
+        $goal = $this->getGoal($this->pdo, $userId);
+        $goalTitle = $goal['target_name'] ?? null;
+        $goalMoney = (float)($goal['target_amount'] ?? 0);
 
         //目標達成率の取得
         $goalProgress = $goalMoney > 0 ? min(100, round(($totalFreeMoney / $goalMoney) * 100 , 1)) : 0;
 
         // ビューに渡す
         $this->render('home', array_merge(
-            compact('username', 'isAdmin', 'totalFreeMoney','goalMoney','goalProgress'),
+            compact('username', 'isAdmin', 'totalFreeMoney','goalTitle','goalMoney','goalProgress'),
             $calcResult,
             [
                 'title'    => 'ホーム',
                 'extraCss' => $extraCss,
+                'extraJs' => $extraJs,
             ]
         ));
     }
@@ -147,15 +154,17 @@ class HomeController extends BaseController
         return (float)($row['total_free_money'] ?? 0);
     }
 
-    function goalMoney(PDO $pdo, int $user_id): float
+    function getGoal(PDO $pdo, int $user_id): ?array
     {
-        $sql = "SELECT target_amount 
-                FROM goals
-                WHERE user_id = :user_id";
+        $sql = "SELECT target_name, target_amount 
+                FROM goals 
+                WHERE user_id = :user_id 
+                LIMIT 1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':user_id' => $user_id]);
-
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return (float)($row['target_amount'] ?? 0);
+
+        return $row ?: null;
     }
+
 }

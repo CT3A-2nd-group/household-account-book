@@ -26,7 +26,7 @@
             <!-- 総自由資金 -->
             <div class="summary-card balance-card">
             <div class="card-header">
-                <h3 class="card-title">総自由資金</h3>
+                <h3 class="card-title">現在の自由資金</h3>
                 <span class="card-icon balance-icon"></span>
             </div>
             <p class="card-amount" style="color: #3b82f6;">¥<?= number_format($totalFreeMoney) ?></p>
@@ -61,7 +61,7 @@
   <div class="goal-right">
     <div class="goal-amount-grid">
       <div class="goal-box">
-        <div class="label">現在の貯金額</div>
+        <div class="label">現在の自由資金額</div>
         <div class="value">¥<?= number_format($totalFreeMoney) ?></div>
       </div>
       <div class="goal-box">
@@ -74,6 +74,12 @@
       <div class="label">あと必要な金額</div>
       <div class="value">¥<?= number_format(max(0, $goalMoney - $totalFreeMoney)) ?></div>
     </div>
+    <!-- 達成率100%になったら現れるタイプのボタン -->
+    <?php if ($goalProgress >= 100): ?>
+        <form action="/goal/delete" method="POST">
+        <button type="submit" class="goal-clear-button">目標達成！</button>
+        </form>
+    <?php endif; ?>
   </div>
 </div>
 

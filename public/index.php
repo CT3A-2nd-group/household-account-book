@@ -17,6 +17,7 @@ $router = new Router();
 /* Home */
 $router->add('GET', '/',     fn() => (new HomeController)->index());
 $router->add('GET', '/home', fn() => (new HomeController)->index());
+$router->add('POST', '/goal/delete', fn() => (new HomeController)->deleteGoalAndRecord());
 
 /* Auth */
 $router->add('GET',  '/login',    fn() => (new LoginController)->showForm());

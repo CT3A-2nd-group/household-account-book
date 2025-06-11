@@ -17,7 +17,10 @@
                 <span class="card-icon thismonth-icon"></span>
             </div>
             <p class="card-amount" style="color: #10b981;">¥<?= number_format($freeMoney[$latestMonth] ?? 0) ?></p>
-            <p class="card-change">前月比：<?=number_format($freeMoney[$latestMonth] - $freeMoney[$prevMonth ?? 0]) ?></p>
+            <p class="card-change">
+                前月比：
+                <?= number_format(($freeMoney[$latestMonth] ?? 0) - ($freeMoney[$prevMonth] ?? 0)) ?>
+            </p>
             </div>
 
             <!-- 総自由資金 -->
@@ -43,8 +46,41 @@
         </div>
     </section>
 
+
+
+<div class="goal-progress-card">
+  <!-- 左：タイトル＋バー -->
+  <div class="goal-left">
+  <div class="goal-progress-label">
+    目標：<?= htmlspecialchars($goalTitle ?? '未設定') ?>
+  </div>
+  <div id="circle-goal-bar" class="circle-progress-bar" data-progress="<?= $goalProgress ?>"></div>
+</div>
+
+  <!-- 右：詳細 -->
+  <div class="goal-right">
+    <div class="goal-amount-grid">
+      <div class="goal-box">
+        <div class="label">現在の貯金額</div>
+        <div class="value">¥<?= number_format($totalFreeMoney) ?></div>
+      </div>
+      <div class="goal-box">
+        <div class="label">目標金額</div>
+        <div class="value">¥<?= number_format($goalMoney) ?></div>
+      </div>
+    </div>
+
+    <div class="goal-remaining-box">
+      <div class="label">あと必要な金額</div>
+      <div class="value">¥<?= number_format(max(0, $goalMoney - $totalFreeMoney)) ?></div>
+    </div>
+  </div>
+</div>
+
+
     <a href="/finance/goal-form">目標登録</a>
     <a href="/finance/save-form">貯金額登録</a>
+
     <!-- 仮置きの自由資金表示 -->
     <h2>自由資金(表示)</h2>
     <!-- 月：金額の表示 -->

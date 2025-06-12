@@ -8,7 +8,10 @@ class HomeController extends BaseController
         $userId   = $_SESSION['user_id'];
         $isAdmin  = $_SESSION['is_admin'] ?? 0;
         $username = $this->getUsername($userId);
-        $extraCss = '<link rel="stylesheet" href="/css/home.css">';
+        $extraCss = implode("\n", [
+            '<link rel="stylesheet" href="/css/home.css">',
+            '<link rel="stylesheet" href="/css/Finance/finance.css">'
+        ]);
         $extraJs = implode("\n", [
             '<script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>',
             '<script src="/js/Home/progressbar.js" defer></script>'

@@ -93,12 +93,34 @@
   </div>
 
 
-    <!-- 仮置きの自由資金表示 -->
-    <h2>自由資金(表示)</h2>
-    <!-- 月：金額の表示 -->
-    <ul>
-        <?php foreach ($freeMoney as $month => $amount): ?>
-            <li><?= htmlspecialchars($month) ?> : ¥<?= number_format($amount, 0) ?></li>
-        <?php endforeach; ?>
-    </ul>
+<div class="finance-container">
+    <h2 class="h2page-title">自由資金一覧</h2>
+
+    <div class="table-container">
+        <table class="finance-table paginated-table">
+            <thead>
+                <tr>
+                    <th>月</th>
+                    <th>金額（円）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($freeMoney)): ?>
+                    <?php foreach ($freeMoney as $month => $amount): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($month) ?></td>
+                            <td class="amount">¥<?= number_format($amount, 0) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="2" class="no-data">自由資金のデータがありません</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
 </div>

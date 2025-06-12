@@ -454,18 +454,34 @@
   min-width: 200px;             /* 最小幅で見栄えを安定（任意） */
 }
 
+/* 目標登録ボタン */
 .btn-goal {
-  background-color: #10b981;
+  background-color: #3B82F6;  /* 通常：blue-500 */
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-goal:hover {
-  background-color: #059669;
+  background-color: #60A5FA;  /* ホバー時：blue-400 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* 浮く */
+  transform: translateY(-2px);  /* 少し上に動く */
 }
 
+/* 貯金額登録ボタン */
 .btn-saving {
-  background-color: #f59e0b;
+  background-color: #6366F1;  /* 通常：indigo-500 */
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-saving:hover {
-  background-color: #d97706;
+  background-color: #818CF8;  /* ホバー時：indigo-400 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }

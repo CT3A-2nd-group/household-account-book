@@ -420,6 +420,39 @@
   color: #1e88e5;
 }
 
+
+.goal-clear-button{
+    font-size: 110%;
+    width: 150px;
+    height: 45px;
+    border:none;
+    border-radius: 15px;
+    color:white;
+    background-color: #6D28D9;    
+    display: block;
+    margin-left: auto;
+}
+
+.goal-clear-button:hover{
+  background-color:  #7c3de1;;
+}
+
+#circle-goal-bar {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 50px auto;
+}
+
+/* 回転アニメーション */
+.rainbow-rotate {
+  animation: rotateRainbow 2s linear infinite;
+}
+
+@keyframes rotateRainbow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+
 .user-greeting-row {
   display: flex;
   justify-content: space-between; /* 名前は左、ボタンは右端へ */

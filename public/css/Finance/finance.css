@@ -6,7 +6,7 @@
   padding: 24px;
   margin: 20px auto; /* ← 中央寄せ */
   border: 1px solid #e0e9ff;
-  max-width: 800px; /* ← 最大幅を制限 */
+  max-width: 900px; /* ← 最大幅を制限 */
   width: 100%; /* ← 画面幅には合わせる */
 }
 

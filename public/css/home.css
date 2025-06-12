@@ -417,3 +417,55 @@
   font-weight: bold;
   color: #1e88e5;
 }
+
+.user-greeting-row {
+  display: flex;
+  justify-content: space-between; /* 名前は左、ボタンは右端へ */
+  align-items: center;         /* 上端揃え */
+  flex-wrap: wrap;
+  padding: 1.5rem;
+}
+
+.greeting-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.conditional-buttons {
+  display: flex;
+  flex-direction: column;       /* ボタンを縦に並べる */
+  gap: 0.5rem;
+  align-items: flex-start;      /* ボタン内部を左揃えに */
+  text-align: left;             /* テキストも左寄せ */
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease;
+  width: 100%;                  /* ボタンの幅を揃えたい場合は追加（任意） */
+  min-width: 200px;             /* 最小幅で見栄えを安定（任意） */
+}
+
+.btn-goal {
+  background-color: #10b981;
+}
+
+.btn-goal:hover {
+  background-color: #059669;
+}
+
+.btn-saving {
+  background-color: #f59e0b;
+}
+
+.btn-saving:hover {
+  background-color: #d97706;
+}

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* 支出登録フォーム専用スタイル */
 
 /* 基本レイアウト */
@@ -31,6 +33,26 @@
   100% {
     transform: translateX(100%) translateY(100%) rotate(45deg);
   }
+}
+
+/* ページタイトル */
+.finance-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.finance-title-text {
+  color: #0d47a1;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 /* エラーメッセージ */
@@ -151,7 +173,7 @@
 }
 
 .select-wrapper::after {
-  content: "▼";
+  content: "\25BC";
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -205,7 +227,7 @@
 
 /* 金額フィールドに円マークを追加 */
 .input-with-icon.amount-wrapper::after {
-  content: "¥";
+  content: "\00A5";
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -260,7 +282,7 @@
 }
 
 .checkbox-input:checked + .checkbox-custom::after {
-  content: "✓";
+  content: "\2713";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -323,7 +345,8 @@
 /* 満足度ラベルに星アイコンを追加 */
 .form-label[for="star_rate"]::before,
 .form-group:has(.form-select[name="star_rate"]) .form-label::before {
-  content: "⭐";
+  content: "\2B50"; 
+  font-family: "Segoe UI Emoji","Arial",sans-serif;
   margin-right: 0.5rem;
   font-size: 1.2rem;
 }
@@ -393,7 +416,7 @@
     padding: 1.5rem;
   }
 
-  .page-title-text {
+  .finance-title-text {
     font-size: 1.5rem;
   }
 
@@ -424,7 +447,7 @@
     padding: 1rem;
   }
 
-  .page-title-text {
+  .finance-title-text {
     font-size: 1.25rem;
   }
 

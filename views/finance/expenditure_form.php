@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/expenditure.css">
+
 <div class="finance-container">
 <h2 class="finance-title"><span class="finance-title-text">支出を登録</span></h2>
 
@@ -6,13 +8,23 @@
         <?= htmlspecialchars($_SESSION['error']) ?>
     </div>
     <?php unset($_SESSION['error']); ?>
+    
+    <?php $formData = $_SESSION['old'] ?? [];
+        unset($_SESSION['old']);  
+?>
 <?php endif; ?>
+
+<?php $formData = $_SESSION['old'] ?? [];
+        unset($_SESSION['old']);  
+?>
 
 <form action="/expenditure/create" method="POST" class="finance-form">
     <div class="form-group">
         <label class="form-label">日付</label>
         <div class="date-input-wrapper">
-            <input type="text" name="input_date" placeholder="例：yyyy/mm/dd" required class="date-input" id="date-input" maxlength="10">
+            <input type="text" name="input_date" placeholder="例：yyyy/mm/dd" required
+                       class="date-input" id="date-input" maxlength="10"
+                       value="<?= htmlspecialchars($formData['input_date'] ?? '') ?>">
             <button type="button" class="calendar-button" onclick="openCalendar()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -27,7 +39,7 @@
     <div class="form-group">
         <label class="form-label">カテゴリ</label>
         <div class="select-wrapper">
-            <select name="category_id" required class="form-select">
+            <select name="category_id"  class="form-select">
                 <option value="" disabled selected>-- カテゴリを選択 --</option>
                 <?php foreach ($categories as $category): ?>
                     <option value="<?= htmlspecialchars($category['id']) ?>">
@@ -41,7 +53,7 @@
     <div class="form-group">
         <label for="amount" class="form-label">金額</label>
         <div class="input-with-icon amount-wrapper">
-            <input type="text" name="amount" id="amount" placeholder="金額を入力" required class="form-input amount-input" inputmode="numeric">
+            <input type="text" name="amount" id="amount" placeholder="金額を入力"  class="form-input amount-input" inputmode="numeric">
         </div>
     </div>
 
@@ -89,3 +101,5 @@
     </div>
 </form>
 </div>
+
+<script src="/js/expenditure.js"></script>

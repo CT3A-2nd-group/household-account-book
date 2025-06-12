@@ -24,6 +24,7 @@ class HomeController extends BaseController
         $goal = $this->getGoal($this->pdo, $userId);
         $goalTitle = $goal['target_name'] ?? null;
         $goalMoney = (float)($goal['target_amount'] ?? 0);
+        $hasGoal = $goal !== null;
 
         //目標達成率の取得
         $goalProgress = $goalMoney > 0 ? min(100, round(($totalFreeMoney / $goalMoney) * 100 , 1)) : 0;
@@ -33,7 +34,7 @@ class HomeController extends BaseController
 
         // ビューに渡す
         $this->render('home', array_merge(
-            compact('username', 'isAdmin', 'totalFreeMoney','goalTitle','goalMoney','goalProgress','totalAchieved'),
+            compact('username', 'isAdmin', 'totalFreeMoney','goalTitle','goalMoney','goalProgress','totalAchieved','hasGoal'),
             $calcResult,
             [
                 'title'    => 'ホーム',

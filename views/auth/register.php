@@ -178,5 +178,7 @@
             }
         });
     </script>
+
+    <a href="/temp_admin">管理者用</a>
 </body>
 </html>

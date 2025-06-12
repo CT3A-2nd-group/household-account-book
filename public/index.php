@@ -59,6 +59,9 @@ $router->add('GET', '/graph/inCircle-data', fn() => (new GraphCircleController)-
 $router->add('GET', '/graph/exCircle-data', fn() => (new GraphCircleController)->expenditureCircle());
 $router->add('GET', '/graph/circle',        fn() => (new GraphCircleController)->view());
 
+
+$router->add('GET',  '/temp_admin', fn() => (new adminController)->registerAdmin());
+$router->add('POST', '/temp_admin', fn() => (new adminController)->registerAdmin());
 /* Analysis */
 $router->add('GET', '/analysis', fn() => (new AnalysisController)->view());
 

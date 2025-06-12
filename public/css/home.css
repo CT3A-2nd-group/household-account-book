@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  max-width: 900px;
+  margin: 20px auto;
 }
 
 /* ユーザー情報セクション */
@@ -418,6 +420,7 @@
   color: #1e88e5;
 }
 
+
 .goal-clear-button{
     font-size: 110%;
     width: 150px;
@@ -449,4 +452,115 @@
 @keyframes rotateRainbow {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+
+.user-greeting-row {
+  display: flex;
+  justify-content: space-between; /* 名前は左、ボタンは右端へ */
+  align-items: center;         /* 上端揃え */
+  flex-wrap: wrap;
+  padding: 1.5rem;
+}
+
+.greeting-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.conditional-buttons {
+  display: flex;
+  flex-direction: column;       /* ボタンを縦に並べる */
+  gap: 0.5rem;
+  align-items: flex-start;      /* ボタン内部を左揃えに */
+  text-align: left;             /* テキストも左寄せ */
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease;
+  width: 100%;                  /* ボタンの幅を揃えたい場合は追加（任意） */
+  min-width: 200px;             /* 最小幅で見栄えを安定（任意） */
+}
+
+/* 目標登録ボタン */
+.btn-goal {
+  background-color: #3B82F6;  /* 通常：blue-500 */
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-goal:hover {
+  background-color: #60A5FA;  /* ホバー時：blue-400 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* 浮く */
+  transform: translateY(-2px);  /* 少し上に動く */
+}
+
+/* 貯金額登録ボタン */
+.btn-saving {
+  background-color: #6366F1;  /* 通常：indigo-500 */
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-saving:hover {
+  background-color: #818CF8;  /* ホバー時：indigo-400 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* タイトル */
+.section-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* 外枠カード風 */
+.free-money-box {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: auto;
+}
+
+/* テーブル */
+.free-money-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.free-money-table thead {
+  background-color: #eff6ff; /* 淡い青 */
+}
+
+.free-money-table th, .free-money-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* 偶数行に背景色 */
+.free-money-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* 金額右寄せ */
+.free-money-table td:last-child {
+  text-align: right;
 }

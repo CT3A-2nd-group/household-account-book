@@ -1,97 +1,126 @@
 <!-- ホームページのメインコンテンツ -->
 <div class="dashboard-container">
-    <!-- ユーザー情報セクション -->
-    <section class="welcome-section">
-        <div class="user-greeting">
-            <h2 class="greeting-text">ようこそ、<?= htmlspecialchars($username) ?> さん！</h2>
+  <!-- ユーザー情報セクション -->
+  <section class="welcome-section">
+    <div class="user-greeting-row">
+        <h2 class="greeting-text">ようこそ、<?= htmlspecialchars($username) ?> さん！</h2>
+
+        <div class="conditional-buttons">
+            <?php if (!$hasGoal): ?>
+                <a href="/finance/goal-form" class="btn btn-goal">🎯 目標登録</a>
+            <?php endif; ?>
+            <a href="/finance/save-form" class="btn btn-saving">💰 貯金額登録</a>
         </div>
-    </section>
-            <!-- 財務サマリー -->
-    <section class="finance-summary">
-        <div class="summary-cards">
+    </div>
+  </section>
 
-            <!-- 今月の自由資金 -->
-            <div class="summary-card income-card">
-            <div class="card-header">
-                <h3 class="card-title">今月の自由資金</h3>
-                <span class="card-icon thismonth-icon"></span>
-            </div>
-            <p class="card-amount" style="color: #10b981;">¥<?= number_format($freeMoney[$latestMonth] ?? 0) ?></p>
-            <p class="card-change">
-                前月比：
-                <?= number_format(($freeMoney[$latestMonth] ?? 0) - ($freeMoney[$prevMonth] ?? 0)) ?>
-            </p>
-            </div>
 
-            <!-- 総自由資金 -->
-            <div class="summary-card balance-card">
-            <div class="card-header">
-                <h3 class="card-title">現在の自由資金</h3>
-                <span class="card-icon balance-icon"></span>
-            </div>
-            <p class="card-amount" style="color: #3b82f6;">¥<?= number_format($totalFreeMoney) ?></p>
-            <p class="card-change">累計貯蓄額</p>
-            </div>
+  <!-- 財務サマリー -->
+  <section class="finance-summary">
+    <div class="summary-cards">
 
-            <!-- 目標達成率 -->
-            <div class="summary-card" style="border-left-color: #a855f7;">
-            <div class="card-header">
-                <h3 class="card-title">目標達成率</h3>
-                <span class="card-icon" style="background-color: #f3e8ff;"></span>
-            </div>
-            <p class="card-amount" style="color: #a855f7;"> <?= number_format($goalProgress, 1) ?>%</p>
-            <p class="card-change">現在の進捗</p>
-            </div>
-
+      <!-- 今月の自由資金 -->
+      <div class="summary-card income-card">
+        <div class="card-header">
+          <h3 class="card-title">今月の自由資金</h3>
+          <span class="card-icon thismonth-icon"></span>
         </div>
-    </section>
-
-
-
-<div class="goal-progress-card">
-  <!-- 左：タイトル＋バー -->
-  <div class="goal-left">
-  <div class="goal-progress-label">
-    目標：<?= htmlspecialchars($goalTitle ?? '未設定') ?>
-  </div>
-  <div id="circle-goal-bar" class="circle-progress-bar" data-progress="<?= $goalProgress ?>"></div>
-</div>
-
-  <!-- 右：詳細 -->
-  <div class="goal-right">
-    <div class="goal-amount-grid">
-      <div class="goal-box">
-        <div class="label">現在の自由資金額</div>
-        <div class="value">¥<?= number_format($totalFreeMoney) ?></div>
+        <p class="card-amount" style="color: #10b981;">¥<?= number_format($freeMoney[$latestMonth] ?? 0) ?></p>
+        <p class="card-change">
+          前月比：
+          <?= number_format(($freeMoney[$latestMonth] ?? 0) - ($freeMoney[$prevMonth] ?? 0)) ?>
+        </p>
       </div>
-      <div class="goal-box">
-        <div class="label">目標金額</div>
-        <div class="value">¥<?= number_format($goalMoney) ?></div>
+
+      <!-- 総自由資金 -->
+      <div class="summary-card balance-card">
+        <div class="card-header">
+          <h3 class="card-title">現在の自由資金</h3>
+          <span class="card-icon balance-icon"></span>
+        </div>
+        <p class="card-amount" style="color: #3b82f6;">¥<?= number_format($totalFreeMoney) ?></p>
+        <p class="card-change">累計貯蓄額</p>
       </div>
+
+      <!-- 目標達成率 -->
+      <div class="summary-card" style="border-left-color: #a855f7;">
+        <div class="card-header">
+          <h3 class="card-title">目標達成率</h3>
+          <span class="card-icon" style="background-color: #f3e8ff;"></span>
+        </div>
+        <p class="card-amount" style="color: #a855f7;"> <?= number_format($goalProgress, 1) ?>%</p>
+        <p class="card-change">現在の進捗</p>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <div class="goal-progress-card">
+    <!-- 左：タイトル＋バー -->
+    <div class="goal-left">
+      <div class="goal-progress-label">
+        目標：<?= htmlspecialchars($goalTitle ?? '未設定') ?>
+      </div>
+      <div id="circle-goal-bar" class="circle-progress-bar" data-progress="<?= $goalProgress ?>"></div>
     </div>
 
-    <div class="goal-remaining-box">
-      <div class="label">あと必要な金額</div>
-      <div class="value">¥<?= number_format(max(0, $goalMoney - $totalFreeMoney)) ?></div>
-    </div>
-    <!-- 達成率100%になったら現れるタイプのボタン -->
-    <?php if ($goalProgress >= 100): ?>
-        <form action="/goal/delete" method="POST">
+    <!-- 右：詳細 -->
+    <div class="goal-right">
+      <div class="goal-amount-grid">
+        <div class="goal-box">
+          <div class="label">現在の自由資金額</div>
+          <div class="value">¥<?= number_format($totalFreeMoney) ?></div>
+        </div>
+        <div class="goal-box">
+          <div class="label">目標金額</div>
+          <div class="value">¥<?= number_format($goalMoney) ?></div>
+        </div>
+      </div>
+
+      <div class="goal-remaining-box">
+        <div class="label">あと必要な金額</div>
+        <div class="value">¥<?= number_format(max(0, $goalMoney - $totalFreeMoney)) ?></div>
+      </div>
+      <!-- 達成率100%になったら現れるタイプのボタン -->
+      <?php if ($goalProgress >= 100): ?>
+      <form action="/goal/delete" method="POST">
         <button type="submit" class="goal-clear-button">目標達成！</button>
-        </form>
-    <?php endif; ?>
+      </form>
+      <?php endif; ?>
+    </div>
   </div>
+
+
+<div class="finance-container">
+    <h2 class="h2page-title">自由資金一覧</h2>
+
+    <div class="table-container">
+        <table class="finance-table paginated-table">
+            <thead>
+                <tr>
+                    <th>月</th>
+                    <th>金額（円）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($freeMoney)): ?>
+                    <?php foreach ($freeMoney as $month => $amount): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($month) ?></td>
+                            <td class="amount">¥<?= number_format($amount, 0) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="2" class="no-data">自由資金のデータがありません</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
-    <a href="/finance/goal-form">目標登録</a>
-    <a href="/finance/save-form">貯金額登録</a>
-
-    <!-- 仮置きの自由資金表示 -->
-    <h2>自由資金(表示)</h2>
-    <!-- 月：金額の表示 -->
-    <ul>
-        <?php foreach ($freeMoney as $month => $amount): ?>
-            <li><?= htmlspecialchars($month) ?> : ¥<?= number_format($amount, 0) ?></li>
-        <?php endforeach; ?>
-    </ul>
+</div>

@@ -20,8 +20,8 @@ class RegisterController extends BaseController
         if ($username === '' || $password === '') {
             $this->redirect('/register?error=' . urlencode('全ての項目を入力してください。'));
         }
-        if (strlen($username) > 255) {
-            $this->redirect('/register?error=' . urlencode('ユーザー名は255文字以内にしてください。'));
+        if (strlen($username) > 46) {
+            $this->redirect('/register?error=' . urlencode('ユーザー名は15文字以内にしてください。'));
         }
         if (strlen($password) < 4) {
             $this->redirect('/register?error=' . urlencode('パスワードは4文字以上で入力してください。'));

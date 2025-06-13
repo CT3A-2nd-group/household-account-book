@@ -84,8 +84,8 @@
                                 <input type="checkbox" name="terms" class="checkbox-input" required>
                                 <span class="checkbox-custom"></span>
                                 <span class="checkbox-label">
-                                    <a href="/error" target="_blank" class="terms-link">利用規約</a>と
-                                    <a href="/error" target="_blank" class="terms-link">プライバシーポリシー</a>に同意します
+                                    <a  target="_blank" class="terms-link">利用規約</a>と
+                                    <a  target="_blank" class="terms-link">プライバシーポリシー</a>に同意します
                                 </span>
                             </label>
                         </div>

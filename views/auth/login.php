@@ -57,7 +57,7 @@
                                 <span class="checkbox-custom"></span>
                                 <span class="checkbox-label">ログイン状態を保持する</span>
                             </label>
-                            <a href="/forgot-password" class="forgot-password-link">パスワードを忘れた方</a>
+                            <a class="forgot-password-link">パスワードを忘れた方</a>
                         </div>
                         
                         <!-- ログインボタン -->

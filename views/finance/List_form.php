@@ -59,8 +59,8 @@
                             <thead>
                                 <tr>
                                     <th>日付</th>
-                                    <th>カテゴリ</th>
                                     <th>金額(円)</th>
+                                    <th>カテゴリ</th>
                                     <th>満足度</th>
                                     <th>無駄遣い</th>
                                     <th>メモ</th>

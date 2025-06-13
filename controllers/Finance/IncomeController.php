@@ -6,21 +6,27 @@ class IncomeController extends BaseController
     {
         $this->requireLogin();
 
-        $stmt = $this->pdo->query(
-            "SELECT id, name FROM categories WHERE type = 'income'"
-        );
-        $categories = $stmt->fetchAll();
-        $extraCss = implode("\n", [
-            '<link rel="stylesheet" href="/css/Finance/finance.css">',
-            '<link rel="stylesheet" href="/css/Finance/income.css">'
-        ]);
-        $extraJs = '<script src="/js/Finance/income.js"></script>';
+        // カテゴリ取得
+        $categories = $this->pdo
+            ->query("SELECT id, name FROM categories WHERE type = 'income'")
+            ->fetchAll();
+
+        // ── flash 取り出し ──
+        $old   = $_SESSION['flash_old']   ?? [];
+        $error = $_SESSION['flash_error'] ?? '';
+        unset($_SESSION['flash_old'], $_SESSION['flash_error']);
+
         $this->render('finance/income_form', [
-                'categories' => $categories ,
-                'title' => '収入登録',
-                'extraCss' => $extraCss,
-                'extraJs'  => $extraJs
-            ]);
+            'categories' => $categories,
+            'title'      => '収入登録',
+            'extraCss'   => implode("\n", [
+                '<link rel="stylesheet" href="/css/Finance/finance.css">',
+                '<link rel="stylesheet" href="/css/Finance/income.css">'
+            ]),
+            'extraJs'    => '<script src="/js/Finance/income.js"></script>',
+            'old'        => $old,
+            'error'      => $error
+        ]);
     }
 
     /* 収入登録処理 */
@@ -28,15 +34,25 @@ class IncomeController extends BaseController
     {
         $this->requireLogin();
 
-        $user_id    = $_SESSION['user_id'];
-        $input_date = $_POST['input_date']  ?? '';
-        $category   = $_POST['category_id'] ?? '';
-        $amount     = $_POST['amount']      ?? '';
-        $description= $_POST['description'] ?? null;
+        $user_id     = $_SESSION['user_id'];
+        $input_date  = $_POST['input_date']  ?? '';
+        $category_id = $_POST['category_id'] ?? '';
+        $amount      = $_POST['amount']      ?? '';
+        $description = $_POST['description'] ?? null;
+
+        // ── バリデーション ──
+        if ($input_date === '' || $category_id === '') {
+            $_SESSION['flash_error'] = '日付とカテゴリは必須です';
+            $_SESSION['flash_old']   = $_POST;
+            $this->redirect('/income/create');
+            return;
+        }
 
         if ($amount === '' || !is_numeric($amount) || $amount <= 0) {
-            $this->redirect('/income/create?error='
-                . urlencode('金額は正しく入力してください'));
+            $_SESSION['flash_error'] = '金額は1円以上で入力してください';
+            $_SESSION['flash_old']   = $_POST;
+            $this->redirect('/income/create');
+            return;
         }
 
         $stmt = $this->pdo->prepare("
@@ -46,7 +62,7 @@ class IncomeController extends BaseController
         ");
         $stmt->execute([
             ':u'    => $user_id,
-            ':c'    => $category ?: null,
+            ':c'    => $category_id,
             ':d'    => $input_date,
             ':a'    => $amount,
             ':desc' => $description

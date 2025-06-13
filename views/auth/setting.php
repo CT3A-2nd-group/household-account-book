@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary">
                             <span class="btn-icon">🔔</span>通知設定を保存
                         </button>
                     </div>

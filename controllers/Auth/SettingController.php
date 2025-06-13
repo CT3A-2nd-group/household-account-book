@@ -77,16 +77,7 @@ class SettingController extends BaseController
         $this->indexWithMessage('パスワードを変更しました');
     }
 
-    public function deleteAccount(): void
-    {
-        $this->requireLogin();
 
-        $stmt = $this->pdo->prepare('DELETE FROM users WHERE id = :id');
-        $stmt->execute([':id' => $_SESSION['user_id']]);
-
-        session_destroy();
-        $this->redirect('/register');
-    }
 
     private function getUserData(int $userId): array
     {

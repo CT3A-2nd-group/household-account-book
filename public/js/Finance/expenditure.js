@@ -528,6 +528,24 @@ function initializeDateField() {
   }
 }
 
+// テキストエリアの自動拡張機能
+  document.addEventListener('DOMContentLoaded', () => {
+    const textareas = document.querySelectorAll('textarea.auto-expand');
+
+    textareas.forEach(textarea => {
+      textarea.style.overflow = 'hidden';
+      textarea.style.resize = 'none';
+
+      const resize = () => {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+      };
+
+      textarea.addEventListener('input', resize);
+      resize(); // 初期表示でも実行
+    });
+  });
+
 // チェックボックスの初期化
 function initializeCheckbox() {
   const checkbox = document.querySelector('input[name="is_waste"]')

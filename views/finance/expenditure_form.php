@@ -11,7 +11,7 @@
 
     <form action="/expenditure/create" method="POST" class="finance-form">
         <div class="form-group">
-            <label class="form-label">日付</label>
+            <div class="nigga"><label class="form-label">日付</label><span class="required">*必須</span></div>
             <div class="date-input-wrapper">
                 <input type="text" name="input_date" placeholder="例：yyyy/mm/dd" required
                        class="date-input" id="date-input" maxlength="10"
@@ -30,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            <label class="form-label">カテゴリ</label>
+           <div class="nigga"><label class="form-label">カテゴリ</label><span class="required">*必須</span></div>
             <div class="select-wrapper">
                 <select name="category_id" class="form-select">
                     <option value="" disabled <?= empty($old['category_id']) ? 'selected' : '' ?>>-- カテゴリを選択 --</option>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            <label for="amount" class="form-label">金額</label>
+            <div class="nigga"><label for="amount" class="form-label">金額</label><span class="required">*必須</span></div>
             <div class="input-with-icon amount-wrapper">
                 <input type="text" name="amount" id="amount" placeholder="金額を入力"
                        class="form-input amount-input" inputmode="numeric"
@@ -54,11 +54,10 @@
         </div>
 
         <div class="form-group">
-            <label for="description" class="form-label">メモ</label>
+            <div class="label-row"><label for="description" class="form-label">メモ</label></div>
             <div class="input-with-icon">
-                <input type="text" name="description" id="description" placeholder="詳細"
-                       class="form-input"
-                       value="<?= htmlspecialchars($old['description'] ?? '') ?>">
+                <textarea name="description" id="description" placeholder="詳細"
+                        class="form-input" rows="3"><?= htmlspecialchars($old['description'] ?? '') ?></textarea>
             </div>
         </div>
 
@@ -75,7 +74,7 @@
         </div>
 
         <div class="form-group">
-            <label class="form-label">満足度</label>
+            <div class="nigga"><label class="form-label">満足度</label><span class="required">*必須</span></div>
             <div class="select-wrapper">
                 <select name="star_rate" class="form-select">
                     <option value="" disabled <?= empty($old['star_rate']) ? 'selected' : '' ?>>-- 満足度評価 --</option>

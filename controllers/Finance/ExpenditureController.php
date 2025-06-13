@@ -38,17 +38,26 @@ class ExpenditureController extends BaseController
         $star_rate   = $_POST['star_rate']   ?? '';
 
         // ── バリデーション ─────────────────────────
+         if ($input_date === '' || $category_id === '') {
+            $_SESSION['error'] = '日付とカテゴリは必須です';
+            $_SESSION['old'] = $_POST; // ---------------------------エラー時に入力値を保持
+            $this->redirect('/expenditure/create');
+            exit();
+        }
+
+        
         if ($amount === '' || !is_numeric($amount) || $amount <= 0) {
-            $this->redirect('/expenditure/create?error='
-                . urlencode('金額は1円以上で入力してください'));
+            $_SESSION['error'] = '金額は1円以上で入力してください';
+            $_SESSION['old'] = $_POST; // ---------------------------エラー時に入力値を保持
+            $this->redirect('/expenditure/create');
+            exit();
         }
-        if ($input_date === '' || $category_id === '') {
-            $this->redirect('/expenditure/create?error='
-                . urlencode('日付とカテゴリは必須です'));
-        }
+        
         if ($star_rate === '' || !in_array((int)$star_rate, [1,2,3,4,5], true)) {
-            $this->redirect('/expenditure/create?error='
-                . urlencode('評価は1〜5の数値で選んでください'));
+            $_SESSION['error'] = '満足度は1から5の間で選択してください';
+            $_SESSION['old'] = $_POST; // ---------------------------エラー時に入力値を保持
+            $this->redirect('/expenditure/create');
+            exit();
         }
         // ──────────────────────────────────────
 

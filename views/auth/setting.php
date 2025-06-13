@@ -11,9 +11,9 @@
 
         <!-- プロフィール -->
         <div class="settings-section">
-            <div class="section-header">
-                <h2 class="section-title"><span class="section-icon">👤</span>プロフィール情報</h2>
-                <p class="section-description">基本的なアカウント情報を編集できます</p>
+            <div class="section-header1">
+                <h2 class="section-title1"><span class="section-icon1">👤</span>プロフィール情報</h2>
+                <p class="section-description1">基本的なアカウント情報を編集できます</p>
             </div>
 
             <div class="settings-card">
@@ -35,9 +35,9 @@
 
         <!-- パスワード変更 -->
         <div class="settings-section">
-            <div class="section-header">
-                <h2 class="section-title"><span class="section-icon">🔒</span>パスワード変更</h2>
-                <p class="section-description">セキュリティのため定期的な変更をおすすめします</p>
+            <div class="section-header1">
+                <h2 class="section-title1"><span class="section-icon1">🔒</span>パスワード変更</h2>
+                <p class="section-description1">セキュリティのため定期的な変更をおすすめします</p>
             </div>
 
             <div class="settings-card">
@@ -84,9 +84,9 @@
 
         <!-- 通知設定 -->
         <div class="settings-section">
-            <div class="section-header">
-                <h2 class="section-title"><span class="section-icon">🔔</span>通知設定</h2>
-                <p class="section-description">必要な通知をON/OFFできます</p>
+            <div class="section-header1">
+                <h2 class="section-title1"><span class="section-icon1">🔔</span>通知設定</h2>
+                <p class="section-description1">必要な通知をON/OFFできます</p>
             </div>
 
             <div class="settings-card">

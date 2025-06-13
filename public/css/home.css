@@ -57,12 +57,6 @@
   margin-bottom: 1.5rem;
 }
 
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0;
-}
 
 .summary-date {
   font-size: 0.875rem;
@@ -213,12 +207,7 @@
   border: 1px solid #e2e8f0;
 }
 
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
+
 
 .view-all {
   font-size: 0.875rem;
@@ -522,12 +511,7 @@
   transform: translateY(-2px);
 }
 
-/* タイトル */
-.section-title {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-}
+
 
 /* 外枠カード風 */
 .free-money-box {

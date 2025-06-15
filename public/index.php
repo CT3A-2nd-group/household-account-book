@@ -35,8 +35,12 @@ $router->add('POST', '/auth/delete-account',    fn() => (new SettingController)-
 /* Finance */
 $router->add('GET',  '/income/create',      fn() => (new IncomeController)->showForm());
 $router->add('POST', '/income/create',      fn() => (new IncomeController)->store());
+$router->add('GET',  '/income/edit',        fn() => (new IncomeController)->editForm());
+$router->add('POST', '/income/edit',       fn() => (new IncomeController)->update());
 $router->add('GET',  '/expenditure/create', fn() => (new ExpenditureController)->showForm());
 $router->add('POST', '/expenditure/create', fn() => (new ExpenditureController)->store());
+$router->add('GET',  '/expenditure/edit',   fn() => (new ExpenditureController)->editForm());
+$router->add('POST', '/expenditure/edit',   fn() => (new ExpenditureController)->update());
 $router->add('GET', '/List/view', fn() => (new ListController)->Listview());
 $router->add('POST', '/List/Delete', fn() => (new ListController)->DeleteList());
 $router->add('POST', '/finance/save', fn() => (new SaveController)->save());

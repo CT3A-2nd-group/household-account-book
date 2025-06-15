@@ -26,6 +26,7 @@
                                     <th>カテゴリ</th>
                                     <th>金額(円)</th>
                                     <th>メモ</th>
+                                    <th>編集</th>
                                     <th>削除</th>
                                 </tr>
                             </thead>
@@ -36,6 +37,7 @@
                                         <td><?= htmlspecialchars($inc['category_name'] ?? '') ?></td>
                                         <td class="amount"><?= number_format($inc['amount']) ?></td>
                                         <td class="memo"><?= htmlspecialchars($inc['description'] ?? '') ?></td>
+                                        <td><a href="/income/edit?id=<?= htmlspecialchars($inc['id']) ?>">編集</a></td>
                                         <td class="checkbox-cell">
                                             <label class="checkbox-label">
                                                 <input type="checkbox" name="delete_ids[]" value="<?= htmlspecialchars($inc['id'] ?? '') ?>" class="delete-checkbox">
@@ -45,7 +47,7 @@
                                 <?php endforeach; ?>
                                 <?php if (empty($incomes)): ?>
                                     <tr>
-                                        <td colspan="5" class="no-data">データがありません</td>
+                                        <td colspan="6" class="no-data">データがありません</td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
@@ -77,6 +79,7 @@
                                     <th>満足度</th>
                                     <th>無駄遣い</th>
                                     <th>メモ</th>
+                                    <th>編集</th>
                                     <th>削除</th>
                                 </tr>
                             </thead>
@@ -97,6 +100,7 @@
                                             <?php endif; ?>
                                         </td>
                                         <td class="memo"><?= htmlspecialchars($exp['description'] ?? '') ?></td>
+                                        <td><a href="/expenditure/edit?id=<?= htmlspecialchars($exp['id']) ?>">編集</a></td>
                                         <td class="checkbox-cell">
                                             <label class="checkbox-label">
                                                 <input type="checkbox" name="delete_ids[]" value="<?= htmlspecialchars($exp['id'] ?? '') ?>" class="delete-checkbox">
@@ -106,7 +110,7 @@
                                 <?php endforeach; ?>
                                 <?php if (empty($expenditures)): ?>
                                     <tr>
-                                        <td colspan="7" class="no-data">データがありません</td>
+                                        <td colspan="8" class="no-data">データがありません</td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>

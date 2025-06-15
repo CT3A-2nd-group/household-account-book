@@ -154,18 +154,28 @@ function drawPieChart(type, data, year, month) {
   );
   if (!ctx) return;
 
-  const labels = [];
-  const dataset = [];
+  const tempData = [];
 
+  //データを一時配列に格納
   for (const category in data) {
     if (data[category][year]) {
       const index = data[category][year]["labels"].indexOf(month);
       if (index !== -1) {
-        labels.push(category);
-        dataset.push(data[category][year]["data"][index]);
+        tempData.push({
+          category,
+          value: data[category][year]["data"][index],
+        });
       }
     }
   }
+
+  //ソート処理の追加：データの値が多い順に並び替え（降順）
+  tempData.sort((a,b) => b.value - a.value);
+
+  // グラフに渡すラベルとデータを配列に分離
+  const labels = tempData.map((item) => item.category);
+  const dataset = tempData.map((item) => item.value);
+
   //再描画のためにグラフを削除
   if (pieCharts[type]) pieCharts[type].destroy();
 

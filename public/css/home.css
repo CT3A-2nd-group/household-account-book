@@ -549,3 +549,16 @@
 .free-money-table td:last-child {
   text-align: right;
 }
+
+/*前月比の＋－の色の設定*/
+.diff-number.plus {
+  color: #10b981; /* 緑 */
+}
+
+.diff-number.minus {
+  color: #ef4444; /* 赤 */
+}
+
+.diff-number.zero {
+  color: #6b7280; /* グレー */
+}

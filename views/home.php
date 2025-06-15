@@ -26,10 +26,24 @@
           <span class="card-icon thismonth-icon"></span>
         </div>
         <p class="card-amount" style="color: #10b981;">¥<?= number_format($freeMoney[$latestMonth] ?? 0) ?></p>
+        <?php
+          $current = $freeMoney[$latestMonth] ?? 0;
+          $previous = $freeMoney[$prevMonth] ?? 0;
+          $diff = $current - $previous;
+
+          // クラスを決定（値によって）
+          $diffClass = $diff > 0 ? 'plus' : ($diff < 0 ? 'minus' : 'zero');
+
+          // 表示する文字列（+記号付きにして数値フォーマット）
+          $formattedDiff = ($diff > 0 ? '+' : '') . number_format($diff);
+        ?>
         <p class="card-change">
           前月比：
-          <?= number_format(($freeMoney[$latestMonth] ?? 0) - ($freeMoney[$prevMonth] ?? 0)) ?>
+          <span class="diff-number <?= $diffClass ?>">
+            <?= $formattedDiff ?>
+          </span>
         </p>
+
       </div>
 
       <!-- 総自由資金 -->

@@ -24,7 +24,7 @@
                                 <tr>
                                     <th>日付</th>
                                     <th>カテゴリ</th>
-                                    <th>金額(円)</th>
+                                    <th>金額</th>
                                     <th>メモ</th>
                                     <th>削除</th>
                                 </tr>
@@ -34,7 +34,7 @@
                                     <tr>
                                         <td><?= htmlspecialchars($inc['input_date'] ?? '') ?></td>
                                         <td><?= htmlspecialchars($inc['category_name'] ?? '') ?></td>
-                                        <td class="amount"><?= number_format($inc['amount']) ?></td>
+                                        <td class="amount"><?= number_format($inc['amount']) ?> 円</td>
                                         <td class="memo"><?= htmlspecialchars($inc['description'] ?? '') ?></td>
                                         <td class="checkbox-cell">
                                             <label class="checkbox-label">
@@ -73,7 +73,7 @@
                                 <tr>
                                     <th>日付</th>
                                     <th>カテゴリ</th>
-                                    <th>金額(円)</th>
+                                    <th>金額</th>
                                     <th>満足度</th>
                                     <th>無駄遣い</th>
                                     <th>メモ</th>
@@ -85,7 +85,7 @@
                                     <tr>
                                         <td><?= htmlspecialchars($exp['input_date'] ?? '') ?></td>
                                         <td><?= htmlspecialchars($exp['category_name'] ?? '') ?></td>
-                                        <td class="amount"><?= number_format($exp['amount']) ?></td>
+                                        <td class="amount"><?= number_format($exp['amount']) ?> 円</td>
                                         <td class="star-rating">
                                             <?= $exp['star_rate'] ? str_repeat('★', (int)$exp['star_rate']) . str_repeat('☆', 5 - (int)$exp['star_rate']) : '評価なし' ?>
                                         </td>

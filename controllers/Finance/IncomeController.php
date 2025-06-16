@@ -70,4 +70,77 @@ class IncomeController extends BaseController
 
         $this->redirect('/List/view');
     }
+
+    /** 収入編集フォーム表示 */
+    public function editForm(): void
+    {
+        $this->requireLogin();
+        $id = $_GET['id'] ?? null;
+        if (!$id) {
+            $this->redirect('/List/view');
+            return;
+        }
+
+        $stmt = $this->pdo->prepare(
+            'SELECT * FROM incomes WHERE id = :id AND user_id = :uid'
+        );
+        $stmt->execute([':id' => $id, ':uid' => $_SESSION['user_id']]);
+        $income = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$income) {
+            $this->redirect('/List/view');
+            return;
+        }
+
+        $categories = $this->pdo
+            ->query("SELECT id, name FROM categories WHERE type = 'income'")
+            ->fetchAll();
+
+        $this->render('finance/income_edit_form', [
+            'categories' => $categories,
+            'title'      => '収入編集',
+            'extraCss'   => implode("\n", [
+                '<link rel="stylesheet" href="/css/Finance/finance.css">',
+                '<link rel="stylesheet" href="/css/Finance/income.css">'
+            ]),
+            'extraJs'    => '<script src="/js/Finance/income.js"></script>',
+            'income'     => $income
+        ]);
+    }
+
+    /** 収入更新処理 */
+    public function update(): void
+    {
+        $this->requireLogin();
+
+        $id          = $_POST['id'] ?? null;
+        $input_date  = $_POST['input_date']  ?? '';
+        $category_id = $_POST['category_id'] ?? '';
+        $amount      = $_POST['amount']      ?? '';
+        $description = $_POST['description'] ?? null;
+
+        if (!$id || $input_date === '' || $category_id === '') {
+            $this->redirect('/List/view');
+            return;
+        }
+
+        if ($amount === '' || !is_numeric($amount) || $amount <= 0) {
+            $this->redirect('/income/edit?id=' . urlencode((string)$id));
+            return;
+        }
+
+        $stmt = $this->pdo->prepare(
+            'UPDATE incomes SET category_id = :c, input_date = :d, amount = :a, description = :desc WHERE id = :id AND user_id = :u'
+        );
+        $stmt->execute([
+            ':c'   => $category_id,
+            ':d'   => $input_date,
+            ':a'   => $amount,
+            ':desc'=> $description,
+            ':id'  => $id,
+            ':u'   => $_SESSION['user_id']
+        ]);
+
+        $this->redirect('/List/view');
+    }
 }

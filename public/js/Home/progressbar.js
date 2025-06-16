@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let useRainbow = false;
 
     if (!isNaN(progressValue)) {
-      if (progressValue < 50) barColor = '#f44336';
-      else if (progressValue < 75) barColor = '#ff9800';
+      if (progressValue < 25) barColor = '#f44336';
+      else if (progressValue < 50) barColor = '#ff9800';
+      else if (progressValue < 75) barColor = '#cddc39'
       else if (progressValue < 100) barColor = '#4CAF50';
       else useRainbow = true;
     }

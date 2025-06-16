@@ -7,7 +7,7 @@
                 <tr>
                     <th>年</th>
                     <th>月</th>
-                    <th>貯金額（円）</th>
+                    <th>貯金額</th>
                 </tr>
             </thead>
             <tbody>

@@ -130,38 +130,59 @@
         </div>
     </div>
 </div>
-
 <script>
-    // Swiperの初期化
+document.addEventListener("DOMContentLoaded", function () {
+    const savedTab = localStorage.getItem('selectedTab');
+    const initialIndex = savedTab === 'expenditure' ? 1 : 0;
+
+    const wrapper = document.querySelector('.finance-swiper .swiper-wrapper');
+    if (wrapper) wrapper.style.visibility = 'hidden'; // 一時的に非表示
+
     const swiper = new Swiper('.finance-swiper', {
         loop: false,
-        allowTouchMove: false, // タッチでのスワイプを無効化（タブで制御するため）
+        allowTouchMove: false,
+        autoHeight: false,
+        initialSlide: initialIndex,
+        on: {
+            init: function () {
+                // 初期化完了後に表示
+                if (wrapper) wrapper.style.visibility = 'visible';
+            }
+        }
     });
 
-    // タブ切り替え
     const expenditureTab = document.getElementById('expenditureTab');
     const incomeTab = document.getElementById('incomeTab');
 
-    incomeTab.addEventListener('click', function() {
-        swiper.slideTo(0);
-        incomeTab.classList.add('active');
-        expenditureTab.classList.remove('active');
-    });
-
-    expenditureTab.addEventListener('click', function() {
-        swiper.slideTo(1);
-        expenditureTab.classList.add('active');
-        incomeTab.classList.remove('active');
-    });
-
-    // スワイプ後にタブの状態を更新
-    swiper.on('slideChange', function () {
-        if (swiper.activeIndex === 0) {
+    function updateTabActiveState(index) {
+        if (index === 0) {
             incomeTab.classList.add('active');
             expenditureTab.classList.remove('active');
+            localStorage.setItem('selectedTab', 'income');
         } else {
-            expenditureTab.classList.add('active');
             incomeTab.classList.remove('active');
+            expenditureTab.classList.add('active');
+            localStorage.setItem('selectedTab', 'expenditure');
         }
+    }
+
+    updateTabActiveState(initialIndex);
+
+    incomeTab.addEventListener('click', () => {
+        swiper.slideTo(0);
+        updateTabActiveState(0);
     });
+
+    expenditureTab.addEventListener('click', () => {
+        swiper.slideTo(1);
+        updateTabActiveState(1);
+    });
+
+    swiper.on('slideChange', () => {
+        updateTabActiveState(swiper.activeIndex);
+    });
+});
+
 </script>
+
+

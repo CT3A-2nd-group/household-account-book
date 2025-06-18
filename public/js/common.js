@@ -128,3 +128,21 @@ document.addEventListener("keydown", function (e) {
     closeMobileMenu();
   }
 });
+
+// ページ遷移前にスクロール位置を保存
+window.addEventListener("beforeunload", () => {
+  const sidebar = document.getElementById("scrollableSidebar");
+  if (sidebar) {
+    sessionStorage.setItem("sidebarScrollTop", sidebar.scrollTop);
+  }
+});
+
+// ページ読み込み後にスクロール位置を復元
+window.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.getElementById("scrollableSidebar");
+  const savedScroll = sessionStorage.getItem("sidebarScrollTop");
+  if (sidebar && savedScroll !== null) {
+    sidebar.scrollTop = parseInt(savedScroll);
+  }
+});
+

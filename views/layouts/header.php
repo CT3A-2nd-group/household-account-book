@@ -88,7 +88,7 @@
             </div>
 
             <!-- スクロール可能なナビゲーションエリア -->
-            <div class="scrollable-navigation">
+            <div class="scrollable-navigation" id="scrollableSidebar">
                 <nav class="main-navigation">
                     <ul class="nav-menu">
                         

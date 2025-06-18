@@ -340,3 +340,7 @@
     margin-right: 5px;
   }
 }
+
+.finance-swiper {
+  min-height: 300px; /* 内容に応じて調整 */
+}

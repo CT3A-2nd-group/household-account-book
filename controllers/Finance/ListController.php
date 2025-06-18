@@ -9,12 +9,12 @@
             $incomes = $this->IncomeList($_SESSION['user_id']);
             $expenditures = $this->ExpenditureList($_SESSION['user_id']);
             $extraCss = implode("\n", [
-                '<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />',
-                '<link rel="stylesheet" href="/css/Finance/finance.css">'
+                '<link rel="stylesheet" href="/css/Finance/finance.css">',
+                '<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />'
             ]);
             $extraJs = implode("\n", [
-                '<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>',
-                '<script src="/js/pagination.js"></script>'
+                '<script src="/js/pagination.js"></script>',
+                '<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>'
             ]);
 
             $this->render('finance/List_form', [

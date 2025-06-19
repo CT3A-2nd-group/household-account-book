@@ -210,24 +210,4 @@
             <div class="content-body">
                 <!-- ここに各ページのコンテンツが差し込まれます -->
 
-<?php else: ?>
-    <!-- ログイン前のシンプルなレイアウト -->
-    <div class="simple-layout">
-        <header class="simple-header">
-            <div class="header-container">
-                <div class="brand-section">
-                    <h1 class="site-title">
-                        <span class="brand-icon">💰</span>
-                        <span class="brand-text"><?= $title ?? 'ページ' ?></span>
-                    </h1>
-                </div>
-                <nav class="auth-navigation">
-                    <a href="/login" class="auth-link login-btn">ログイン</a>
-                    <a href="/register" class="auth-link register-btn">新規登録</a>
-                </nav>
-            </div>
-        </header>
-        <main class="simple-main">
-            <!-- ここに各ページのコンテンツが差し込まれます -->
-
 <?php endif; ?>

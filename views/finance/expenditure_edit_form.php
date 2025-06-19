@@ -44,8 +44,8 @@
             <div class="nigga"><label for="amount" class="form-label">金額</label><span class="required">*必須</span></div>
             <div class="input-with-icon amount-wrapper">
                 <input type="text" name="amount" id="amount" placeholder="金額を入力"
-                       class="form-input amount-input" inputmode="numeric"
-                       value="<?= htmlspecialchars($expenditure['amount'] ?? '') ?>">
+                    class="form-input amount-input" inputmode="numeric"
+                    value="<?= rtrim(rtrim(number_format($expenditure['amount'], 2, '.', ''), '0'), '.') ?>">
             </div>
         </div>
 

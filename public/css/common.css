@@ -142,3 +142,13 @@ body {
   opacity: 0.5;
   cursor: default;
 }
+
+/* 編集リンク */
+.edit-link,
+.edit-link:visited,
+.edit-link:hover,
+.edit-link:active {
+  color: #ffa500;
+  font-weight: bold;
+  text-decoration: none;
+}

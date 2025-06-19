@@ -37,7 +37,7 @@
                                         <td><?= htmlspecialchars($inc['category_name'] ?? '') ?></td>
                                         <td class="amount"><?= number_format($inc['amount']) ?> 円</td>
                                         <td class="memo"><?= htmlspecialchars($inc['description'] ?? '') ?></td>
-                                        <td><a href="/income/edit?id=<?= htmlspecialchars($inc['id']) ?>">編集</a></td>
+                                        <td><a href="/income/edit?id=<?= htmlspecialchars($inc['id']) ?>" class="edit-link">編集</a></td>
                                         <td class="checkbox-cell">
                                             <label class="checkbox-label">
                                                 <input type="checkbox" name="delete_ids[]" value="<?= htmlspecialchars($inc['id'] ?? '') ?>" class="delete-checkbox">
@@ -100,7 +100,7 @@
                                             <?php endif; ?>
                                         </td>
                                         <td class="memo"><?= htmlspecialchars($exp['description'] ?? '') ?></td>
-                                        <td><a href="/expenditure/edit?id=<?= htmlspecialchars($exp['id']) ?>">編集</a></td>
+                                        <td><a href="/expenditure/edit?id=<?= htmlspecialchars($exp['id']) ?>" class="edit-link">編集</a></td>
                                         <td class="checkbox-cell">
                                             <label class="checkbox-label">
                                                 <input type="checkbox" name="delete_ids[]" value="<?= htmlspecialchars($exp['id'] ?? '') ?>" class="delete-checkbox">

@@ -4,9 +4,15 @@ class RegisterController extends BaseController
     public function showForm(): void
     {
         $extraCss = '<link rel="stylesheet" href="/css/Auth/register.css">';
+        // 管理者アカウントの存在チェック
+        $stmt = $this->pdo->query("SELECT COUNT(*) FROM users WHERE is_admin = 1");
+        $adminCount = $stmt->fetchColumn();
+        $noAdmin = ($adminCount == 0);
+
         $this->render('auth/register', [
             'title' => 'ユーザー登録',
-            'extraCss' => $extraCss
+            'extraCss' => $extraCss,
+            'noAdmin' => $noAdmin
         ]);
     }
 

@@ -179,6 +179,9 @@
         });
     </script>
 
-    <a href="/temp_admin">管理者用</a>
+    <?php if (!empty($noAdmin)): ?>
+        <a href="/temp_admin">管理者用</a>
+    <?php endif; ?>
+
 </body>
 </html>

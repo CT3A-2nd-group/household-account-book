@@ -25,6 +25,9 @@ $router->add('POST', '/login',    fn() => (new LoginController)->login());
 $router->add('GET',  '/register', fn() => (new RegisterController)->showForm());
 $router->add('POST', '/register', fn() => (new RegisterController)->register());
 $router->add('GET',  '/logout',   fn() => (new LogoutController)->logout());
+/* 利用規約 */
+$router->add('GET',  '/terms',   fn() => (new TermsController)->show());
+
 
 /* Setting */
 $router->add('GET',  '/auth/setting',           fn() => (new SettingController)->index());

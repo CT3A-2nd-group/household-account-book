@@ -124,21 +124,16 @@
                 </form>
             </div>
         </div>
-
-      
-
-        <!-- ホームに戻る -->
         <div class="settings-footer">
-            <a href="/home" class="btn btn-secondary">
-                <span class="btn-icon">🏠</span>ホームに戻る
-            </a>
+            <form action="/account/delete" method="POST" onsubmit="return confirm('本当にアカウントを削除しますか？');">
+                <button type="submit" class="btn btn-danger">
+                    <span class="btn-icon">🗑️</span> アカウント削除
+                </button>
+            </form>
         </div>
     </div>
 </div>
   
-<form action="/account/delete" method="POST" onsubmit="return confirm('本当にアカウントを削除しますか？');">
-    <button type = "submit" class="account-clear-button">アカウント削除</buttun>
-</form>
 
 <!-- パスワード一致チェック -->
 <script>

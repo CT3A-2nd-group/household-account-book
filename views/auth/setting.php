@@ -136,7 +136,7 @@
     </div>
 </div>
   
-<form action="/account/delete" method="POST">
+<form action="/account/delete" method="POST" onsubmit="return confirm('本当にアカウントを削除しますか？');">
     <button type = "submit" class="account-clear-button">アカウント削除</buttun>
 </form>
 

@@ -99,4 +99,22 @@ class SettingController extends BaseController
 
         $this->render('auth/setting', $data);
     }
+
+    public function deleteAccount(): void
+    {
+        $this->requireLogin(); // ログイン確認（実装済み前提）
+        // セッションからユーザーIDを取得
+        $userId = $_SESSION['user_id']; 
+        $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = :id");
+        $stmt->execute([':id' => $userId]);
+
+        // セッション削除（ログアウト処理）
+        session_unset();
+        session_destroy();
+
+        // ログインページへリダイレクト
+        header('Location: /login');
+        exit;
+    }
+
 }

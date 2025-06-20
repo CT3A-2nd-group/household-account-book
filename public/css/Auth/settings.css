@@ -564,3 +564,32 @@ input:checked + .toggle-slider:before {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.account-delete-form {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.btn-danger {
+  background-color: #e3342f;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #cc1f1a;
+}
+.settings-footer form {
+  margin-bottom: 1.5rem;
+}
+.horizontal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

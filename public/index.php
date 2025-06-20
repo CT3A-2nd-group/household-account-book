@@ -33,7 +33,7 @@ $router->add('GET',  '/terms',   fn() => (new TermsController)->show());
 $router->add('GET',  '/auth/setting',           fn() => (new SettingController)->index());
 $router->add('POST', '/auth/update-username',   fn() => (new SettingController)->updateUsername());
 $router->add('POST', '/auth/change-password',   fn() => (new SettingController)->changePassword());
-$router->add('POST', '/auth/delete-account',    fn() => (new SettingController)->deleteAccount());
+$router->add('POST', '/account/delete',    fn() => (new SettingController)->deleteAccount());
 
 /* Finance */
 /* 収入登録 */

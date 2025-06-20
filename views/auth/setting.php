@@ -125,6 +125,8 @@
             </div>
         </div>
 
+      
+
         <!-- ホームに戻る -->
         <div class="settings-footer">
             <a href="/home" class="btn btn-secondary">
@@ -133,6 +135,10 @@
         </div>
     </div>
 </div>
+  
+<form action="/account/delete" method="POST">
+    <button type = "submit" class="account-clear-button">アカウント削除</buttun>
+</form>
 
 <!-- パスワード一致チェック -->
 <script>

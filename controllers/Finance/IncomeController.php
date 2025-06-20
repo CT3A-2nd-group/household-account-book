@@ -8,7 +8,10 @@ class IncomeController extends BaseController
 
         // カテゴリ取得
         $categories = $this->pdo
-            ->query("SELECT id, name FROM categories WHERE type = 'income'")
+             ->query(
+                "SELECT id, name FROM categories WHERE type = 'income' " .
+                "ORDER BY (name = 'その他'), id"
+            )
             ->fetchAll();
 
         // ── flash 取り出し ──
@@ -93,7 +96,10 @@ class IncomeController extends BaseController
         }
 
         $categories = $this->pdo
-            ->query("SELECT id, name FROM categories WHERE type = 'income'")
+            ->query(
+                "SELECT id, name FROM categories WHERE type = 'income' " .
+                "ORDER BY (name = 'その他'), id"
+            )
             ->fetchAll();
 
         $this->render('finance/income_edit_form', [

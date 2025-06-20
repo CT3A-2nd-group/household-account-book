@@ -1,141 +1,15 @@
-// 隠しのdate inputを作成してカレンダーを表示する関数
+// flatpickr を用いてカレンダーを表示
 function openCalendar() {
-  const textInput = document.getElementById("date-input");
-
-  // 既存の隠しinputがあれば削除
-  const existingHiddenInput = document.getElementById("hidden-date-input");
-  if (existingHiddenInput) {
-    existingHiddenInput.remove();
+  const dateInput = document.getElementById("date-input");
+  if (!dateInput) return;
+  if (!dateInput._flatpickr) {
+    flatpickr(dateInput, {
+      dateFormat: "Y/m/d",
+      locale: flatpickr.l10ns.ja,
+      allowInput: true,
+    });
   }
-
-  // 隠しのdate inputを作成
-  const hiddenDateInput = document.createElement("input");
-  hiddenDateInput.type = "date";
-  hiddenDateInput.id = "hidden-date-input";
-  hiddenDateInput.style.position = "absolute";
-  hiddenDateInput.style.left = "-9999px";
-  hiddenDateInput.style.opacity = "0";
-  hiddenDateInput.style.width = "1px";
-  hiddenDateInput.style.height = "1px";
-
-  // 現在の値をdate形式に変換してセット
-  const currentValue = textInput.value;
-  if (currentValue && currentValue.includes("/")) {
-    const parts = currentValue.split("/");
-    if (parts.length === 3) {
-      const year = parts[0];
-      const month = parts[1].padStart(2, "0");
-      const day = parts[2].padStart(2, "0");
-      hiddenDateInput.value = `${year}-${month}-${day}`;
-    }
-  } else {
-    // デフォルトで今日の日付を設定
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-    hiddenDateInput.value = `${year}-${month}-${day}`;
-  }
-
-  // DOMに追加
-  document.body.appendChild(hiddenDateInput);
-
-  // 日付が選択された時の処理
-  hiddenDateInput.addEventListener("change", function () {
-    if (this.value) {
-      const selectedDate = new Date(this.value);
-      const year = selectedDate.getFullYear();
-      const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
-      const day = String(selectedDate.getDate()).padStart(2, "0");
-
-      textInput.value = `${year}/${month}/${day}`;
-
-      // バリデーションをクリア
-      textInput.setCustomValidity("");
-      textInput.style.borderColor = "";
-
-      console.log("カレンダーから日付が選択されました:", textInput.value);
-    }
-
-    // 隠しinputを削除
-    setTimeout(() => {
-      if (this.parentNode) {
-        this.remove();
-      }
-    }, 100);
-  });
-
-  // フォーカスが外れた時に隠しinputを削除
-  hiddenDateInput.addEventListener("blur", function () {
-    setTimeout(() => {
-      if (this.parentNode) {
-        this.remove();
-      }
-    }, 200);
-  });
-
-  // カレンダーを開く（複数の方法を試行）
-  setTimeout(() => {
-    console.log("カレンダーを開こうとしています...");
-
-    // 方法1: showPicker()を使用
-    if (hiddenDateInput.showPicker) {
-      try {
-        hiddenDateInput.showPicker();
-        console.log("showPicker()でカレンダーを開きました");
-        return;
-      } catch (error) {
-        console.log("showPicker()が失敗しました:", error);
-      }
-    }
-
-    // 方法2: フォーカス + クリック
-    try {
-      hiddenDateInput.focus();
-      hiddenDateInput.click();
-      console.log("focus() + click()でカレンダーを開きました");
-    } catch (error) {
-      console.log("focus() + click()が失敗しました:", error);
-    }
-
-    // 方法3: マウスイベントを発火
-    try {
-      const clickEvent = new MouseEvent("click", {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-      });
-      hiddenDateInput.dispatchEvent(clickEvent);
-      console.log("MouseEventでカレンダーを開きました");
-    } catch (error) {
-      console.log("MouseEventが失敗しました:", error);
-    }
-
-    // 方法4: 直接的なアプローチ
-    try {
-      hiddenDateInput.setAttribute("data-opened", "true");
-      hiddenDateInput.focus();
-
-      // キーボードイベントでカレンダーを開く試行
-      const spaceEvent = new KeyboardEvent("keydown", {
-        key: " ",
-        code: "Space",
-        keyCode: 32,
-      });
-      hiddenDateInput.dispatchEvent(spaceEvent);
-      console.log("キーボードイベントでカレンダーを開きました");
-    } catch (error) {
-      console.log("キーボードイベントが失敗しました:", error);
-    }
-  }, 50);
-
-  // 5秒後に自動削除（安全のため）
-  setTimeout(() => {
-    if (hiddenDateInput.parentNode) {
-      hiddenDateInput.remove();
-      console.log("タイムアウトで隠しinputを削除しました");
-    }
-  }, 5000);
+  dateInput._flatpickr.open();
 }
 
 // 全角文字を半角に変換する関数
@@ -349,6 +223,14 @@ function initializeDateField() {
   const dateInput = document.getElementById("date-input");
 
   if (!dateInput) return;
+
+  if (!dateInput._flatpickr) {
+    flatpickr(dateInput, {
+      dateFormat: "Y/m/d",
+      locale: flatpickr.l10ns.ja,
+      allowInput: true,
+    });
+  }
 
   // 今日の日付をデフォルト値として設定(入力がある場合はそっちを優先)
   if (!dateInput.value.trim()) {

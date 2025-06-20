@@ -21,9 +21,14 @@ class IncomeController extends BaseController
             'title'      => '収入登録',
             'extraCss'   => implode("\n", [
                 '<link rel="stylesheet" href="/css/Finance/finance.css">',
-                '<link rel="stylesheet" href="/css/Finance/income.css">'
+                '<link rel="stylesheet" href="/css/Finance/income.css">',
+                '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">'
             ]),
-            'extraJs'    => '<script src="/js/Finance/income.js"></script>',
+            'extraJs'    => implode("\n", [
+                '<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>',
+                '<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>',
+                '<script src="/js/Finance/income.js"></script>'
+            ]),
             'old'        => $old,
             'error'      => $error
         ]);
@@ -101,9 +106,14 @@ class IncomeController extends BaseController
             'title'      => '収入編集',
             'extraCss'   => implode("\n", [
                 '<link rel="stylesheet" href="/css/Finance/finance.css">',
-                '<link rel="stylesheet" href="/css/Finance/income.css">'
+                '<link rel="stylesheet" href="/css/Finance/income.css">',
+                '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">'
             ]),
-            'extraJs'    => '<script src="/js/Finance/income.js"></script>',
+            'extraJs'    => implode("\n", [
+                '<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>',
+                '<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>',
+                '<script src="/js/Finance/income.js"></script>'
+            ]),
             'income'     => $income
         ]);
     }

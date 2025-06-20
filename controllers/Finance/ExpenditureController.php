@@ -8,7 +8,8 @@ class ExpenditureController extends BaseController
         $this->requireLogin();
 
         $stmt = $this->pdo->query(
-            "SELECT id, name FROM categories WHERE type = 'expenditure'"
+            "SELECT id, name FROM categories WHERE type = 'expenditure' " .
+            "ORDER BY (name = 'その他'), id"
         );
         $categories = $stmt->fetchAll();
 
@@ -116,7 +117,10 @@ class ExpenditureController extends BaseController
         }
 
         $categories = $this->pdo
-            ->query("SELECT id, name FROM categories WHERE type = 'expenditure'")
+            ->query(
+                "SELECT id, name FROM categories WHERE type = 'expenditure' " .
+                "ORDER BY (name = 'その他'), id"
+            )
             ->fetchAll();
 
         $extraCss = implode("\n", [

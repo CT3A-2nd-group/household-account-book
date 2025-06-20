@@ -75,7 +75,8 @@ class AdminCategoryController extends BaseController
     private function fetchCategories(string $type): array
     {
         $stmt = $this->pdo->prepare(
-            "SELECT id, name FROM categories WHERE type = :t ORDER BY id"
+            "SELECT id, name FROM categories WHERE type = :t " .
+            "ORDER BY (name = 'その他'), id"
         );
         $stmt->execute([':t' => $type]);
         return $stmt->fetchAll();

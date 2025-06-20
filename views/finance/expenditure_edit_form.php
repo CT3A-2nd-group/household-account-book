@@ -32,7 +32,7 @@
                     <option value="" disabled <?= empty($expenditure['category_id']) ? 'selected' : '' ?>>-- カテゴリを選択 --</option>
                     <?php foreach ($categories as $category): ?>
                         <option value="<?= htmlspecialchars($category['id']) ?>"
-                            <?= (string)$category['id'] === ($expenditure['category_id'] ?? '') ? 'selected' : '' ?>>
+                            <?= (int)$category['id'] === (int)($expenditure['category_id'] ?? 0) ? 'selected' : '' ?>>
                             <?= htmlspecialchars($category['name']) ?>
                         </option>
                     <?php endforeach; ?>

@@ -32,11 +32,11 @@
         <div class="form-group">
             <div class="nigga"><label class="form-label">カテゴリ</label><span class="required">*必須</span></div>
             <div class="select-wrapper">
-                <select name="category_id"  class="form-select">
+                <select name="category_id" class="form-select">
                     <option value="" disabled <?= empty($income['category_id']) ? 'selected' : '' ?>>-- カテゴリを選択 --</option>
                     <?php foreach ($categories as $c): ?>
                         <option value="<?= htmlspecialchars($c['id']) ?>"
-                            <?= (string)$c['id'] === ($income['category_id'] ?? '') ? 'selected' : '' ?>>
+                            <?= (int)$c['id'] === (int)($income['category_id'] ?? 0) ? 'selected' : '' ?>>
                             <?= htmlspecialchars($c['name']) ?>
                         </option>
                     <?php endforeach; ?>

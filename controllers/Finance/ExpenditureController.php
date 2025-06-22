@@ -130,21 +130,21 @@ class ExpenditureController extends BaseController
 
         $extraCss = implode("\n", [
             '<link rel="stylesheet" href="/css/Finance/finance.css">',
-            '<link rel="stylesheet" href="/css/Finance/expenditure.css">'
+            '<link rel="stylesheet" href="/css/Finance/expenditure.css">',
+            '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">'
+        ]);
+
+        $extraJs = implode("\n", [
+            '<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>',
+            '<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>',
+            '<script src="/js/Finance/expenditure.js"></script>'
         ]);
 
         $this->render('finance/expenditure_edit_form', [
             'categories'  => $categories,
             'title'       => '支出編集',
-            'extraCss'    => implode("\n", [
-                $extraCss,
-                '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">'
-            ]),
-            'extraJs'     => implode("\n", [
-                '<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>',
-                '<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>',
-                '<script src="/js/Finance/expenditure.js"></script>'
-            ]),
+            'extraCss'    => $extraCss,
+            'extraJs'     => $extraJs,
             'expenditure' => $expenditure
         ]);
     }

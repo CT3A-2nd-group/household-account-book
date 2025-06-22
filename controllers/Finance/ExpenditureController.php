@@ -24,7 +24,10 @@ class ExpenditureController extends BaseController
             '<link rel="stylesheet" href="/css/Finance/finance.css">',
             '<link rel="stylesheet" href="/css/Finance/expenditure.css">'
         ]);
-        $extraJs = '<script src="/js/Finance/expenditure.js"></script>';
+        $extraJs = implode("\n", [
+            '<script src="/js/calendar-api.js"></script>',
+            '<script src="/js/Finance/expenditure.js"></script>'
+        ]);
         $this->render('finance/expenditure_form', [
             'categories' => $categories,
             'title'      => '支出登録',
@@ -132,7 +135,10 @@ class ExpenditureController extends BaseController
             'categories'  => $categories,
             'title'       => '支出編集',
             'extraCss'    => $extraCss,
-            'extraJs'     => '<script src="/js/Finance/expenditure.js"></script>',
+            'extraJs'     => implode("\n", [
+                '<script src="/js/calendar-api.js"></script>',
+                '<script src="/js/Finance/expenditure.js"></script>'
+            ]),
             'expenditure' => $expenditure
         ]);
     }

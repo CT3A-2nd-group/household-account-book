@@ -26,7 +26,10 @@ class IncomeController extends BaseController
                 '<link rel="stylesheet" href="/css/Finance/finance.css">',
                 '<link rel="stylesheet" href="/css/Finance/income.css">'
             ]),
-            'extraJs'    => '<script src="/js/Finance/income.js"></script>',
+            'extraJs'    => implode("\n", [
+                '<script src="/js/calendar-api.js"></script>',
+                '<script src="/js/Finance/income.js"></script>'
+            ]),
             'old'        => $old,
             'error'      => $error
         ]);
@@ -109,7 +112,10 @@ class IncomeController extends BaseController
                 '<link rel="stylesheet" href="/css/Finance/finance.css">',
                 '<link rel="stylesheet" href="/css/Finance/income.css">'
             ]),
-            'extraJs'    => '<script src="/js/Finance/income.js"></script>',
+            'extraJs'    => implode("\n", [
+                '<script src="/js/calendar-api.js"></script>',
+                '<script src="/js/Finance/income.js"></script>'
+            ]),
             'income'     => $income
         ]);
     }

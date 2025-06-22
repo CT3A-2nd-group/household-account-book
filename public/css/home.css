@@ -28,19 +28,6 @@
   margin: 0;
 }
 
-.user-role {
-  font-size: 1rem;
-  color: #64748b;
-  margin: 0;
-}
-
-.admin-role {
-  color: #3b82f6;
-}
-
-.admin-role strong {
-  color: #1d4ed8;
-}
 
 /* 財務サマリーセクション */
 .finance-summary {

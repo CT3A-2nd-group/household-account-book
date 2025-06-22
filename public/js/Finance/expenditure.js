@@ -1,4 +1,6 @@
 // カレンダーAPIを利用して日付を選択する関数
+// This function is invoked from the calendar button in the form
+// and forwards the request to the shared CalendarAPI.
 function openCalendar() {
   if (window.CalendarAPI && typeof window.CalendarAPI.openCalendar === "function") {
     window.CalendarAPI.openCalendar("date-input");

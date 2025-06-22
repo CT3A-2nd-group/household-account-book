@@ -82,7 +82,7 @@
 .auth-card.signup .input-hint {
   font-size: 0.65rem;
   line-height: 1.1;
-  margin-top: 0.05rem;
+  margin-top: 0.25rem;
 }
 
 /* ─── ボタン & フッタ部 ─── */
@@ -99,6 +99,27 @@
 
 .auth-card.signup .auth-button:active {
   transform: translateY(0);
+}
+
+.auth-card.signup .checkbox-label {
+  font-size: 0.9rem; /* もしくは 0.7rem にしてもOK */
+  line-height: 1.2; /* 詰めたい場合は追加 */
+}
+
+.auth-card.signup .terms-link {
+  color: #10b981;
+}
+
+.auth-card.signup .terms-link:hover {
+  text-decoration: underline;
+}
+
+.auth-card.signup .auth-link {
+  color: #10b981;
+}
+
+.auth-card.signup .auth-link:hover {
+  text-decoration: underline;
 }
 
 /* ログインヘッダー */

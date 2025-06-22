@@ -113,6 +113,18 @@
   z-index: 50;
 }
 
+/* スクロールバー消してます */
+.right-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.right-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.2); /* #64748b 相当 */
+  border-radius: 4px;
+}
+.right-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* 左サイドバーのスタイル */
 .sidebar-header {
   padding: 2rem 1.5rem;
@@ -568,10 +580,13 @@
   border: 2px solid white;
 }
 
+/* スクロールバー消してます */
 .content-body {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
 }
 
 /* ログイン前のシンプルレイアウト */

@@ -2,7 +2,8 @@
     <h2 class="h2page-title">満足度ランキング（上位5件）</h2>
 
     <section class="analysis-section">
-        <table class="analysis-table paginated-table">
+        <div class="table-container">
+            <table class="analysis-table paginated-table">
             <thead>
             <tr><th>日付</th><th>カテゴリ</th><th>金額(円)</th><th>満足度</th><th>メモ</th></tr>
             </thead>
@@ -23,11 +24,13 @@
             <?php endif; ?>
             </tbody>
         </table>
+        </div>
     </section>
 
     <section class="analysis-section">
-        <h2>無駄な支出</h2>
-        <table class="analysis-table paginated-table">
+        <h2 class="h2page-title">無駄な支出</h2>
+        <div class="table-container">
+            <table class="analysis-table paginated-table">
             <thead>
             <tr><th>日付</th><th>カテゴリ</th><th>金額(円)</th><th>満足度</th><th>メモ</th></tr>
             </thead>
@@ -48,5 +51,6 @@
             <?php endif; ?>
             </tbody>
         </table>
+        </div>
     </section>
 </div>

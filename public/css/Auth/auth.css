@@ -1,22 +1,25 @@
-/* 新規登録画面専用スタイル */
+/* 認証画面共通スタイル */
 
-/* 登録コンテナ */
-.register-container {
+/* ログインコンテナ */
+.auth-container {
   display: flex;
   justify-content: center;
-  max-width: 1200px;
+  align-items: center; /* ← 縦方向に中央寄せ */
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
-  min-height: calc(100vh - 120px);
+  padding: 1rem;
+  padding-top: 2rem;
+  min-height: 100vh; /* ← 画面の高さ全体を確保 */
+  box-sizing: border-box;
 }
 
-/* 登録カード */
-.register-card {
+/* ログインカード */
+.auth-card {
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
   background: white;
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 2rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
@@ -24,37 +27,37 @@
   overflow: hidden;
 }
 
-.register-card::before {
+.auth-card::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #059669, #10b981);
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
 
-/* 登録ヘッダー */
-.register-header {
+/* ログインヘッダー */
+.auth-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
-.register-icon {
+.auth-icon {
   font-size: 2.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
-.register-title {
-  font-size: 1.75rem;
+.auth-title {
+  font-size: 1.5rem;
   font-weight: 700;
   color: #1e293b;
   margin: 0 0 0.5rem 0;
 }
 
-.register-subtitle {
+.auth-subtitle {
   color: #64748b;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   margin: 0;
 }
 
@@ -69,22 +72,11 @@
   border-left: 4px solid #ef4444;
 }
 
-/* 成功メッセージ */
-.success-message {
-  background-color: #f0fdf4;
-  color: #059669;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
-  border-left: 4px solid #059669;
-}
-
 /* フォームスタイル */
-.register-form {
+.auth-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .form-group {
@@ -96,7 +88,7 @@
   font-weight: 500;
   color: #374151;
   margin-bottom: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .form-input {
@@ -110,29 +102,12 @@
 
 .form-input:focus {
   outline: none;
-  border-color: #059669;
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
-}
-
-.form-input.error {
-  border-color: #ef4444;
-  background-color: #fef2f2;
-}
-
-.form-input.error:focus {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .form-input::placeholder {
   color: #9ca3af;
-}
-
-/* 入力ヒント */
-.input-hint {
-  font-size: 0.75rem;
-  color: #6b7280;
-  margin-top: 0.25rem;
 }
 
 /* パスワード入力 */
@@ -187,39 +162,43 @@
   background-repeat: no-repeat;
 }
 
-/* チェックボックス */
+/* フォームオプション */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
 .checkbox-wrapper {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  font-size: 0.875rem;
-  line-height: 1.4;
 }
 
 .checkbox-input {
-  accent-color: #059669;
-  margin-top: 0.125rem;
+  accent-color: #3b82f6;
 }
 
 .checkbox-label {
   color: #4b5563;
 }
 
-.terms-link {
-  color: #059669;
+.forgot-password-link {
+  color: #3b82f6;
   text-decoration: none;
 }
 
-.terms-link:hover {
+.forgot-password-link:hover {
   text-decoration: underline;
 }
 
-/* 登録ボタン */
-.register-button {
+/* ログインボタン */
+.auth-button {
   width: 100%;
   padding: 0.75rem 1.5rem;
-  background: #059669;
+  background: #3b82f6;
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -227,46 +206,75 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
-.register-button:hover {
-  background: #047857;
+.auth-button:hover {
+  background: #2563eb;
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
 }
 
-.register-button:active {
+.auth-button:active {
   transform: translateY(0);
 }
 
-/* ログインプロンプト */
-.login-prompt {
+/* 新規登録プロンプト */
+.auth-prompt {
   text-align: center;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
 
-.login-text {
+.auth-text {
   color: #4b5563;
   margin: 0;
   font-size: 0.875rem;
 }
 
-.login-link {
-  color: #059669;
+.auth-link {
+  color: #3b82f6;
   text-decoration: none;
   font-weight: 500;
 }
 
-.login-link:hover {
+.auth-link:hover {
   text-decoration: underline;
 }
+/* 新規登録画面追加スタイル - ログイン画面のCSSを共通利用 */
 
-/* アクティブな認証リンク */
-.auth-link.active {
-  background: rgba(5, 150, 105, 0.1);
+.success-message {
+  background-color: #f0fdf4;
   color: #059669;
-  border-color: rgba(5, 150, 105, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  border-left: 4px solid #059669;
+}
+
+.input-hint {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.form-input.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.form-input.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.terms-link {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
 }

@@ -1,13 +1,13 @@
     <!-- ログイン前のシンプルなレイアウト -->
     <div class="simple-layout">
         <main class="simple-main">
-            <div class="register-container">
-                <div class="register-card">
+            <div class="auth-container">
+                <div class="auth-card">
                     <!-- 登録フォームヘッダー -->
-                    <div class="register-header">
-                        <div class="register-icon">✨</div>
-                        <h2 class="register-title">新規登録</h2>
-                        <p class="register-subtitle">アカウントを作成して始めましょう</p>
+                    <div class="auth-header">
+                        <div class="auth-icon">✨</div>
+                        <h2 class="auth-title">新規登録</h2>
+                        <p class="auth-subtitle">アカウントを作成して始めましょう</p>
                     </div>
                     
                     <!-- エラーメッセージ表示 -->
@@ -21,7 +21,7 @@
                     <?php endif; ?>
                     
                     <!-- 登録フォーム -->
-                    <form class="register-form" action="/register" method="POST">
+                    <form class="auth-form" action="/register" method="POST">
                         <!-- ユーザー名入力 -->
                         <div class="form-group">
                             <label for="username" class="form-label">ユーザー名</label>
@@ -90,11 +90,11 @@
                         </div>
                         
                         <!-- 登録ボタン -->
-                        <button type="submit" class="register-button">アカウントを作成</button>
+                        <button type="submit" class="auth-button">アカウントを作成</button>
                         
                         <!-- ログインリンク -->
-                        <div class="login-prompt">
-                            <p class="login-text">すでにアカウントをお持ちの方は <a href="/login" class="login-link">ログイン</a></p>
+                        <div class="auth-prompt">
+                            <p class="auth-text">すでにアカウントをお持ちの方は <a href="/login" class="auth-link">ログイン</a></p>
                         </div>
                     </form>
                 </div>
@@ -138,7 +138,7 @@
         document.getElementById('password').addEventListener('input', checkPasswordMatch);
         
         // フォーム送信時のバリデーション
-        document.querySelector('.register-form').addEventListener('submit', function(e) {
+        document.querySelector('.auth-form').addEventListener('submit', function(e) {
             const username = document.getElementById('username').value.trim();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;

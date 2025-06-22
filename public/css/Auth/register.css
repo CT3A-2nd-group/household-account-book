@@ -270,24 +270,3 @@
   color: #059669;
   border-color: rgba(5, 150, 105, 0.3);
 }
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .register-container {
-    padding: 1rem;
-  }
-
-  .register-card {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .register-title {
-    font-size: 1.5rem;
-  }
-
-  .checkbox-wrapper {
-    align-items: flex-start;
-  }
-}

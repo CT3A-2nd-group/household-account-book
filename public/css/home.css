@@ -57,7 +57,6 @@
   margin-bottom: 1.5rem;
 }
 
-
 .summary-date {
   font-size: 0.875rem;
   color: #64748b;
@@ -207,8 +206,6 @@
   border: 1px solid #e2e8f0;
 }
 
-
-
 .view-all {
   font-size: 0.875rem;
   font-weight: 500;
@@ -316,21 +313,6 @@
   color: #10b981;
 }
 
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .summary-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .progress-container {
-    flex-direction: column;
-  }
-
-  .progress-chart {
-    align-self: center;
-  }
-}
-
 .goal-progress-card {
   display: flex;
   background-color: #fff;
@@ -346,10 +328,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 220px; 
+  min-width: 220px;
   flex-shrink: 0;
 }
-
 
 .goal-progress-label {
   font-size: 22px;
@@ -370,7 +351,6 @@
   flex-direction: column;
   gap: 16px;
 }
-
 
 .goal-title {
   font-size: 20px;
@@ -409,21 +389,20 @@
   color: #1e88e5;
 }
 
-
-.goal-clear-button{
-    font-size: 110%;
-    width: 150px;
-    height: 45px;
-    border:none;
-    border-radius: 15px;
-    color:white;
-    background-color: #6D28D9;    
-    display: block;
-    margin-left: auto;
+.goal-clear-button {
+  font-size: 110%;
+  width: 150px;
+  height: 45px;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #6d28d9;
+  display: block;
+  margin-left: auto;
 }
 
-.goal-clear-button:hover{
-  background-color:  #7c3de1;;
+.goal-clear-button:hover {
+  background-color: #7c3de1;
 }
 
 #circle-goal-bar {
@@ -439,14 +418,18 @@
 }
 
 @keyframes rotateRainbow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .user-greeting-row {
   display: flex;
   justify-content: space-between; /* 名前は左、ボタンは右端へ */
-  align-items: center;         /* 上端揃え */
+  align-items: center; /* 上端揃え */
   flex-wrap: wrap;
   padding: 1.5rem;
 }
@@ -460,10 +443,10 @@
 
 .conditional-buttons {
   display: flex;
-  flex-direction: column;       /* ボタンを縦に並べる */
+  flex-direction: column; /* ボタンを縦に並べる */
   gap: 0.5rem;
-  align-items: flex-start;      /* ボタン内部を左揃えに */
-  text-align: left;             /* テキストも左寄せ */
+  align-items: flex-start; /* ボタン内部を左揃えに */
+  text-align: left; /* テキストも左寄せ */
 }
 
 .btn {
@@ -475,13 +458,13 @@
   text-decoration: none;
   color: white;
   transition: background-color 0.3s ease;
-  width: 100%;                  /* ボタンの幅を揃えたい場合は追加（任意） */
-  min-width: 200px;             /* 最小幅で見栄えを安定（任意） */
+  width: 100%; /* ボタンの幅を揃えたい場合は追加（任意） */
+  min-width: 200px; /* 最小幅で見栄えを安定（任意） */
 }
 
 /* 目標登録ボタン */
 .btn-goal {
-  background-color: #3B82F6;  /* 通常：blue-500 */
+  background-color: #3b82f6; /* 通常：blue-500 */
   color: white;
   border-radius: 8px;
   padding: 0.5rem 1rem;
@@ -490,14 +473,14 @@
 }
 
 .btn-goal:hover {
-  background-color: #60A5FA;  /* ホバー時：blue-400 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* 浮く */
-  transform: translateY(-2px);  /* 少し上に動く */
+  background-color: #60a5fa; /* ホバー時：blue-400 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 浮く */
+  transform: translateY(-2px); /* 少し上に動く */
 }
 
 /* 貯金額登録ボタン */
 .btn-saving {
-  background-color: #6366F1;  /* 通常：indigo-500 */
+  background-color: #6366f1; /* 通常：indigo-500 */
   color: white;
   border-radius: 8px;
   padding: 0.5rem 1rem;
@@ -506,12 +489,10 @@
 }
 
 .btn-saving:hover {
-  background-color: #818CF8;  /* ホバー時：indigo-400 */
+  background-color: #818cf8; /* ホバー時：indigo-400 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
-
-
 
 /* 外枠カード風 */
 .free-money-box {
@@ -534,7 +515,8 @@
   background-color: #eff6ff; /* 淡い青 */
 }
 
-.free-money-table th, .free-money-table td {
+.free-money-table th,
+.free-money-table td {
   padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;

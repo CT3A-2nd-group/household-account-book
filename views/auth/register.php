@@ -2,7 +2,7 @@
     <div class="simple-layout">
         <main class="simple-main">
             <div class="auth-container">
-                <div class="auth-card">
+                <div class="auth-card signup">
                     <!-- 登録フォームヘッダー -->
                     <div class="auth-header">
                         <div class="auth-icon">✨</div>

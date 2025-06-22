@@ -1,3 +1,4 @@
+/* コンテナ全体 */
 .analysis-container {
   background: white;
   border-radius: 8px;
@@ -5,53 +6,111 @@
   padding: 24px;
   margin: 20px auto;
   border: 1px solid #e0e9ff;
-  max-width: 800px;
+  max-width: none;
   width: 100%;
 }
 
+/* セクション間 */
 .analysis-section {
   margin-bottom: 32px;
 }
 
+/* タイトル */
+.h2page-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0066cc; /* 青に統一 */
+  margin-bottom: 12px; /* 下余白 */
+}
+
+/* テーブルコンテナ */
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 2px solid #1a73e8;
+  margin: 0;
+  padding: 0;
+}
+
+/* テーブル本体 */
 .analysis-table {
   width: 100%;
+  background: white;
   border-collapse: collapse;
-  margin-top: 12px;
+  margin-top: 0; /* 上余白なし */
   border: 1px solid #c7d8ff;
+}
+
+/* テーブルヘッダー */
+.analysis-table thead {
+  background-color: #e8f0fe;
+}
+
+.analysis-table thead th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.analysis-table thead th:last-child {
+  border-top-right-radius: 8px;
 }
 
 .analysis-table th {
-  background-color: #e8f0fe;
-  padding: 10px 12px;
+  padding: 8px 12px;
+  text-align: left;
   font-size: 13px;
   font-weight: 600;
-  color: #0066cc;
+  color: #1a73e8; /* 青に寄せる */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   border: 1px solid #c7d8ff;
+  border-bottom: 2px solid #1a73e8;
+  vertical-align: middle;
 }
 
+/* テーブル行 */
+.analysis-table tbody tr {
+  border-bottom: 1px solid #c7d8ff;
+  transition: background-color 0.2s ease;
+}
+
+.analysis-table tbody tr:hover {
+  background-color: #f0f7ff;
+}
+
+/* テーブルセル */
 .analysis-table td {
-  padding: 10px 12px;
+  padding: 10px 14px;
+  font-size: 16px;
+  color: #333;
   border: 1px solid #c7d8ff;
+  vertical-align: middle;
 }
 
+/* 金額欄 */
 .analysis-table .amount {
   font-weight: 600;
-  color: #0066cc;
+  color: #1a73e8;
 }
 
+/* 満足度（★） */
 .analysis-table .star-rating {
   color: #f59e0b;
+  padding: 4px 0;
+  text-align: center;
+  font-family: monospace;
 }
 
+/* メモ欄 */
 .analysis-table .memo {
-  width: 200px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  white-space: normal;
+  width: auto;
+  max-width: 200px;
+  word-break: break-word;
 }
 
+/* データがないとき */
 .analysis-table .no-data {
-  padding: 20px;
+  padding: 32px 16px;
   text-align: center;
   color: #5f6368;
+  white-space: normal;
 }

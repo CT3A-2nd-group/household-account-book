@@ -240,9 +240,3 @@
   text-decoration: underline;
 }
 
-/* アクティブな認証リンク */
-.auth-link.active {
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
-  border-color: rgba(59, 130, 246, 0.3);
-}

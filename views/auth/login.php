@@ -1,13 +1,13 @@
     <!-- ログイン前のシンプルなレイアウト -->
     <div class="simple-layout">
         <main class="simple-main">
-            <div class="login-container">
-                <div class="login-card">
+            <div class="auth-container">
+                <div class="auth-card">
                     <!-- ログインフォームヘッダー -->
-                    <div class="login-header">
-                        <div class="login-icon">🔐</div>
-                        <h2 class="login-title">ログイン</h2>
-                        <p class="login-subtitle">アカウントにサインインしてください</p>
+                    <div class="auth-header">
+                        <div class="auth-icon">🔐</div>
+                        <h2 class="auth-title">ログイン</h2>
+                        <p class="auth-subtitle">アカウントにサインインしてください</p>
                     </div>
                     
                     <!-- エラーメッセージ表示 -->
@@ -16,7 +16,7 @@
                     <?php endif; ?>
                     
                     <!-- ログインフォーム -->
-                    <form class="login-form" action="/login" method="POST">
+                    <form class="auth-form" action="/login" method="POST">
                         <!-- ユーザー名入力 -->
                         <div class="form-group">
                             <label for="username" class="form-label">ユーザー名</label>
@@ -61,11 +61,11 @@
                         </div>
                         
                         <!-- ログインボタン -->
-                        <button type="submit" class="login-button">ログイン</button>
+                        <button type="submit" class="auth-button">ログイン</button>
                         
                         <!-- 新規登録リンク -->
-                        <div class="register-prompt">
-                            <p class="register-text">アカウントをお持ちでない方は <a href="/register" class="register-link">新規登録</a></p>
+                        <div class="auth-prompt">
+                            <p class="auth-text">アカウントをお持ちでない方は <a href="/register" class="auth-link">新規登録</a></p>
                         </div>
                     </form>
                 </div>

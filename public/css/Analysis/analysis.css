@@ -55,27 +55,3 @@
   text-align: center;
   color: #5f6368;
 }
-
-@media (max-width: 768px) {
-  .analysis-table th,
-  .analysis-table td {
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-
-  .analysis-table .memo {
-    width: 150px;
-  }
-}
-
-@media (max-width: 480px) {
-  .analysis-table th,
-  .analysis-table td {
-    padding: 6px 8px;
-    font-size: 12px;
-  }
-
-  .analysis-table .memo {
-    width: 100px;
-  }
-}

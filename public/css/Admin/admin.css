@@ -8,7 +8,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   color: #1e293b;
@@ -147,7 +148,8 @@ body {
   background: white;
   border-radius: 1rem;
   padding: 2.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
   position: relative;
   overflow: hidden;
@@ -322,12 +324,6 @@ body {
   gap: 2rem;
 }
 
-@media (min-width: 768px) {
-  .categories-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .category-section {
   background: #f8fafc;
   border-radius: 0.75rem;
@@ -441,57 +437,6 @@ body {
 .empty-state p {
   font-style: italic;
   margin: 0;
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .header-container {
-    padding: 0 1rem;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .admin-navigation {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .admin-main {
-    padding: 1rem;
-  }
-
-  .admin-card {
-    padding: 1.5rem;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .categories-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .admin-subtitle {
-    margin-left: 0;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .card-title {
-    font-size: 1.5rem;
-  }
-
-  .admin-nav-link {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.8rem;
-  }
-
-  .category-section {
-    padding: 1rem;
-  }
 }
 
 /* フォーカス状態の強化 */

@@ -148,8 +148,6 @@
   color: #374151;
 }
 
-
-
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -475,69 +473,6 @@ input:checked + .toggle-slider:before {
   border-top: 2px solid #e5e7eb;
 }
 
-/* レスポンシブデザイン */
-@media (max-width: 768px) {
-  .settings-container {
-    padding: 1rem;
-  }
-
-  .settings-card {
-    padding: 1.5rem;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .notification-item,
-  .data-action-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .notification-info,
-  .action-info {
-    margin-right: 0;
-  }
-
-  .notification-toggle,
-  .action-button {
-    align-self: flex-end;
-  }
-
-  .modal-actions {
-    flex-direction: column;
-  }
-
-  .form-actions {
-    justify-content: stretch;
-  }
-
-  .form-actions .btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .settings-title {
-    font-size: 2rem;
-  }
-
-  .section-title1 {
-    font-size: 1.25rem;
-  }
-
-  .modal-content {
-    margin: 0.5rem;
-  }
-
-  .modal-header,
-  .modal-body {
-    padding: 1rem;
-  }
-}
 .toggle-icon {
   font-size: 1rem;
   width: 16px;

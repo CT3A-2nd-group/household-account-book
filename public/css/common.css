@@ -44,14 +44,6 @@ body {
   background-color: #2563eb;
 }
 
-.btn-secondary {
-  background-color: #6b7280;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #4b5563;
-}
 
 /* 共通テキスト */
 .page-title {

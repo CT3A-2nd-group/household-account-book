@@ -229,6 +229,14 @@ function initializeDateField() {
 
   if (!dateInput) return;
 
+  if (!dateInput._flatpickr) {
+    flatpickr(dateInput, {
+      dateFormat: "Y/m/d",
+      locale: flatpickr.l10ns.ja,
+      allowInput: true,
+    });
+  }
+
   // 今日の日付をデフォルト値として設定(入力がある場合はそっちを優先)
   if (!dateInput.value.trim()) {
     const today = new Date();

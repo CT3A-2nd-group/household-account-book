@@ -4,10 +4,13 @@
 .login-container {
   display: flex;
   justify-content: center;
-  max-width: 1200px;
+  align-items: center; /* ← 縦方向に中央寄せ */
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
-  min-height: calc(100vh - 120px);
+  padding: 1rem;
+  padding-top: 2rem;
+  min-height: 100vh; /* ← 画面の高さ全体を確保 */
+  box-sizing: border-box;
 }
 
 /* ログインカード */
@@ -16,7 +19,7 @@
   max-width: 480px;
   background: white;
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 2rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
@@ -37,16 +40,16 @@
 /* ログインヘッダー */
 .login-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 .login-icon {
   font-size: 2.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .login-title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #1e293b;
   margin: 0 0 0.5rem 0;
@@ -54,7 +57,7 @@
 
 .login-subtitle {
   color: #64748b;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   margin: 0;
 }
 
@@ -73,7 +76,7 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .form-group {
@@ -85,7 +88,7 @@
   font-weight: 500;
   color: #374151;
   margin-bottom: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .form-input {
@@ -203,7 +206,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 .login-button:hover {
@@ -219,8 +222,8 @@
 /* 新規登録プロンプト */
 .register-prompt {
   text-align: center;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
 
@@ -239,4 +242,3 @@
 .register-link:hover {
   text-decoration: underline;
 }
-

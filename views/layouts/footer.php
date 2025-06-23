@@ -63,28 +63,21 @@
                     <div class="goal-item">
                         <div class="goal-info">
                             <div class="goal-name">貯金目標</div>
-                            <div class="goal-amount">¥50,000 / ¥100,000</div>
-                        </div>
+                                <div class="goal-amount"><?php if (isset($allSaving)): ?>
+                                    <div class="savings-info">
+                                        ¥<?= number_format($allSaving) ?> / ¥<?= number_format($goalSaving) ?>
+                                    </div>
+                                <?php endif; ?>
+                                </div>
+                            </div>
                         <div class="goal-progress">
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 50%"></div>
+                                <div class="progress-fill" style="width: <?= $allSaving/$goalSaving *100 ?>%"></div>
                             </div>
-                            <div class="progress-text">50%</div>
+                            <div class="progress-text"><?= number_format($allSaving/$goalSaving *100) ?>%</div>
                         </div>
                     </div>
-                    
-                    <div class="goal-item">
-                        <div class="goal-info">
-                            <div class="goal-name">食費予算</div>
-                            <div class="goal-amount">¥45,000 / ¥40,000</div>
-                        </div>
-                        <div class="goal-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill over-budget" style="width: 100%"></div>
-                            </div>
-                            <div class="progress-text over">112%</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             
@@ -96,10 +89,10 @@
                 <div class="summary-chart">
                     <div class="chart-placeholder">
                         <!-- 簡易チャートまたはグラフ表示エリア -->
-                        <div class="mini-chart">
-                            <div class="chart-bar income-bar" style="height: 60%"></div>
-                            <div class="chart-bar expense-bar" style="height: 45%"></div>
-                            <div class="chart-bar balance-bar" style="height: 15%"></div>
+                        <div class="mini-chart" style="height: 100px;">
+                            <div class="chart-bar income-bar" style="height: 100%;"></div>
+                            <div class="chart-bar expense-bar" style="height: <?= number_format($expenseRate, 2) ?>%;"></div>
+                            <div class="chart-bar balance-bar" style="height: <?= number_format($balanceRate, 2) ?>%;"></div>
                         </div>
                         <div class="chart-labels">
                             <span class="chart-label">収入</span>

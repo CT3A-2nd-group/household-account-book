@@ -3,7 +3,14 @@ class adminController extends BaseController
 {
     public function registerAdmin(): void
     {
-        // 既存の管理者であればこの画面を利用できないようにする
+        // 管理者が既に存在する場合は誰もこの画面にアクセスできない
+        $stmt = $this->pdo->query("SELECT COUNT(*) FROM users WHERE is_admin = 1");
+        if ($stmt->fetchColumn() > 0) {
+            http_response_code(403);
+            exit('管理者ユーザーは既に作成されています');
+        }
+
+        // 念のためログイン中の管理者もブロック
         $this->forbidAdmin();
         $message = null;
 

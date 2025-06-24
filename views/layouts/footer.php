@@ -57,29 +57,36 @@
             <!-- 目標進捗セクション -->
             <div class="sidebar-section">
                 <div class="section-header">
-                    <h3 class="section-title">今月の目標</h3>
+                    <h3 class="section-title">現在の目標</h3>
                 </div>
                 <div class="goal-list">
+                    <!-- 貯金目標が未設定の場合、貯金目標非表示 -->
+                    <?php if (isset($goalSaving) && $goalSaving > 0): ?>
                     <div class="goal-item">
                         <div class="goal-info">
                             <div class="goal-name">貯金目標</div>
-                                <div class="goal-amount"><?php if (isset($allSaving)): ?>
+                            <div class="goal-amount">
+                                <?php if (isset($allSaving)): ?>
                                     <div class="savings-info">
                                         ¥<?= number_format($allSaving) ?> / ¥<?= number_format($goalSaving) ?>
                                     </div>
                                 <?php endif; ?>
-                                </div>
                             </div>
+                        </div>
                         <div class="goal-progress">
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: <?= $allSaving/$goalSaving *100 ?>%"></div>
+                                <div class="progress-fill" style="width: <?= min(100, $allSaving / $goalSaving * 100) ?>%"></div>
                             </div>
-                            <div class="progress-text"><?= number_format($allSaving/$goalSaving *100) ?>%</div>
+                            <div class="progress-text"><?= number_format($allSaving / $goalSaving * 100, 2) ?>%</div>
                         </div>
                     </div>
+                    <?php endif; ?>
 
+                    <!-- 今後、他の目標があればここに追加可能 -->
+                    
                 </div>
             </div>
+
             
             <!-- 今月の収支サマリー -->
             <div class="sidebar-section">

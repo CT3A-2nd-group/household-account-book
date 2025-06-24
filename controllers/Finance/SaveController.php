@@ -7,6 +7,7 @@ class SaveController extends BaseController{
     {
         $extraCss = '<link rel="stylesheet" href="/css/Finance/save.css">';
         $this->requireLogin();
+        $this->forbidAdmin();
         $this->render('finance/save_savings', [
             'title' => '貯金登録',
             'extraCss' => $extraCss
@@ -16,6 +17,7 @@ class SaveController extends BaseController{
     public function save(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
         $userId = $_SESSION['user_id'];
 
         $year = intval($_POST['year']);

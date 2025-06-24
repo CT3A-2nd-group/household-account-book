@@ -5,6 +5,7 @@
         }
         public function Listview() {
             $this->requireLogin();
+            $this->forbidAdmin();
 
             $incomes = $this->IncomeList($_SESSION['user_id']);
             $expenditures = $this->ExpenditureList($_SESSION['user_id']);
@@ -64,6 +65,7 @@
 
         public function DeleteList() {
             $this->requireLogin();
+            $this->forbidAdmin();
             if (
                 isset($_POST['delete_ids'], $_POST['target_type']) &&
                 is_array($_POST['delete_ids']) &&

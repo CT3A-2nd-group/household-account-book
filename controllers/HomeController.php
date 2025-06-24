@@ -4,6 +4,7 @@ class HomeController extends BaseController
     public function index(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $userId   = $_SESSION['user_id'];
         $isAdmin  = $_SESSION['is_admin'] ?? 0;
@@ -192,6 +193,7 @@ class HomeController extends BaseController
     public function deleteGoalAndRecord(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
         $user_id = $_SESSION['user_id'];
 
         $stmt = $this->pdo->prepare("SELECT target_name, target_amount FROM goals WHERE user_id = :user_id");

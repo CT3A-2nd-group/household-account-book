@@ -103,16 +103,6 @@ class SettingController extends BaseController
         $this->render('auth/setting', $data);
     }
 
-    /**
-     * 管理者ユーザーが一般向け設定にアクセスした場合は拒否する
-     */
-    private function forbidAdmin(): void
-    {
-        if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
-            http_response_code(403);
-            exit('管理者アカウントでは実行できません');
-        }
-    }
 
     public function deleteAccount(): void
     {

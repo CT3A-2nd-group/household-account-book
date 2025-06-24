@@ -4,6 +4,7 @@ class LoginController extends BaseController
     /* ① GET /login で呼ぶ */
     public function showForm(): void
     {
+        $this->forbidLoggedIn();
         $extraCss = '<link rel="stylesheet" href="/css/Auth/auth.css">';
 
         // $title, $extraCss をビューに渡す
@@ -16,6 +17,7 @@ class LoginController extends BaseController
     /* ② POST /login で呼ぶ（認証） */
     public function login(): void
     {
+        $this->forbidLoggedIn();
         $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
 

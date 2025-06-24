@@ -3,6 +3,7 @@ class RegisterController extends BaseController
 {
     public function showForm(): void
     {
+        $this->forbidLoggedIn();
         $extraCss = '<link rel="stylesheet" href="/css/Auth/auth.css">';
         // 管理者アカウントの存在チェック
         $stmt = $this->pdo->query("SELECT COUNT(*) FROM users WHERE is_admin = 1");
@@ -19,6 +20,7 @@ class RegisterController extends BaseController
     /* POST /register ─ 実際の登録処理 */
     public function register(): void
     {
+        $this->forbidLoggedIn();
         $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
 

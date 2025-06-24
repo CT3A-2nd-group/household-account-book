@@ -5,6 +5,7 @@ class IncomeController extends BaseController
     public function showForm(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         // カテゴリ取得
         $categories = $this->pdo
@@ -41,6 +42,7 @@ class IncomeController extends BaseController
     public function store(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $user_id     = $_SESSION['user_id'];
         $input_date  = $_POST['input_date']  ?? '';
@@ -83,6 +85,7 @@ class IncomeController extends BaseController
     public function editForm(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
         $id = $_GET['id'] ?? null;
         if (!$id) {
             $this->redirect('/List/view');
@@ -132,6 +135,7 @@ class IncomeController extends BaseController
     public function update(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $id          = $_POST['id'] ?? null;
         $input_date  = $_POST['input_date']  ?? '';

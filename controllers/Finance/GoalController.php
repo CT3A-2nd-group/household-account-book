@@ -3,6 +3,7 @@ class GoalController extends BaseController{
     
     public function showForm(): void{
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $extraCss = '<link rel="stylesheet" href="/css/Finance/goal.css">';
         $extraJs = '';
@@ -19,6 +20,7 @@ class GoalController extends BaseController{
         if (!isset($_SESSION['user_id'])) {
             $this->redirect('/login');
         }
+        $this->forbidAdmin();
 
         $targetName = trim($_POST['target_name'] ?? '');
         $targetAmount = floatval($_POST['target_amount'] ?? 0);

@@ -6,6 +6,7 @@ class ExpenditureController extends BaseController
     public function showForm(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $stmt = $this->pdo->query(
             "SELECT id, name FROM categories WHERE type = 'expenditure' " .
@@ -43,6 +44,7 @@ class ExpenditureController extends BaseController
     public function store(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $user_id     = $_SESSION['user_id'];
         $input_date  = $_POST['input_date']  ?? '';
@@ -104,6 +106,7 @@ class ExpenditureController extends BaseController
     public function editForm(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
         $id = $_GET['id'] ?? null;
         if (!$id) {
             $this->redirect('/List/view');
@@ -153,6 +156,7 @@ class ExpenditureController extends BaseController
     public function update(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $id          = $_POST['id'] ?? null;
         $input_date  = $_POST['input_date']  ?? '';

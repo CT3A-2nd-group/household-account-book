@@ -4,6 +4,7 @@ class SettingController extends BaseController
     public function index(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $user = $this->getUserData($_SESSION['user_id']);
 
@@ -19,6 +20,7 @@ class SettingController extends BaseController
     public function updateUsername(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $newUsername = trim($_POST['username'] ?? '');
         if ($newUsername === '') {
@@ -51,6 +53,7 @@ class SettingController extends BaseController
     public function changePassword(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $current = $_POST['current_password'] ?? '';
         $new = $_POST['new_password'] ?? '';
@@ -100,9 +103,11 @@ class SettingController extends BaseController
         $this->render('auth/setting', $data);
     }
 
+
     public function deleteAccount(): void
     {
         $this->requireLogin(); // ログイン確認（実装済み前提）
+        $this->forbidAdmin();
         // セッションからユーザーIDを取得
         $userId = $_SESSION['user_id']; 
         $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = :id");

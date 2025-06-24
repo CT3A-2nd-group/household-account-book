@@ -2,6 +2,7 @@
     class SaveListController extends BaseController{
         public function SavingsListview() {
             $this->requireLogin(); // ログインチェックOK
+            $this->forbidAdmin();
 
             $extraCss = '<link rel="stylesheet" href="/css/Finance/finance.css">';
             $extraJs = '<script src="/js/pagination.js"></script>';

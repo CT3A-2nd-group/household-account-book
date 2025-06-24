@@ -4,6 +4,7 @@ class AnalysisController extends BaseController
     public function satisfaction(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
         $userId = $_SESSION['user_id'];
 
         // 満足度ランキング（上位5件）
@@ -43,6 +44,7 @@ class AnalysisController extends BaseController
     public function category(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
         $userId = $_SESSION['user_id'];
 
         $avgStmt = $this->pdo->prepare(

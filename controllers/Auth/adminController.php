@@ -3,6 +3,8 @@ class adminController extends BaseController
 {
     public function registerAdmin(): void
     {
+        // 既存の管理者であればこの画面を利用できないようにする
+        $this->forbidAdmin();
         $message = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -10,6 +10,7 @@
                 <a href="/finance/goal-form" class="btn btn-goal">🎯 目標登録</a>
             <?php endif; ?>
             <a href="/finance/save-form" class="btn btn-saving">💰 貯金額登録</a>
+            <a href="/finance/save-goalsaving" class="btn btn-saving">💰目標貯金額登録</a>
         </div>
     </div>
   </section>

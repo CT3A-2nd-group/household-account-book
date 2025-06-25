@@ -52,6 +52,9 @@ $router->add('POST', '/List/Delete', fn() => (new ListController)->DeleteList())
 /* 貯金額登録 */
 $router->add('POST', '/finance/save', fn() => (new SaveController)->save());
 $router->add('GET', '/finance/save-form', fn() => (new SaveController)->showForm());
+/* 目標貯金額登録 */
+$router->add('GET', '/finance/save-goalsaving', fn() => (new GoalSaveController)->showForm());
+$router->add('POST', '/finance/goalsave', fn() => (new GoalSaveController)->handleSaveGoal());
 /* 貯金額一覧 */
 $router->add('GET', '/SaveList/view', fn() => (new SaveListController)->SavingsListview());
 /* 目標登録 */

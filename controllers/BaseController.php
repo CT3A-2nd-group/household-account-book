@@ -34,7 +34,7 @@ class BaseController
             exit('管理者アカウントでは実行できません');
         }
     }
-
+  
     /**
      * ログイン済みユーザーをログイン/登録画面へ入れない
      */
@@ -47,7 +47,6 @@ class BaseController
             $this->redirect($target);
         }
     }
-
     protected function render(string $viewPath, array $data = []): void
     {
         if (isset($_SESSION['user_id'])) {

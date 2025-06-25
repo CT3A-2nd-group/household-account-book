@@ -192,6 +192,7 @@ function drawPieChart(type, data, year, month) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,

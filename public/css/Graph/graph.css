@@ -244,3 +244,23 @@ canvas {
 .content-body {
   padding: 10px 10px 0 10px;
 }
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .swiper,
+  .mySwiper {
+    max-width: 100%;
+  }
+
+  .swiper-slide {
+    min-height: 400px;
+  }
+
+  .chart-container {
+    height: 260px;
+  }
+
+  .pieCanvas {
+    height: 260px !important;
+  }
+}

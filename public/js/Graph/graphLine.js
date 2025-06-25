@@ -112,6 +112,7 @@ function makeDataset(label, data, color) {
 function defaultOptions(max) {
   return {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       tooltip: {
         callbacks: {

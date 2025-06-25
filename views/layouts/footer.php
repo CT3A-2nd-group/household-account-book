@@ -97,7 +97,11 @@
                     <div class="chart-placeholder">
                         <!-- 簡易チャートまたはグラフ表示エリア -->
                         <div class="mini-chart" style="height: 100px;">
-                            <div class="chart-bar income-bar" style="height: 100%;"></div>
+                            <?php if ($incomeForChart > 0): ?>
+                                <div class="chart-bar income-bar" style="height: 100%;"></div>
+                            <?php else: ?>
+                                <div class="chart-bar income-bar" style="height: 0%;"></div>
+                            <?php endif; ?>
                             <div class="chart-bar expense-bar" style="height: <?= number_format($expenseRate, 2) ?>%;"></div>
                             <div class="chart-bar balance-bar" style="height: <?= number_format($balanceRate, 2) ?>%;"></div>
                         </div>

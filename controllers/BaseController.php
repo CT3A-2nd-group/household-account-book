@@ -62,7 +62,7 @@ class BaseController
             $expenditureForChart = $data['getExpenditures'];
 
             if ($incomeForChart > 0) {
-                $data['expenseRate'] = $expenditureForChart / $incomeForChart * 100;
+                $data['expenseRate'] = min($expenditureForChart / $incomeForChart * 100,150);
                 $data['balanceRate'] = 100 - $data['expenseRate'];
             } else {
                 $data['expenseRate'] = 0;

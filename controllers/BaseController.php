@@ -34,7 +34,19 @@ class BaseController
             exit('管理者アカウントでは実行できません');
         }
     }
-
+  
+    /**
+     * ログイン済みユーザーをログイン/登録画面へ入れない
+     */
+    protected function forbidLoggedIn(): void
+    {
+        if (isset($_SESSION['user_id'])) {
+            $target = !empty($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1
+                ? '/admin/category/create'
+                : '/home';
+            $this->redirect($target);
+        }
+    }
     protected function render(string $viewPath, array $data = []): void
     {
         if (isset($_SESSION['user_id'])) {

@@ -219,6 +219,19 @@ class HomeController extends BaseController
         exit;
     }
 
+    //目標の削除（非達成で目標を削除）
+    public function deleteGoal(): void
+    {
+        $this->requireLogin();
+        $user_id = $_SESSION['user_id'];
+
+        $delete = $this->pdo->prepare("DELETE FROM goals WHERE user_id = :user_id");
+        $delete->execute([':user_id' => $user_id]);
+        
+        header('Location: /home');
+        exit;
+    }
+
     //達成額合計を求める
     public function getTotalAchieved(PDO $pdo, int $user_id): float
     {

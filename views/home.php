@@ -98,12 +98,20 @@
         <div class="label">あと必要な金額</div>
         <div class="value">¥<?= number_format(max(0, $goalMoney - $totalFreeMoney)) ?></div>
       </div>
-      <!-- 達成率100%になったら現れるタイプのボタン -->
-      <?php if ($goalProgress >= 100): ?>
-      <form action="/goal/delete" method="POST">
-        <button type="submit" class="goal-clear-button">目標達成！</button>
-      </form>
-      <?php endif; ?>
+      <div class="clear-delete-buttons">
+        <!-- 達成率100%になったら現れるタイプのボタン -->
+        <?php if ($goalProgress >= 100): ?>
+        <form action="/goal/finish" method="POST">
+          <button type="submit" class="goal-clear-button">目標達成！</button>
+        </form>
+        <?php endif; ?>
+        <!-- 目標を設定時に現れるタイプの削除ボタン -->
+        <?php if ($hasGoal && ($goalProgress) < 100): ?>
+          <form action="/goal/delete" method="POST">
+            <button type="submit" class="goal-delete-button">目標削除</button>
+          </form>
+        <?php endif ?>
+      </div>
     </div>
   </div>
 

@@ -376,20 +376,40 @@
   color: #1e88e5;
 }
 
-.goal-clear-button {
-  font-size: 110%;
-  width: 150px;
-  height: 45px;
-  border: none;
-  border-radius: 15px;
-  color: white;
-  background-color: #6d28d9;
-  display: block;
+.clear-delete-buttons{
   margin-left: auto;
+}
+
+.goal-clear-button{
+    font-size: 110%;
+    width: 150px;
+    height: 45px;
+    border:none;
+    border-radius: 15px;
+    color:white;
+    background-color: #6D28D9;    
+    display: block;
+    margin-left: auto;
+    margin-bottom: 5px;
 }
 
 .goal-clear-button:hover {
   background-color: #7c3de1;
+}
+
+.goal-delete-button{
+    font-size: 110%;
+    width: 150px;
+    height: 45px;
+    border:none;
+    border-radius: 15px;
+    color:white;
+    background-color: #6D28D9;    
+    display: block;
+    margin-left: auto;
+}
+.goal-delete-button:hover{
+  background-color:  #7c3de1;;
 }
 
 #circle-goal-bar {
@@ -466,14 +486,16 @@
 }
 
 /* 貯金額登録ボタン */
-.btn-saving {
-  background-color: #6366f1; /* 通常：indigo-500 */
+.btn-saving{
+  background-color: #6366F1;  /* 通常：indigo-500 */
+}
   color: white;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 .btn-saving:hover {
   background-color: #818cf8; /* ホバー時：indigo-400 */

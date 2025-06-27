@@ -1,15 +1,19 @@
-// flatpickr を用いてカレンダーを表示
+// flatpickr を利用してカレンダーを開く関数
 function openCalendar() {
-  const dateInput = document.getElementById("date-input");
-  if (!dateInput) return;
-  if (!dateInput._flatpickr) {
-    flatpickr(dateInput, {
+  const input = document.getElementById("date-input");
+  if (!input) return;
+
+  // flatpickr インスタンスがなければ作成
+  if (!input._flatpickr) {
+    flatpickr(input, {
       dateFormat: "Y/m/d",
-      locale: flatpickr.l10ns.ja,
       allowInput: true,
+      locale: "ja",
+      defaultDate: input.value || null,
     });
   }
-  dateInput._flatpickr.open();
+
+  input._flatpickr.open();
 }
 
 // 全角文字を半角に変換する関数

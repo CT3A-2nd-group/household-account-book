@@ -166,7 +166,13 @@
                                 <li class="nav-item">
                                     <a href="/analysis" class="nav-link">
                                         <span class="nav-icon analysis-icon"></span>
-                                        <span class="nav-text">満足度分析</span>
+                                        <span class="nav-text">満足度ランキング</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/analysis/category" class="nav-link">
+                                        <span class="nav-icon category-icon"></span>
+                                        <span class="nav-text">カテゴリ平均</span>
                                     </a>
                                 </li>
                             </ul>

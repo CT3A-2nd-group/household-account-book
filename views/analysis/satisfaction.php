@@ -1,9 +1,9 @@
 <div class="analysis-container">
-    <h2 class="h2page-title">支出に対する分析</h2>
+    <h2 class="h2page-title">満足度ランキング（上位5件）</h2>
 
     <section class="analysis-section">
-        <h3>満足度ランキング（上位5件）</h3>
-        <table class="analysis-table paginated-table">
+        <div class="table-container">
+            <table class="analysis-table paginated-table">
             <thead>
             <tr><th>日付</th><th>カテゴリ</th><th>金額(円)</th><th>満足度</th><th>メモ</th></tr>
             </thead>
@@ -24,11 +24,13 @@
             <?php endif; ?>
             </tbody>
         </table>
+        </div>
     </section>
 
     <section class="analysis-section">
-        <h3>無駄な支出</h3>
-        <table class="analysis-table paginated-table">
+        <h2 class="h2page-title">無駄な支出</h2>
+        <div class="table-container">
+            <table class="analysis-table paginated-table">
             <thead>
             <tr><th>日付</th><th>カテゴリ</th><th>金額(円)</th><th>満足度</th><th>メモ</th></tr>
             </thead>
@@ -49,25 +51,6 @@
             <?php endif; ?>
             </tbody>
         </table>
-    </section>
-
-    <section class="analysis-section">
-        <h3>カテゴリ別平均満足度</h3>
-        <table class="analysis-table paginated-table">
-            <thead>
-            <tr><th>カテゴリ</th><th>平均満足度</th></tr>
-            </thead>
-            <tbody>
-            <?php foreach ($averages as $a): ?>
-                <tr>
-                    <td><?= htmlspecialchars($a['category_name'] ?? '') ?></td>
-                    <td><?= number_format($a['avg_rate'], 2) ?></td>
-                </tr>
-            <?php endforeach; ?>
-            <?php if (empty($averages)): ?>
-                <tr><td colspan="2" class="no-data">データがありません</td></tr>
-            <?php endif; ?>
-            </tbody>
-        </table>
+        </div>
     </section>
 </div>

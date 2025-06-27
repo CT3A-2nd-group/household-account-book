@@ -1,9 +1,10 @@
 <?php
 class AnalysisController extends BaseController
 {
-    public function view(): void
+    public function satisfaction(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
         $userId = $_SESSION['user_id'];
 
         // 満足度ランキング（上位5件）
@@ -29,7 +30,23 @@ class AnalysisController extends BaseController
         $wasteStmt->execute([':u' => $userId]);
         $wastes = $wasteStmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // カテゴリ別平均満足度
+        $extraCss = '<link rel="stylesheet" href="/css/Analysis/analysis.css">';
+        $extraJs = '<script src="/js/pagination.js"></script>';
+        $this->render('analysis/satisfaction', [
+            'title'    => '満足度ランキング',
+            'ranking'  => $ranking,
+            'wastes'   => $wastes,
+            'extraCss' => $extraCss,
+            'extraJs'  => $extraJs
+        ]);
+    }
+
+    public function category(): void
+    {
+        $this->requireLogin();
+        $this->forbidAdmin();
+        $userId = $_SESSION['user_id'];
+
         $avgStmt = $this->pdo->prepare(
             "SELECT c.name AS category_name, AVG(e.star_rate) AS avg_rate
              FROM expenditures e
@@ -44,10 +61,8 @@ class AnalysisController extends BaseController
 
         $extraCss = '<link rel="stylesheet" href="/css/Analysis/analysis.css">';
         $extraJs = '<script src="/js/pagination.js"></script>';
-        $this->render('analysis/satisfaction', [
-            'title'    => '満足度・無駄分析',
-            'ranking'  => $ranking,
-            'wastes'   => $wastes,
+        $this->render('analysis/category', [
+            'title'    => 'カテゴリ平均',
             'averages' => $averages,
             'extraCss' => $extraCss,
             'extraJs'  => $extraJs

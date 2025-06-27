@@ -24,6 +24,29 @@ class BaseController
         }
     }
 
+    /**
+     * 一般ユーザー向け画面に管理者がアクセスした場合は403を返す
+     */
+    protected function forbidAdmin(): void
+    {
+        if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+            http_response_code(403);
+            exit('管理者アカウントでは実行できません');
+        }
+    }
+  
+    /**
+     * ログイン済みユーザーをログイン/登録画面へ入れない
+     */
+    protected function forbidLoggedIn(): void
+    {
+        if (isset($_SESSION['user_id'])) {
+            $target = !empty($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1
+                ? '/admin/category/create'
+                : '/home';
+            $this->redirect($target);
+        }
+    }
     protected function render(string $viewPath, array $data = []): void
     {
         if (isset($_SESSION['user_id'])) {

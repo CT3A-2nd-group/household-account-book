@@ -89,7 +89,8 @@ $router->add('GET',  '/temp_admin', fn() => (new adminController)->registerAdmin
 $router->add('POST', '/temp_admin', fn() => (new adminController)->registerAdmin());
 
 /* Analysis */
-$router->add('GET', '/analysis', fn() => (new AnalysisController)->view());
+$router->add('GET', '/analysis', fn() => (new AnalysisController)->satisfaction());
+$router->add('GET', '/analysis/category', fn() => (new AnalysisController)->category());
 
 /* ---------- 発射 ---------- */
 $router->dispatch(

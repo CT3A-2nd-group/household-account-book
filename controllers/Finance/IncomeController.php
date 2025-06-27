@@ -5,6 +5,7 @@ class IncomeController extends BaseController
     public function showForm(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         // カテゴリ取得
         $categories = $this->pdo
@@ -41,6 +42,7 @@ class IncomeController extends BaseController
     public function store(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $user_id     = $_SESSION['user_id'];
         $input_date  = $_POST['input_date']  ?? '';
@@ -83,6 +85,7 @@ class IncomeController extends BaseController
     public function editForm(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
         $id = $_GET['id'] ?? null;
         if (!$id) {
             $this->redirect('/List/view');
@@ -107,19 +110,23 @@ class IncomeController extends BaseController
             )
             ->fetchAll();
 
+        $extraCss = implode("\n", [
+            '<link rel="stylesheet" href="/css/Finance/finance.css">',
+            '<link rel="stylesheet" href="/css/Finance/income.css">',
+            '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">'
+        ]);
+
+        $extraJs = implode("\n", [
+            '<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>',
+            '<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>',
+            '<script src="/js/Finance/income.js"></script>'
+        ]);
+
         $this->render('finance/income_edit_form', [
             'categories' => $categories,
             'title'      => '収入編集',
-            'extraCss'   => implode("\n", [
-                '<link rel="stylesheet" href="/css/Finance/finance.css">',
-                '<link rel="stylesheet" href="/css/Finance/income.css">',
-                '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">'
-            ]),
-            'extraJs'    => implode("\n", [
-                '<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>',
-                '<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>',
-                '<script src="/js/Finance/income.js"></script>'
-            ]),
+            'extraCss'   => $extraCss,
+            'extraJs'    => $extraJs,
             'income'     => $income
         ]);
     }
@@ -128,6 +135,7 @@ class IncomeController extends BaseController
     public function update(): void
     {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $id          = $_POST['id'] ?? null;
         $input_date  = $_POST['input_date']  ?? '';

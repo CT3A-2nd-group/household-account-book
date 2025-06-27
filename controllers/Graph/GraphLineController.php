@@ -17,6 +17,7 @@
         // グラフページの表示処理（ユーザーがログインしていなければログインページへリダイレクト）
         public function view(): void {
         $this->requireLogin();
+        $this->forbidAdmin();
 
         $extraCss = implode("\n", [
             '<link rel="stylesheet" href="/css/Graph/graph.css">',
@@ -40,6 +41,7 @@
         // 指定されたテーブル（収入または支出）から月別集計データを作成
         private function aggregateByMonth(string $table): array {
             $this->requireLogin(true);
+            $this->forbidAdmin();
 
             $userId = $_SESSION['user_id'];
 

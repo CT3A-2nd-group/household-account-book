@@ -65,6 +65,12 @@ class IncomeController extends BaseController
             return;
         }
 
+        if (!is_numeric($income) || (float)$income < 0 || (float)$income > 99999999.99)  {
+            $_SESSION['flash_error'] = '有効な金額を入力してください';
+            $_SESSION['flash_old']   = $_POST;
+            $this->redirect('/income/create');
+        }
+
         $stmt = $this->pdo->prepare("
             INSERT INTO incomes
             (user_id, category_id, input_date, amount, description)
@@ -148,7 +154,7 @@ class IncomeController extends BaseController
             return;
         }
 
-        if ($amount === '' || !is_numeric($amount) || $amount <= 0) {
+        if ($amount === '' || !is_numeric($amount) || $amount <= 0 || (float)$amount > 99999999.99) {
             $this->redirect('/income/edit?id=' . urlencode((string)$id));
             return;
         }

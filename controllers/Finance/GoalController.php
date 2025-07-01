@@ -25,9 +25,9 @@ class GoalController extends BaseController{
         $targetName = trim($_POST['target_name'] ?? '');
         $targetAmount = floatval($_POST['target_amount'] ?? 0);
 
-        if ($targetName === '' || $targetAmount <= 0) {
-            $this->redirect('/goals?error=不正な入力です');
-            return;
+        if ($targetName === '' || $targetAmount <= 0 || (float)$targetAmount > 99999999.99) {
+            $_SESSION['error'] = '有効な金額を入力してください';
+            $this->redirect('/finance/goal-form');
         }
 
         $stmt = $this->pdo->prepare("INSERT INTO goals (user_id, target_name, target_amount) VALUES (:user_id, :name, :amount)");

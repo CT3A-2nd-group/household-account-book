@@ -16,7 +16,7 @@ class GoalSaveController extends BaseController
         $this->requireLogin(); // ログインチェック
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $goal_amount = $_POST['goalsaved'] ?? '';
-            if (!is_numeric($goal_amount) || (float)$goal_amount < 0) {
+            if (!is_numeric($goal_amount) || (float)$goal_amount < 0 || (float)$goal_amount > 99999999.99)  {
                 $_SESSION['error'] = '有効な金額を入力してください';
                 $this->redirect('/finance/save-goalsaving');
             }

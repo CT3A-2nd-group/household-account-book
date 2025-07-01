@@ -43,6 +43,10 @@ class SaveController extends BaseController{
             header("Location: /finance/save-form");
             exit;
         }
+        if (!is_numeric($saved) || (float)$saved < 0 || (float)$saved > 99999999.99)  {
+            $_SESSION['error'] = '有効な金額を入力してください';
+            $this->redirect('/finance/save-form');
+        }
 
         // ③ 登録・更新処理
         $stmt = $this->pdo->prepare("SELECT id FROM monthly_finances WHERE user_id = ? AND year = ? AND month = ?");

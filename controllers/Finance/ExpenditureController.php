@@ -69,6 +69,12 @@ class ExpenditureController extends BaseController
             return;
         }
 
+        if (!is_numeric($income) || (float)$income < 0 || (float)$income > 99999999.99)  {
+            $_SESSION['flash_error'] = '有効な金額を入力してください';
+            $_SESSION['flash_old']   = $_POST;
+            $this->redirect('/expenditure/create');
+        }
+
         if ($star_rate === '' || !in_array((int)$star_rate, [1, 2, 3, 4, 5], true)) {
             $_SESSION['flash_error'] = '満足度は1から5の間で選択してください';
             $_SESSION['flash_old'] = $_POST;
@@ -171,7 +177,7 @@ class ExpenditureController extends BaseController
             return;
         }
 
-        if ($amount === '' || !is_numeric($amount) || $amount <= 0) {
+        if ($amount === '' || !is_numeric($amount) || $amount <= 0 || (float)$amount > 99999999.99) {
             $this->redirect('/expenditure/edit?id=' . urlencode((string)$id));
             return;
         }

@@ -20,7 +20,7 @@ class IncomeController extends BaseController
         $error = $_SESSION['flash_error'] ?? '';
         unset($_SESSION['flash_old'], $_SESSION['flash_error']);
 
-        $this->render('finance/income_form', [
+        $this->render('finance/income/income_form', [
             'categories' => $categories,
             'title'      => '収入登録',
             'extraCss'   => implode("\n", [
@@ -128,7 +128,7 @@ class IncomeController extends BaseController
             '<script src="/js/Finance/income.js"></script>'
         ]);
 
-        $this->render('finance/income_edit_form', [
+        $this->render('finance/income/income_edit_form', [
             'categories' => $categories,
             'title'      => '収入編集',
             'extraCss'   => $extraCss,

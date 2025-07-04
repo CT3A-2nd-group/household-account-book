@@ -31,7 +31,7 @@ class ExpenditureController extends BaseController
             '<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>',
             '<script src="/js/Finance/expenditure.js"></script>'
         ]);
-        $this->render('finance/expenditure_form', [
+        $this->render('finance/expenditure/expenditure_form', [
             'categories' => $categories,
             'title'      => '支出登録',
             'extraCss'   => $extraCss,
@@ -149,7 +149,7 @@ class ExpenditureController extends BaseController
             '<script src="/js/Finance/expenditure.js"></script>'
         ]);
 
-        $this->render('finance/expenditure_edit_form', [
+        $this->render('finance/expenditure/expenditure_edit_form', [
             'categories'  => $categories,
             'title'       => '支出編集',
             'extraCss'    => $extraCss,

@@ -5,7 +5,7 @@ class GoalSaveController extends BaseController
     {
         $extraCss = '<link rel="stylesheet" href="/css/Finance/save.css">';
         $this->requireLogin();
-        $this->render('finance/save_goal_saving', [
+        $this->render('finance/save/save_goal_saving', [
             'title' => '貯金目標登録',
             'extraCss' => $extraCss
         ]);

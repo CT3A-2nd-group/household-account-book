@@ -15,7 +15,7 @@
             $stmt->execute([':user_id' => $_SESSION['user_id']]);
             $savings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $this->render('finance/save_list', [
+            $this->render('finance/save/save_list', [
                 'savings'   => $savings,
                 'title'     => '貯金額一覧',
                 'extraCss'  => $extraCss,

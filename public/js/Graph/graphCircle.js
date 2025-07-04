@@ -187,6 +187,7 @@ function drawPieChart(type, data, year, month) {
         {
           data: dataset,
           backgroundColor: generateColors(labels.length),
+          borderWidth: 0,
         },
       ],
     },

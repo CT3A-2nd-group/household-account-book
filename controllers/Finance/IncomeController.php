@@ -65,7 +65,7 @@ class IncomeController extends BaseController
             return;
         }
 
-        if (!is_numeric($income) || (float)$income < 0 || (float)$income > 99999999.99)  {
+        if (!is_numeric($amount) || (float)$amount < 0 || (float)$amount > 99999999.99)  {
             $_SESSION['flash_error'] = '有効な金額を入力してください';
             $_SESSION['flash_old']   = $_POST;
             $this->redirect('/income/create');

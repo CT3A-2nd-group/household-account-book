@@ -14,8 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     controls.className = "pagination-controls";
 
     const prevBtn = document.createElement("button");
+    prevBtn.type = "button";
     prevBtn.textContent = "前へ";
     const nextBtn = document.createElement("button");
+    nextBtn.type = "button";
     nextBtn.textContent = "次へ";
     controls.appendChild(prevBtn);
     controls.appendChild(nextBtn);

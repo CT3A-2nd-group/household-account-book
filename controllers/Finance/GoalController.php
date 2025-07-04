@@ -8,7 +8,7 @@ class GoalController extends BaseController{
         $extraCss = '<link rel="stylesheet" href="/css/Finance/goal.css">';
         $extraJs = '';
 
-        $this->render('finance/goal_form',  [
+        $this->render('finance/goal/goal_form',  [
                 'title' => '目標登録',
                 'extraCss' => $extraCss,
                 'extraJs'  => $extraJs

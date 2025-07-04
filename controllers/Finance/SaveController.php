@@ -8,7 +8,7 @@ class SaveController extends BaseController{
         $extraCss = '<link rel="stylesheet" href="/css/Finance/save.css">';
         $this->requireLogin();
         $this->forbidAdmin();
-        $this->render('finance/save_savings', [
+        $this->render('finance/save/save_savings', [
             'title' => '貯金登録',
             'extraCss' => $extraCss
         ]);
